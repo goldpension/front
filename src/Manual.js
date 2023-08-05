@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Main = (props) => {
+const Manual = (props) => {
   return (
     <>
-      <h3>Main</h3>
+      <h3>Manual</h3>
       <ul>
         <Link to="/manual/1">
           <li>1 페이지</li>
@@ -17,4 +17,4 @@ const Main = (props) => {
   );
 };
 
-export default Main;
+export default Manual;

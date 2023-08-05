@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import personIcon from "../img/person.png";
-import styles from "../css/UserMenu.module.css";
+import { Link } from "react-router-dom";
+
+import personIcon from "./img/person.png";
+import styles from "./css/UserMenu.module.css";
 
 function UserMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +30,12 @@ function UserMenu() {
       </button>
       {isOpen && (
         <ul className={styles.popup}>
-          <li>로그인</li>
-          <li>회원가입</li>
+          <Link to="/">
+            <li>로그인</li>
+          </Link>
+          <Link to="/">
+            <li>회원가입</li>
+          </Link>
         </ul>
       )}
     </div>
