@@ -1,7 +1,10 @@
+import React from "react";
+import First from "./pages/FirstPage";
+
 function App() {
   return (
     <div>
-      <h1>Welcome back!!!</h1>
+      <First />
     </div>
   );
 }
