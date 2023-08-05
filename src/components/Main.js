@@ -9,8 +9,6 @@ export const Main = () => {
   
   const fetchData = async () => {
     const request = await SenuriService.get()
-    const request2 = await jobBsnInfoService.get()
-    console.log(request2)
     console.log(request.data.response.body.items.item)
     let jobLists = request.data.response.body.items.item
     //const request = await axios.get('/15050148/v1/uddi:abd1cfb1-5ba2-491f-9729-84bba214f87d')
