@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {SenuriService,jobBsnInfoService} from '../api/axios'
+import {SenuriService} from '../api/axios'
+import Map from "../components/Map";
 
 export const Main = () => {
   const [jobs, setJobs] = useState([])
@@ -9,7 +10,6 @@ export const Main = () => {
   
   const fetchData = async () => {
     const request = await SenuriService.get()
-    console.log(request.data.response.body.items.item)
     let jobLists = request.data.response.body.items.item
     //const request = await axios.get('/15050148/v1/uddi:abd1cfb1-5ba2-491f-9729-84bba214f87d')
     setJobs(jobLists)
@@ -20,16 +20,17 @@ export const Main = () => {
 
   return (
     <div>
-      {jobs.map((job) => (
+      <Map jobs={jobs}/>
+      {/*jobs.map((job) => (
         <div>
           <span>{job.deadline}</span>
-          <span>{job.frDd}</span>~
+          <span>{job.frDd}</span>
           <span>{job.toDd}</span>
           <span>{job.oranNm}</span>
           <span>{job.recrtTitle}</span>
           <span>{job.workPlcNm}</span>
         </div>
-      ))}
+      ))*/}
     </div>
   )
 }

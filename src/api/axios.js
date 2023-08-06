@@ -14,7 +14,6 @@ const SenuriService = axios.create({
     serviceKey: "mRGjg3%2F2UUHbsxo6%2F0hRd0yGtU%2BpjfH9HP%2FnfwA8nUWyBwbRChPmV85e9wPdnhuChn3lUqWxgE4iYvrHxn4VsA%3D%3D",
     numOfRows: 10000,
     pageNo: 1,
-    search: '접수중'
   }
 })
 const jobBsnInfoService = axios.create({
