@@ -1,18 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./css/Manual.module.css";
+import Img1 from "./img/useMethod1.png";
+import Img2 from "./img/useMethod2.png";
+import Img3 from "./img/useMethod3.png";
 
 const Manual = (props) => {
   return (
     <>
-      <h3>Manual</h3>
-      <ul>
-        <Link to="/manual/1">
-          <li>1 페이지</li>
-        </Link>
-        <Link to="/manual/2">
-          <li>2 페이지</li>
-        </Link>
-      </ul>
+      <div className={styles.relati}>
+        <div className={styles.image1}></div>
+        <div className="text">
+          <h2></h2>
+        </div>
+        <div className={styles.image2}></div>
+        <div className="text">
+          <h2></h2>
+        </div>
+        <div className={styles.image3}></div>
+      </div>
     </>
   );
 };

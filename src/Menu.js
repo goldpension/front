@@ -24,9 +24,7 @@ function Menu() {
   return (
     <div className={styles.Menu}>
       <button className={styles.Button} onClick={handleButtonClick}>
-        <Link to="/">
-          <li>메뉴</li>
-        </Link>
+        <Link to="/">메뉴</Link>
       </button>
       {isOpen && (
         <ul className={styles.popup}>
@@ -36,8 +34,13 @@ function Menu() {
           <Link to="/">
             <li>회사홍보</li>
           </Link>
-          <Link to="/">
-            <li>사용방법</li>
+          <button className={styles.Button} onClick={handleButtonClick}>
+            <Link to="/">메뉴</Link>
+          </button>
+          <Link to="/manual/useMethod">
+            <li>
+              사용방법 <br /> & <br /> 공지사항
+            </li>
           </Link>
         </ul>
       )}
