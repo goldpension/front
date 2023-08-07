@@ -1,13 +1,57 @@
 import React, { useEffect, useState } from "react";
 import Json from "../json/TL_SCCO_CTPRVN.json";
-const { kakao } = window;
 
 function Map({ jobs }) {
-  const [map, setMap] = useState(null);
-  const [geocoder, setGeocoder] = useState(null);
-  console.log('jobs:', jobs)
+  const [map, setMap] = useState()
+  const [polygons, setPolygons] = useState([])
+  const [markers, setMarkers] = useState([]);
+  console.log(jobs)
+
+  const searchAddress = (job) => {
+    const kakao = window.kakao;
+    const geocoder = new kakao.maps.services.Geocoder();
+    geocoder.addressSearch(job.workPlcNm, (result, status) => {
+      if (status === kakao.maps.services.Status.OK) {
+        const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과로 받은 위치를 마커로 표시합니다
+        const marker = new kakao.maps.Marker({
+          position: coords,
+        });
+
+        setMarkers((prevMarkers)=> [...prevMarkers, marker]);
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        const infowindow = new kakao.maps.InfoWindow({
+          content: '<div style="width:150px;text-align:center;padding:6px 0;">' + job.oranNm + "</div>",
+        });
+
+        kakao.maps.event.addListener(marker, 'mouseover', function() {
+          // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+          console.log('이벤트')
+            infowindow.open(map, marker);
+        });
+        
+        // 마커에 마우스아웃 이벤트를 등록합니다
+        kakao.maps.event.addListener(marker, 'mouseout', function() {
+            // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+            infowindow.close();
+        });
+        kakao.maps.event.addListener(marker, 'click', function() {
+          // 마커 위에 인포윈도우를 표시합니다
+          infowindow.open(map, marker);  
+          map.setCenter(coords);
+        });
+      } else {
+        console.error("Geocoder failed due to: " + status);
+      }
+    });
+  };
+  
   const displayArea = (coordinates, areaName) => {
+    const kakao = window.kakao;
+    if (!map) return;
     let customOverlay = new kakao.maps.CustomOverlay({});
+    let newPolygons = [...polygons];
 
     coordinates.forEach((coordinate) => {
       let path = [];
@@ -45,22 +89,11 @@ function Map({ jobs }) {
       kakao.maps.event.addListener(polygon, "mouseover", onPolygonMouseOver);
       kakao.maps.event.addListener(polygon, "mousemove", onPolygonMouseMove);
       kakao.maps.event.addListener(polygon, "mouseout", onPolygonMouseOut);
+
+      newPolygons.push(polygon);
     });
+    setPolygons(newPolygons);
   };
-  const getCoordsByAddress = (address) => {
-    return new Promise((resolve, reject) => {
-      // 주소로 좌표를 검색합니다
-      geocoder.addressSearch(address, function (result, status) {
-        // 정상적으로 검색이 완료됐으면
-        if (status === kakao.maps.services.Status.OK) {
-          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-          resolve(coords);
-          return;
-        }
-        reject(new Error(`${address}getCoordsByAddress Error: not Vaild Address`));
-      });
-    });
-  }
 
   const getContent = (job) => {
     return (
@@ -74,59 +107,57 @@ function Map({ jobs }) {
       </div>
     )
   }
-  const makeMarker = async (jobs) => {
-    let markerArray = [];
-    let infowindowArray = [];
 
-    for (var i = 0; i < jobs.length; i++) {
-      // 마커를 생성합니다
-      let coords = await getCoordsByAddress(jobs[i].workPlcNm);
-      var marker = new kakao.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: coords, // 마커를 표시할 위치
-      });
-
-      markerArray.push(marker);
-
-      // 마커에 표시할 인포윈도우를 생성합니다
-      var infowindow = new kakao.maps.InfoWindow({
-        content: getContent(jobs[i]), // 인포윈도우에 표시할 내용
-      });
-
-      infowindowArray.push(infowindow);
-
-      // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-      // 이벤트 리스너로는 클로저를 만들어 등록합니다
-      // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-      /*
-      kakao.maps.event.addListener(
-        marker,
-        "click",
-        makeOverListener(map, marker, infowindow, coords)
-      );
-      kakao.maps.event.addListener(map, "click", makeOutListener(infowindow));
-      */
-    }
-  }
   useEffect(() => {
-    const pointDatas = Json.features;
-    //console.log(pointDatas);
-    let container = document.getElementById("map");
-    let options = {
-      center: new kakao.maps.LatLng(36.38, 127.51),
-      level: 13,
-    };
+    const script = document.createElement('script');
+    script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=c42993669a187ffcee67bc25740ee4f6&autoload=false';
+    document.head.appendChild(script);
 
-    let map = new kakao.maps.Map(container, options);
-    setMap(map)
-    let geocoder = new kakao.maps.services.Geocoder();
-    setGeocoder(geocoder)
-    pointDatas.forEach((pointData) => {
-      let coordinates = pointData.geometry.coordinates;
-      let areaName = pointData.properties.CTP_KOR_NM;
-      displayArea(coordinates, areaName);
-    });
+    script.onload = () => {
+      const kakao = window.kakao;
+
+      kakao.maps.load(() => {
+        const pointDatas = Json.features;
+  
+        let container = document.getElementById("map");
+        let options = {
+          center: new kakao.maps.LatLng(36.38, 127.51),
+          level: 13,
+        };
+  
+        let map = new kakao.maps.Map(container, options);
+        setMap(map)
+      });
+    };
   }, []);
+
+  useEffect(() => {
+    if (map) {
+      const kakao = window.kakao;
+
+      // 마커 클러스터러를 생성합니다
+      const clusterer = new kakao.maps.MarkerClusterer({
+        map: map,
+        averageCenter: true,
+        minLevel: 10,
+      });
+
+      // 클러스터러에 마커를 추가합니다.
+      clusterer.addMarkers(markers);
+
+      jobs.forEach((job) => {
+        searchAddress(job);
+      });
+      
+      const pointDatas = Json.features;
+
+      pointDatas.forEach((pointData) => {
+        let coordinates = pointData.geometry.coordinates;
+        let areaName = pointData.properties.CTP_KOR_NM;
+        displayArea(coordinates, areaName);
+      });
+    }
+  }, [map, jobs]);
 
   return (
     <div

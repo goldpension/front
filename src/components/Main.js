@@ -9,13 +9,37 @@ export const Main = () => {
   }, [])
   
   const fetchData = async () => {
-    const request = await SenuriService.get()
-    let jobLists = request.data.response.body.items.item
-    //const request = await axios.get('/15050148/v1/uddi:abd1cfb1-5ba2-491f-9729-84bba214f87d')
-    setJobs(jobLists)
-    //console.log(request.data.data)
-
-    return request
+    try {
+      const response = await SenuriService.get('/getJobList');
+      const xmlText = response.data;
+      
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+      const items = xmlDoc.getElementsByTagName('item');  //job item 
+      const parsedJobs = [];
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          const jobId = items[i].getElementsByTagName("jobId")[0]?.textContent;
+          const deadline = items[i].getElementsByTagName("deadline")[0]?.textContent;
+          const jobcls = items[i].getElementsByTagName("jobcls")[0]?.textContent;
+          const oranNm = items[i].getElementsByTagName("oranNm")[0]?.textContent;
+          const workPlcNm = items[i].getElementsByTagName("workPlcNm")[0]?.textContent;
+    
+          parsedJobs.push({
+            jobId,
+            deadline,
+            jobcls,
+            oranNm,
+            workPlcNm,
+          });
+        }
+        setJobs(parsedJobs);
+      } else {
+        console.error("Data is missing or has incorrect structure");
+      }
+    } catch (error) {
+      console.error("Error while fetching data:", error);
+    }
   }
 
   return (
