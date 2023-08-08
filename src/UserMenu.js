@@ -29,7 +29,7 @@ function UserMenu() {
       </button>
       {isOpen && (
         <ul className={styles.popup}>
-          <Link to="/">
+          <Link to="/Login">
             <li>로그인</li>
           </Link>
           <Link to="/">
