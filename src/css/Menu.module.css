@@ -1,0 +1,59 @@
+.Menu {
+  position: relative;
+}
+
+.Button {
+  background-color: rgba(69, 7, 107, 1);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration-line: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+ul.popup {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: rgba(69, 7, 107, 1);
+  position: absolute;
+  top: calc(100% + 25px);
+  right: -25px;
+  border: 1px solid #ebebeb;
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  overflow: hidden;
+  text-decoration-line: none;
+  width: 150px;
+}
+ul.popup li {
+  padding: 15px 19px;
+  text-decoration-line: none;
+}
+
+ul.popup li:hover {
+  background-color: rgba(171, 171, 171, 1);
+  color: rgba(242, 0, 0, 1);
+  cursor: pointer;
+  text-decoration-line: none;
+}
+
+ul.popup li.disabled {
+  background-color: #fff;
+  color: #c4c4c4;
+  user-select: none;
+  cursor: default;
+  text-decoration-line: none;
+}
+
+.Menu ul.popup a:hover {
+  text-decoration-line: none;
+}
+
+.Menu a {
+  text-decoration: none;
+  color: white;
+  width: auto;
+}
