@@ -1,0 +1,56 @@
+.userMenu {
+  position: relative;
+}
+
+.iconButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.iconButton img {
+  width: 30px;
+  height: 30px;
+}
+
+ul.popup {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  top: calc(100% + 25px);
+  right: -5px;
+  border: 1px solid #ebebeb;
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+ul.popup li {
+  padding: 15px 19px;
+  font-family: var(--noto-sans);
+}
+
+ul.popup li:hover {
+  background-color: lightgray;
+  color: black;
+  cursor: pointer;
+}
+
+ul.popup li.disabled {
+  background-color: #fff;
+  color: #c4c4c4;
+  user-select: none;
+  cursor: default;
+}
+
+.userMenu ul.popup a:hover {
+  text-decoration: none;
+}
+.userMenu a {
+  text-decoration: none;
+  color: white;
+  width: auto;
+}

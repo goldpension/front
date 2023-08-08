@@ -1,13 +1,28 @@
-import { Main } from "./components/Main"
 import React from "react";
-import First from "./pages/FirstPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import { Main } from "./components/Main"
+import Manual from "./Manual";
+import CompanyPromotion from "./CompanyPromotion";
+import NotFound from "./NotFound";
 
-function App() {
+const App = () => {
   return (
     <div>
-      <Main />
+
+      <div className="App">
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            {/*<Route path="/" element={<Main />} />*/}
+            <Route path="/manual/*" element={<Manual />} />
+            <Route path="/CompanyPromotion/*" element={<CompanyPromotion />} />
+            <Route path="/*" element={<NotFound />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

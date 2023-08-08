@@ -1,0 +1,96 @@
+body {
+  background-color: rgba(238, 238, 238, 0.9333);
+}
+.cp_container {
+  width: 100%;
+  height: 100%;
+  padding: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cp_title {
+  padding-top: 1px;
+  margin-top: 200px;
+  margin-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.cp_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cp_contentText {
+  align-items: stretch;
+  justify-content: center;
+  margin: 50px;
+  font-weight: bold;
+}
+.cp_card {
+  margin: 10px;
+  width: 300px;
+  border-radius: 10px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 5px 5px 10px gray;
+}
+.cp_card div {
+  margin: 10px 20px 10px 20px;
+}
+.cp_cardJstatus {
+  top: 5px;
+  right: 5px;
+  text-align: right;
+  float: right;
+  background-color: rgba(36, 0, 255, 0.8);
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.cp_cardJstatus p {
+  margin: 5px;
+}
+.cp_cardJname {
+  font-size: 20px;
+  font-weight: 1000;
+}
+.cp_cardCname {
+  font-size: 18px;
+  font-weight: bolder;
+}
+.cp_cardJplace {
+  font-size: 14px;
+  font-weight: bold;
+}
+.cp_cardDay {
+  font-size: 14px;
+  font-weight: bold;
+}
+.cp_cardTime {
+  font-size: 14px;
+  font-weight: bold;
+}
+.cp_btn {
+  margin-top: 30px;
+  text-align: right;
+  float: right;
+  background-color: rgba(7, 35, 107, 1);
+  color: white;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bolder;
+  text-decoration: none;
+  text-decoration-line: none;
+}
+.cp_btn p {
+  margin: 10px 20px 10px 20px;
+  color: white;
+  text-decoration: none;
+}
+.cp_btn:hover {
+  background-color: black;
+  text-decoration-line: none;
+}
