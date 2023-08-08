@@ -12,6 +12,9 @@ const Main = (props) => {
         <Link to="/manual/2">
           <li>2 페이지</li>
         </Link>
+        <Link to="/companyPromotion">
+          <li>3 페이지</li>
+        </Link>
       </ul>
     </>
   );

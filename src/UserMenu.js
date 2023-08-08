@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import personIcon from "./img/person.svg";
 import styles from "./css/UserMenu.module.css";
 

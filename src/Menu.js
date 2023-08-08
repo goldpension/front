@@ -31,12 +31,9 @@ function Menu() {
           <Link to="/">
             <li>일자리 찾기</li>
           </Link>
-          <Link to="/">
+          <Link to="/companyPromotion">
             <li>회사홍보</li>
           </Link>
-          <button className={styles.Button} onClick={handleButtonClick}>
-            <Link to="/">메뉴</Link>
-          </button>
           <Link to="/manual/useMethod">
             <li>
               사용방법 <br /> & <br /> 공지사항
