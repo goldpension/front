@@ -50,7 +50,6 @@ function Map({ jobs }) {
   const displayArea = (coordinates, areaName) => {
     const kakao = window.kakao;
     if (!map) return;
-    let customOverlay = new kakao.maps.CustomOverlay({});
     let newPolygons = [...polygons];
 
     coordinates.forEach((coordinate) => {
@@ -65,25 +64,20 @@ function Map({ jobs }) {
         strokeColor: '#39DE2A', // 선의 색깔입니다
         strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
         fillColor: '#A2FF99', // 채우기 색깔입니다
-        fillOpacity: 0.7 // 채우기 불투명도 입니다
+        fillOpacity: 0.5 // 채우기 불투명도 입니다
       });
 
       const onPolygonMouseOver = (mouseEvent) => {
-        polygon.setOptions({ fillColor: "red" });
+        polygon.setOptions({ fillColor: "green" });
 
-        customOverlay.setContent('<div class="area">' + areaName + "</div>");
-
-        customOverlay.setPosition(mouseEvent.latLng);
-        customOverlay.setMap(map);
       };
 
       const onPolygonMouseMove = (mouseEvent) => {
-        customOverlay.setPosition(mouseEvent.latLng);
       };
+      
 
       const onPolygonMouseOut = () => {
         polygon.setOptions({ fillColor: "#A2FF99" });
-        customOverlay.setMap(null);
       };
 
       kakao.maps.event.addListener(polygon, "mouseover", onPolygonMouseOver);
