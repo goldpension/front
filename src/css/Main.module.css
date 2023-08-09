@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+.main {
+  position: relative;
+  top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: calc((100vh - 550px)/2);
+  padding-bottom: calc((100vh - 550px)/2);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.areaCountsComponent {
+  margin-left: 20px;
+}
+.totalCounts {
+  color: red;
+}
+.areaCountsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1073px;
+}
+.bigFont {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.areaCount {
+  width: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.areaCount:hover {
+  color: red;
+}

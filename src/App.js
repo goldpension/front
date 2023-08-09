@@ -9,11 +9,11 @@ import Login from "./pages/Login";
 const App = () => {
   return (
     <div>
-      <div className="App">
+      <div className="App" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <BrowserRouter>
           <Navbar />
           <Routes>
-            {/*<Route path="/" element={<Main />} />*/}
+            <Route path="/" element={<Main />} />
             <Route path="/manual/*" element={<Manual />} />
             <Route path="/CompanyPromotion/*" element={<CompanyPromotion />} />
             <Route path="/login/*" element={<Login />} />

@@ -1,0 +1,39 @@
+.listContainer {
+  width: 600px;
+  margin-left: 20px;
+
+}
+.listTitle {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  padding-bottom: 5px;
+}
+.job {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding: 5px 0;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+.deadline {
+  display: inline-block;
+  padding: 10px;
+  background-color: #2400FF;
+  border-radius: 50px;
+  color:white;
+}
+.deadlineContainer {
+  flex: 1;
+}
+.oranNm {
+  flex: 1;
+}
+.workPlcNm {
+  flex: 1;
+}
