@@ -16,7 +16,10 @@ import Join_tel from "./pages/Join_p/Join_tel";
 const App = () => {
   return (
     <div>
-      <div className="App" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div
+        className="App"
+        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+      >
         <BrowserRouter>
           <Navbar />
           <Routes>
