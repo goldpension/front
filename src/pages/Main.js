@@ -12,43 +12,102 @@ export const Main = () => {
   const [screen, setScreen] = useState('loading');
   const [listArea, setListArea] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [modalSelectedJob, setModalSelectedJob] = useState()
+  const [modalSelectedJob, setModalSelectedJob] = useState({})
   useEffect(()=>{
-    fetchData()
-    setScreen('areaCounts')
+    fetchData('getJobList')
   }, [])
   
   useEffect(() => {
     getCounts(jobs);
   }, [jobs]);
 
-  const fetchData = async () => {
+  useEffect(() => {
+    if(Object.keys(counts).length > 0) {
+      setScreen('areaCounts');
+    }
+  }, [counts]);
+
+  const fetchData = async (type, jobId) => {
     try {
-      const response = await axios.get('/getJobList');
-      const xmlText = response.data;
-      
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
-      const items = xmlDoc.getElementsByTagName('item');  //job item 
-      const parsedJobs = [];
-      if (items) {
-        for (let i = 0; i < items.length; i++) {
-          const jobId = items[i].getElementsByTagName("jobId")[0]?.textContent;
-          const deadline = items[i].getElementsByTagName("deadline")[0]?.textContent;
-          const jobcls = items[i].getElementsByTagName("jobcls")[0]?.textContent;
-          const oranNm = items[i].getElementsByTagName("oranNm")[0]?.textContent;
-          const workPlcNm = items[i].getElementsByTagName("workPlcNm")[0]?.textContent;
-          parsedJobs.push({
-            jobId,
-            deadline,
-            jobcls,
-            oranNm,
-            workPlcNm,
-          });
+      if (type === 'getJobList') {
+        const response = await axios.get('/getJobList', {
+          params: {
+            numOfRows: 100,
+            pageNo: 1,
+          }
+        });
+        const xmlText = response.data;
+        
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+        const items = xmlDoc.getElementsByTagName('item');  //job item 
+        const parsedJobs = [];
+        if (items) {
+          for (let i = 0; i < items.length; i++) {
+            const jobId = items[i].getElementsByTagName("jobId")[0]?.textContent;
+            const deadline = items[i].getElementsByTagName("deadline")[0]?.textContent;
+            const jobcls = items[i].getElementsByTagName("jobcls")[0]?.textContent;
+            const oranNm = items[i].getElementsByTagName("oranNm")[0]?.textContent;
+            const workPlcNm = items[i].getElementsByTagName("workPlcNm")[0]?.textContent;
+            const recrtTitle = items[i].getElementsByTagName("recrtTitle")[0]?.textContent;
+            parsedJobs.push({
+              jobId,
+              deadline,
+              jobcls,
+              oranNm,
+              workPlcNm,
+              recrtTitle,
+            });
+          }
+          setJobs(parsedJobs);
+        } else {
+          console.error("Data is missing or has incorrect structure");
         }
-        setJobs(parsedJobs);
       } else {
-        console.error("Data is missing or has incorrect structure");
+        const response = await axios.get('/getJobInfo', {
+          params: {
+            id: jobId,
+          }
+        });
+        const xmlText = response.data;
+        console.log(xmlText)
+        
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+        const items = xmlDoc.getElementsByTagName('item');  //job item 
+        if (items) {
+          for (const item of items) {
+            const acptMthdCd = item.getElementsByTagName("acptMthdCd")[0]?.textContent;
+            const age = item.getElementsByTagName("age")[0]?.textContent;
+            const ageLim = item.getElementsByTagName("ageLim")[0]?.textContent;
+            const clerk = item.getElementsByTagName("clerk")[0]?.textContent;
+            const clerkContt = item.getElementsByTagName("clerkContt")[0]?.textContent;            
+            const clltPrnnum = item.getElementsByTagName("clltPrnnum")[0]?.textContent;            
+            const detCnts = item.getElementsByTagName("detCnts")[0]?.textContent;            
+            const plDetAddr = item.getElementsByTagName("plDetAddr")[0]?.textContent;            
+            const plbizNm = item.getElementsByTagName("plbizNm")[0]?.textContent;            
+            const ftAcptDd = item.getElementsByTagName("ftAcptDd")[0]?.textContent;            
+            const toAcptDd = item.getElementsByTagName("toAcptDd")[0]?.textContent;            
+            const wantedTitle = item.getElementsByTagName("wantedTitle")[0]?.textContent;            
+            setModalSelectedJob({
+              acptMthdCd, //접수방법
+              age,  //연령
+              ageLim, //연령제한
+              clerk,  //담당자
+              clerkContt, //담당자연락처
+              clltPrnnum, //모집인원
+              detCnts,  //상세내용
+              plDetAddr,  //주소
+              plbizNm,  //사업장명
+              ftAcptDd, //시작접수일
+              toAcptDd, //종료접수일
+              wantedTitle,  //채용제목
+            });
+          }
+
+        } else {
+          console.error("Data is missing or has incorrect structure");
+        }
       }
     } catch (error) {
       console.error("Error while fetching data:", error);
@@ -88,7 +147,7 @@ export const Main = () => {
     setScreen('areaCounts')
   }
   const openModal = (job) => {
-    setModalSelectedJob(job);
+    fetchData('modalData', job.jobId)
     setShowModal(true);
   };
 
@@ -113,11 +172,15 @@ export const Main = () => {
   
   return (
     <>
-      <Modal show={showModal} close={closeModal} job={modalSelectedJob}/>
+      <Modal show={showModal} close={closeModal} job={modalSelectedJob} fetchData={fetchData}/>
       <div className={styles.main}>
         {/* <Map jobs={jobs}/> */}
-        <div style={{width: '405px', height: '500px', border: '1px solid black'}}>지도</div>
+        <div className={styles.mapContainer}>
+          <div style={{width: '400px', height: '550px', border: '1px solid black'}}>지도</div>
+        </div>
+        <div className={styles.renderScreen}>
         {renderScreen(screen)}
+        </div>
       </div>
     </>
   )

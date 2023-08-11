@@ -1,8 +1,9 @@
-.listContainer {
-  width: 600px;
-  margin-left: 20px;
-
+.listComponent {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
 }
+
 .listTitle {
   display: flex;
   justify-content: space-between;
@@ -11,29 +12,81 @@
   border-bottom: 2px solid black;
   padding-bottom: 5px;
 }
+.listContainer {
+  height: 464px;
+}
 .job {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
-  padding: 5px 0;
+  padding: 2px 0;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
 }
+
+.job:hover {
+  color: gray;
+}
+
+.job:hover .deadline {
+  background-color: rgba(69, 7, 107, 1);
+  color: gray;
+}
+
 .deadline {
   display: inline-block;
   padding: 10px;
   background-color: #2400FF;
   border-radius: 50px;
-  color:white;
+  color: white;
 }
+
 .deadlineContainer {
   flex: 1;
+}
+
+.recrtTitle {
+  flex: 1;
+  font-size: 0.7rem;
 }
 .oranNm {
   flex: 1;
 }
+
 .workPlcNm {
   flex: 1;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.paginationButton {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.paginationButton:hover {
+  background-color: #ddd;
+}
+
+.paginationButton.active {
+  background-color: #0079d3;
+  border-color: #0079d3;
+  color: #fff;
 }

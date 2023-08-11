@@ -1,9 +1,14 @@
 import React from 'react'
 import styles from '../../css/Main.module.css';
 const AreaCounts = ({counts, onClickCount}) => {
-
+  if (Object.keys(counts).length === 0) {
+    return <div>Loading...</div>;
+}
   return (
-    <div className={styles.areaCountsComponent}>
+    Object.keys(counts).length === 0 ? (
+      <div>Loading...</div>
+    ) : (
+      <div className={styles.areaCountsComponent}>
         <p className={styles.bigFont}>지금 등록된 일자리수 <span className={styles.totalCounts}>{counts['전체']}</span>개</p>
         <div className={styles.areaCountsContainer}>
           <div className={styles.areaCount} onClick={()=>onClickCount('서울')}>서울시 {counts['서울']}</div>
@@ -24,7 +29,8 @@ const AreaCounts = ({counts, onClickCount}) => {
           <div className={styles.areaCount} onClick={()=>onClickCount('기타')}>기타 {counts['기타']}</div>
         </div>
       </div>
-  )
+    )
+  );
 }
 
 export default AreaCounts;
