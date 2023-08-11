@@ -1,0 +1,18 @@
+input {
+  background-color: #eeeeee;
+  font-weight: bold;
+}
+input::placeholder {
+  color: #9a9a9a;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.box {
+  border: none;
+  border-bottom: 2px solid #07236b;
+  width: 140px;
+  height: 30px;
+  text-align: center;
+  font-size: large;
+}

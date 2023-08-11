@@ -1,5 +1,6 @@
 // 로그인 버튼 컴포넌트
 import React from "react";
+import styles from "../../css/Login.module.css";
 
 const LKakao = () => {
   const REST_API_KEY = "백엔드한테 달라하자1";
@@ -11,20 +12,15 @@ const LKakao = () => {
   };
 
   return (
-    <button
-      type="button"
-      onClick={KakaoLoginHandler}
-      style={{
-        borderColor: "black 1px",
-        borderRadius: "10px",
-        backgroundColor: "#FFEB00",
-        width: "180px",
-        height: "40px",
-        fontWeight: "bold",
-      }}
-    >
-      카카오 로그인 하기
-    </button>
+    <div className={styles.ktop}>
+      <button
+        type="button"
+        onClick={KakaoLoginHandler}
+        className={styles.kakao}
+      >
+        카카오 로그인 하기
+      </button>
+    </div>
   );
 };
 

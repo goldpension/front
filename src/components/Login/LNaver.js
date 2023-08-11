@@ -1,5 +1,6 @@
 // 로그인 버튼 컴포넌트
 import React from "react";
+import styles from "../../css/Login.module.css";
 
 const LNaver = () => {
   const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID; // 발급받은 클라이언트 아이디
@@ -12,20 +13,15 @@ const LNaver = () => {
   };
 
   return (
-    <button
-      type="button"
-      onClick={NaverLoginHandler}
-      style={{
-        borderColor: "black 1px",
-        borderRadius: "10px",
-        backgroundColor: "#03C832",
-        width: "180px",
-        height: "40px",
-        fontWeight: "bold",
-      }}
-    >
-      네이버 로그인 하기
-    </button>
+    <div className={styles.ntop}>
+      <button
+        type="button"
+        onClick={NaverLoginHandler}
+        className={styles.naver}
+      >
+        네이버 로그인 하기
+      </button>
+    </div>
   );
 };
 

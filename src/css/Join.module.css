@@ -1,0 +1,77 @@
+.tbutton {
+  border-color: black;
+  border-width: 3px;
+  border-radius: 10px;
+  background-color: #f20000;
+  width: 220px;
+  height: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: medium;
+}
+
+.kbutton {
+  border-color: black;
+  border-width: 3px;
+  border-radius: 10px;
+  background-color: #ffeb00;
+  width: 220px;
+  height: 50px;
+  font-weight: bold;
+  font-size: medium;
+}
+.nbutton {
+  border-color: black;
+  border-width: 3px;
+  border-radius: 10px;
+  background-color: #03c832;
+  width: 220px;
+  height: 50px;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.v_line {
+  border-left: thick solid #07236b;
+  opacity: 0.5;
+  height: 120px;
+  margin-left: 13px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.text {
+  font-weight: bold;
+}
+
+.top {
+  text-align: center;
+  padding-top: 116px;
+}
+
+.ktop1 {
+  text-align: center;
+  padding-top: 70px;
+}
+
+.ntop {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.ktop2 {
+  text-align: center;
+  padding-top: 50px;
+}
+
+input {
+  background-color: #eeeeee;
+}
+input::placeholder {
+  color: #9a9a9a;
+  font-weight: bold;
+}

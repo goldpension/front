@@ -32,7 +32,7 @@ function UserMenu() {
           <Link to="/Login">
             <li>로그인</li>
           </Link>
-          <Link to="/">
+          <Link to="/Join">
             <li>회원가입</li>
           </Link>
         </ul>

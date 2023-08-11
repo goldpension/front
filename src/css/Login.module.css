@@ -1,0 +1,59 @@
+/* Login.js */
+.v_line {
+  border-left: thick solid #07236b;
+  opacity: 0.5;
+  height: 120px;
+  margin-left: 13px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+input {
+  background-color: #eeeeee;
+  font-weight: bold;
+}
+input::placeholder {
+  color: #9a9a9a;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.text {
+  font-weight: bold;
+}
+
+.kakao {
+  border-color: black;
+  border-width: 3px;
+  border-radius: 10px;
+  background-color: #ffeb00;
+  width: 220px;
+  height: 50px;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.ktop {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.naver {
+  border-color: black;
+  border-width: 3px;
+  border-radius: 10px;
+  background-color: #03c832;
+  width: 220px;
+  height: 50px;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.ntop {
+  text-align: center;
+  padding-top: 50px;
+}
