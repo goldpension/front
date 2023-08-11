@@ -15,8 +15,6 @@ const SenuriService = axios.create({
   },
   params: {
     serviceKey: "mRGjg3/2UUHbsxo6/0hRd0yGtU+pjfH9HP/nfwA8nUWyBwbRChPmV85e9wPdnhuChn3lUqWxgE4iYvrHxn4VsA==",
-    numOfRows: 100,
-    pageNo: 1,
   }
 })
 
