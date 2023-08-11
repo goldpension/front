@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../css/CompanyPromotion.module.css";
 import { Link } from "react-router-dom";
-import Card from "../components/card";
+import Card from "../components/Card";
 
 const CompanyPromotion = (props) => {
   const card = [
