@@ -7,11 +7,11 @@ const Manual = (props) => {
       <div className={styles.relati}>
         <div className={styles.image1}></div>
         <div className="text">
-          <h2></h2>
+          <h2>11</h2>
         </div>
         <div className={styles.image2}></div>
         <div className="text">
-          <h2></h2>
+          <h2>11</h2>
         </div>
         <div className={styles.image3}></div>
       </div>

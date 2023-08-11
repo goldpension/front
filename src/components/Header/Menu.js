@@ -39,6 +39,13 @@ function Menu() {
               사용방법 <br /> & <br /> 공지사항
             </li>
           </Link>
+          <Link to="/companyPartner">
+            <li>
+              (기업)
+              <br />
+              파트너 지원하기
+            </li>
+          </Link>
         </ul>
       )}
     </div>
