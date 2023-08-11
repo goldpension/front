@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../css/CompanyPromotion.module.css";
 import { Link } from "react-router-dom";
+import Card from "../components/card";
 
 const CompanyPromotion = (props) => {
   const card = [
@@ -13,14 +14,6 @@ const CompanyPromotion = (props) => {
       cardTime: "오전 9시~ 오후 6시",
     },
   ];
-  let [btnActive, setBtnActive] = useState("");
-
-  const toggleActive = (e) => {
-    setBtnActive((prev) => {
-      return e.target.value;
-    });
-  };
-
   return (
     <>
       <div className={styles.cp_container}>
@@ -39,29 +32,12 @@ const CompanyPromotion = (props) => {
             <br />
             (검증 마크 확인하라는 멘트)
           </div>
-          <div className={styles.cp_card}>
-            <div className={styles.cp_cardJstatus}>
-              <p>{card[0].cardJstatus}</p>
-            </div>
-            <div className={styles.cp_cardJname}>
-              <p>{card[0].cardJname}</p>
-            </div>
-            <div className={styles.cp_cardCname}>
-              <p>{card[0].cardCname}</p>
-            </div>
-            <div className={styles.cp_cardJplace}>
-              <p>{card[0].cardJplace}</p>
-            </div>
-            <div className={styles.cp_cardDay}>
-              <p>{card[0].cardDay}</p>
-            </div>
-            <div className={styles.cp_cardTime}>
-              <p>{card[0].cardTime}</p>
-            </div>
+          <div>
+            <Card />
           </div>
         </div>
         <div className={styles.cp_btn}>
-          <Link to="/">
+          <Link to="/companyPromotion/add">
             <p>더보러가기</p>
           </Link>
         </div>

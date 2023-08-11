@@ -1,0 +1,63 @@
+.cp_container {
+  width: 100%;
+  height: 100%;
+  padding: 1;
+  display: flex;
+  flex-direction: column;
+}
+.cp_general {
+  padding-top: 1px;
+  margin-top: 300px;
+  margin-bottom: 50px;
+  margin-right: 200px;
+  display: flex;
+  flex-direction: row;
+}
+.cp_power {
+  padding-top: 1px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-right: 200px;
+  display: flex;
+  flex-direction: row;
+}
+.cp_title {
+  flex: 1;
+  text-align: center;
+}
+.cp_content {
+  flex: 1;
+}
+.cp_Add {
+  flex: 1;
+  text-align: center;
+}
+.cp_btn {
+  margin: 30px;
+  text-align: right;
+  float: right;
+  background-color: transparent;
+  border-style: solid;
+  border-width: medium medium medium medium;
+  border-color: rgba(7, 35, 107, 1);
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bolder;
+  text-decoration: none;
+  text-decoration-line: none;
+}
+.cp_btn p {
+  margin: 10px 20px 10px 20px;
+
+  color: rgba(7, 35, 107, 1);
+  text-decoration: none;
+}
+.cp_btn:hover {
+  background-color: rgba(7, 35, 107, 1);
+  color: white;
+}
+.cp_btn p:hover {
+  color: white;
+
+  text-decoration: none;
+}

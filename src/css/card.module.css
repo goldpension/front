@@ -1,21 +1,3 @@
-body {
-  background-color: rgba(238, 238, 238, 0.9333);
-}
-.cp_container {
-  width: 100%;
-  height: 100%;
-  padding: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.cp_title {
-  padding-top: 1px;
-  margin-top: 150px;
-  margin-bottom: 50px;
-  justify-content: center;
-  align-items: center;
-}
 .cp_content {
   display: flex;
   align-items: center;
@@ -72,26 +54,4 @@ body {
 .cp_cardTime {
   font-size: 14px;
   font-weight: bold;
-}
-.cp_btn {
-  margin-top: 30px;
-  text-align: right;
-  float: right;
-  background-color: rgba(7, 35, 107, 1);
-  color: white;
-  border-radius: 15px;
-  font-size: 17px;
-  font-weight: bolder;
-  text-decoration: none;
-  text-decoration-line: none;
-}
-.cp_btn p {
-  margin: 10px 20px 10px 20px;
-
-  color: white;
-  text-decoration: none;
-}
-.cp_btn:hover {
-  background-color: rgba(36, 0, 255, 0.8);
-  text-decoration-line: none;
 }
