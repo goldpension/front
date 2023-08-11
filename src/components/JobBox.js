@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../css/card.module.css";
 
-const Card = (props) => {
+const JobBox = (props) => {
   const card = [
     {
       cardJstatus: "구인상태",
@@ -41,4 +41,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default JobBox;

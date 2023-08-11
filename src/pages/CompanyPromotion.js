@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../css/CompanyPromotion.module.css";
 import { Link } from "react-router-dom";
-import Card from "../components/Card";
+import JobBox from "../components/JobBox";
 
 const CompanyPromotion = (props) => {
   const card = [
@@ -33,7 +33,7 @@ const CompanyPromotion = (props) => {
             (검증 마크 확인하라는 멘트)
           </div>
           <div>
-            <Card />
+            <JobBox />
           </div>
         </div>
         <div className={styles.cp_btn}>

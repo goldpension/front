@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../css/CPAdd.module.css";
-import Card from "../components/Card";
+import JobBox from "../components/JobBox";
 
 const CompanyPromotion = (props) => {
   return (
@@ -12,7 +12,7 @@ const CompanyPromotion = (props) => {
           </h1>
         </div>
         <div>
-          <Card />
+          <JobBox />
         </div>
       </div>
     </>
