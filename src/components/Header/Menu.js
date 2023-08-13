@@ -28,7 +28,7 @@ function Menu() {
       </button>
       {isOpen && (
         <ul className={styles.popup}>
-          <Link to="/">
+          <Link to="/findJobs">
             <li>일자리 찾기</li>
           </Link>
           <Link to="/companyPromotion">

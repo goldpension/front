@@ -27,6 +27,7 @@ ul.popup {
   overflow: hidden;
   text-decoration-line: none;
   width: 150px;
+  z-index: 1000;
 }
 ul.popup li {
   padding: 15px 19px;

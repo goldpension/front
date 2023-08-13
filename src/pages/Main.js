@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import axios from '../api/axios'
+import {SenuriService} from '../api/axios'
 import Map from "../components/Map";
 import AreaCounts from '../components/Main/AreaCounts';
 import First from '../components/Main/First';
@@ -10,27 +10,35 @@ export const Main = () => {
   const [jobs, setJobs] = useState([])
   const [counts, setCounts] = useState({})
   const [screen, setScreen] = useState('loading');
-  const [listArea, setListArea] = useState();
+  const [listArea, setListArea] = useState('all');
   const [showModal, setShowModal] = useState(false);
   const [modalSelectedJob, setModalSelectedJob] = useState({})
+
+  const goToScreen = (screenName) => {
+    setScreen(screenName);
+  };
+  
   useEffect(()=>{
     fetchData('getJobList')
   }, [])
   
   useEffect(() => {
     getCounts(jobs);
+    goToScreen('areaCounts');
   }, [jobs]);
 
+  /*
   useEffect(() => {
     if(Object.keys(counts).length > 0) {
       setScreen('areaCounts');
     }
   }, [counts]);
+  */
 
   const fetchData = async (type, jobId) => {
     try {
       if (type === 'getJobList') {
-        const response = await axios.get('/getJobList', {
+        const response = await SenuriService.get('/getJobList', {
           params: {
             numOfRows: 100,
             pageNo: 1,
@@ -64,7 +72,7 @@ export const Main = () => {
           console.error("Data is missing or has incorrect structure");
         }
       } else {
-        const response = await axios.get('/getJobInfo', {
+        const response = await SenuriService.get('/getJobInfo', {
           params: {
             id: jobId,
           }
@@ -140,11 +148,11 @@ export const Main = () => {
 
   const onClickCount = (area) => {
     setListArea(area);
-    setScreen('list');
+    goToScreen('list');
   }
 
   const onClickGoCounts = () => {
-    setScreen('areaCounts')
+    goToScreen('areaCounts')
   }
   const openModal = (job) => {
     fetchData('modalData', job.jobId)
@@ -174,9 +182,20 @@ export const Main = () => {
     <>
       <Modal show={showModal} close={closeModal} job={modalSelectedJob} fetchData={fetchData}/>
       <div className={styles.main}>
-        {/* <Map jobs={jobs}/> */}
         <div className={styles.mapContainer}>
-          <div style={{width: '400px', height: '550px', border: '1px solid black'}}>지도</div>
+          {Object.keys(jobs).length > 0 ? <Map jobs={jobs} selectedArea={listArea}/> 
+          : 
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '550px', 
+            height: '550px', 
+            border: '1px solid black'
+            }}>
+              <div>지도가 생성되고 있습니다.</div>
+            </div>}
+          {/* <div style={{width: '400px', height: '550px', border: '1px solid black'}}>지도</div> */}
         </div>
         <div className={styles.renderScreen}>
         {renderScreen(screen)}
