@@ -3,8 +3,8 @@ import React from "react";
 import styles from "../../css/Login.module.css";
 
 const LKakao = () => {
-  const REST_API_KEY = "백엔드한테 달라하자1";
-  const REDIRECT_URI = "백엔드한테 달라하자2";
+  const REST_API_KEY = "edf8f58de6f9fb90e53e2dd72452c71f";
+  const REDIRECT_URI = "http://localhost:8080/login/oauth2/code/kakao";
   const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   const KakaoLoginHandler = () => {
