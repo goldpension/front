@@ -18,5 +18,12 @@ const SenuriService = axios.create({
   }
 })
 
+const applyForm = axios.create({
+  baseURL: '',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  //body: JSON.stringify(formData),
+});
 
-export default SenuriService
+export {SenuriService, applyForm}

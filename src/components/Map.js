@@ -3,67 +3,12 @@ import Json from "../json/TL_SCCO_CTPRVN.json";
 import axios from "axios"
 import SenuriService from "../api/axios";
 
-function Map({ jobs }) {
+function Map({ jobs, selectedArea }) {
   const [map, setMap] = useState()
   const [polygons, setPolygons] = useState([])
   const [markers, setMarkers] = useState([]);
-  const getCoordsByAddress = (address) => {
-    if (!address) { // 주소가 undefined, null, 빈 문자열 등일 경우 거부합니다.
-      const kakao = window.kakao;
-      const geocoder = new kakao.maps.services.Geocoder();
-      return new Promise((resolve, reject) => {
-        // 주소로 좌표를 검색합니다
-        geocoder.addressSearch(address, function (result, status) {
-          // 정상적으로 검색이 완료됐으면
-          if (status === kakao.maps.services.Status.OK) {
-            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-            resolve(coords);
-            return;
-          }
-        });
-      });
-    }
+  const [clusterer, setClusterer] = useState(null);
 
-  }
-
-  const makeMap = useCallback(async () => {
-    /*
-    const dataSet = jobs.filter(job => 
-      job.workPlcNm.slice(0,2) === areaName
-    )
-    */
-    const kakao = window.kakao;
-    for (let job of jobs) {
-      let coords = await getCoordsByAddress(job.workPlcNm);
-      const marker = new kakao.maps.Marker({
-        position: coords,
-      });
-
-      setMarkers((prevMarkers)=> [...prevMarkers, marker]);
-      // 인포윈도우로 장소에 대한 설명을 표시합니다
-      const infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:6px 0;">' + job.oranNm + "</div>",
-      });
-
-      kakao.maps.event.addListener(marker, 'mouseover', function() {
-        // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-          infowindow.open(map, marker);
-      });
-      
-      // 마커에 마우스아웃 이벤트를 등록합니다
-      kakao.maps.event.addListener(marker, 'mouseout', function() {
-          // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-          infowindow.close();
-      });
-      kakao.maps.event.addListener(marker, 'click', function() {
-        // 마커 위에 인포윈도우를 표시합니다
-        infowindow.open(map, marker);  
-        map.setCenter(coords);
-      });
-    };
-  },[jobs]);
-
-  
   const closeMarker = () => {
     let markerArray = [];
     for (let marker of markerArray) {
@@ -132,19 +77,25 @@ function Map({ jobs }) {
     });
     setPolygons(newPolygons);
   }, []);
- 
 
-  const getContent = (job) => {
-    return (
-      <div>
-        <span>{job.deadline}</span>
-        <span>{job.frDd}</span>
-        <span>{job.toDd}</span>
-        <span>{job.oranNm}</span>
-        <span>{job.recrtTitle}</span>
-        <span>{job.workPlcNm}</span>
-      </div>
-    )
+  const getCoordsByAddress = (address) => {
+    if (address) { // 주소가 undefined, null, 빈 문자열 등일 경우 거부합니다.
+      const kakao = window.kakao;
+      const geocoder = new kakao.maps.services.Geocoder();
+      return new Promise((resolve, reject) => {
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(address, function (result, status) {
+          // 정상적으로 검색이 완료됐으면
+          if (status === kakao.maps.services.Status.OK) {
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            resolve(coords);
+            return;
+          }
+          reject(new Error(`${address}getCoordsByAddress Error: not Vaild Address`));
+        });
+      });
+    }
+
   }
 
   useEffect(() => {
@@ -155,9 +106,7 @@ function Map({ jobs }) {
     script.onload = () => {
       const kakao = window.kakao;
 
-      kakao.maps.load(() => {
-        const pointDatas = Json.features;
-  
+      kakao.maps.load(() => { 
         let container = document.getElementById("map");
         let options = {
           center: new kakao.maps.LatLng(36.38, 127.51),
@@ -170,38 +119,115 @@ function Map({ jobs }) {
     };
   }, []);
 
+  useEffect(()=> {
+    if (!map) return;
+
+    const kakao = window.kakao;
+
+    // 마커 클러스터러 생성
+    const newClusterer = new kakao.maps.MarkerClusterer({
+      map: map,
+      averageCenter: true,
+      minLevel: 10,
+    });
+    setClusterer(newClusterer);
+  }, [map]);
+
   useEffect(() => {
-    if (map) {
+    if (!map || !clusterer) return;
+    const makeMap = async (selectedArea) => {
+      if (clusterer) {
+      clusterer.clear(); // 기존 마커들을 지웁니다.
+      }
       const kakao = window.kakao;
-
-      // 마커 클러스터러를 생성합니다
-      const clusterer = new kakao.maps.MarkerClusterer({
-        map: map,
-        averageCenter: true,
-        minLevel: 10,
-      });
-
-      // 클러스터러에 마커를 추가합니다.
-      clusterer.addMarkers(markers);
-
-      makeMap();      
-
-      const pointDatas = Json.features;
-
-      pointDatas.forEach((pointData) => {
-        let coordinates = pointData.geometry.coordinates;
-        let areaName = pointData.properties.CTP_KOR_NM;
-        displayArea(coordinates, areaName);
-      });
+      if (selectedArea === 'all') {
+        for (let job of jobs) {
+          if (job.workPlcNm) {
+            console.log(job.workPlcNm);
+            let coords = await getCoordsByAddress(job.workPlcNm);
+            const marker = new kakao.maps.Marker({
+              position: coords,
+            });
+      
+            setMarkers((prevMarkers)=> [...prevMarkers, marker]);
+            marker.setMap(map);
+            clusterer.addMarker(marker);
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            const infowindow = new kakao.maps.InfoWindow({
+              content: '<div style="width:150px;text-align:center;padding:6px 0;">' + job.oranNm + "</div>",
+            });
+      
+            kakao.maps.event.addListener(marker, 'mouseover', function() {
+              // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                infowindow.open(map, marker);
+            });
+            
+            // 마커에 마우스아웃 이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'mouseout', function() {
+                // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                infowindow.close();
+            });
+            kakao.maps.event.addListener(marker, 'click', function() {
+              // 마커 위에 인포윈도우를 표시합니다
+              infowindow.open(map, marker);  
+              map.setCenter(coords);
+            });
+          }
+        };
+      } else {
+        for (let job of jobs) {
+          if (job.workPlcNm && job.workPlcNm.slice(0,2) === selectedArea) {
+            console.log(job.workPlcNm);
+            let coords = await getCoordsByAddress(job.workPlcNm);
+            const marker = new kakao.maps.Marker({
+              position: coords,
+            });
+      
+            setMarkers((prevMarkers)=> [...prevMarkers, marker]);
+            marker.setMap(map);
+            clusterer.addMarker(marker);
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            const infowindow = new kakao.maps.InfoWindow({
+              content: '<div style="width:150px;text-align:center;padding:6px 0;">' + job.oranNm + "</div>",
+            });
+      
+            kakao.maps.event.addListener(marker, 'mouseover', function() {
+              // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                infowindow.open(map, marker);
+            });
+            
+            // 마커에 마우스아웃 이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'mouseout', function() {
+                // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                infowindow.close();
+            });
+            kakao.maps.event.addListener(marker, 'click', function() {
+              // 마커 위에 인포윈도우를 표시합니다
+              infowindow.open(map, marker);  
+              map.setCenter(coords);
+            });
+          }
+        };
+      }
+    };
+    if(map && clusterer) {
+      makeMap(selectedArea);
     }
-  }, [map, jobs, displayArea, makeMap, markers]);
+
+    const pointDatas = Json.features;
+    pointDatas.forEach((pointData) => {
+      let coordinates = pointData.geometry.coordinates;
+      let areaName = pointData.properties.CTP_KOR_NM;
+      displayArea(coordinates, areaName);
+    });
+  }, [map, jobs, selectedArea, clusterer]);
 
   return (
     <div
       id="map"
       style={{
-        width: "405px",
-        height: "500px",
+        width: "550px",
+        height: "550px",
       }}
     ></div>
   );

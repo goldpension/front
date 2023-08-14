@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
+import First from "./components/Main/First";
 import { Main } from "./pages/Main";
 import Manual from "./pages/Manual";
 import CompanyPromotion from "./pages/CompanyPromotion";
@@ -22,21 +23,24 @@ const App = () => {
       >
         <BrowserRouter>
           <Navbar />
-          <Routes>
-            {/* <Route path="/" element={<Main />} /> */}
-            <Route path="/manual/*" element={<Manual />} />
-            <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
-            <Route path="/CompanyPromotion/add" element={<CPAdd />} />
-            <Route path="/login/*" element={<Login />} />
-            <Route path="/companyPartner/*" element={<CompanyPartner />} />
-            <Route
-              path="/companyPartner/apply"
-              element={<CompanyPartnerApply />}
-            />
-            <Route path="/join/*" element={<Join />} />
-            <Route path="/join/join_tel" element={<Join_tel />} />
-            <Route path="/*" element={<NotFound />}></Route>
-          </Routes>
+          <div style={{ position: "relative", top: "50px" }}>
+            <Routes>
+              <Route path="/" element={<First />} />
+              <Route path="/findJobs/" element={<Main />} />
+              <Route path="/manual/*" element={<Manual />} />
+              <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
+              <Route path="/CompanyPromotion/add" element={<CPAdd />} />
+              <Route path="/login/*" element={<Login />} />
+              <Route path="/companyPartner/*" element={<CompanyPartner />} />
+              <Route
+                path="/companyPartner/apply"
+                element={<CompanyPartnerApply />}
+              />
+              <Route path="/join/*" element={<Join />} />
+              <Route path="/join/join_tel" element={<Join_tel />} />
+              <Route path="/*" element={<NotFound />}></Route>
+            </Routes>
+          </div>
         </BrowserRouter>
       </div>
     </div>

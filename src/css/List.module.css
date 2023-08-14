@@ -20,10 +20,10 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
-  padding: 2px 0;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
+  height: 46.4px;
 }
 
 .job:hover {
@@ -45,18 +45,25 @@
 
 .deadlineContainer {
   flex: 1;
+  padding: 0 1px;
 }
 
 .recrtTitle {
   flex: 1;
   font-size: 0.7rem;
+  padding: 0 1px;
+
 }
 .oranNm {
   flex: 1;
+  padding: 0 1px;
+
 }
 
 .workPlcNm {
   flex: 1;
+  padding: 0 1px;
+
 }
 
 .pagination {

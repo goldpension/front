@@ -33,7 +33,7 @@ const List = ({ area, jobs, openModal }) => {
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
         <button
-          className={styles.paginationButton}
+          className={`${styles.paginationButton} ${currentPage === i ? styles.active : ''}`}
           key={i}
           onClick={() => setCurrentPage(i)}
         >
@@ -59,8 +59,8 @@ const List = ({ area, jobs, openModal }) => {
           <div className={styles.deadlineContainer}>
             <div className={styles.deadline}>{job.deadline}</div>
           </div>
-          <div className={styles.recrtTitle}>{job.recrtTitle.length>10 ? `${job.recrtTitle.slice(0,9)}...` : job.recrtTitle}</div>
-          <div className={styles.oranNm}>{job.oranNm}</div>
+          <div className={styles.recrtTitle}>{job.recrtTitle.length>30 ? `${job.recrtTitle.slice(0,29)}...` : job.recrtTitle}</div>
+          <div className={styles.oranNm}>{job.oranNm.length>20 ? `${job.oranNm.slice(0,20)}...` : job.oranNm}</div>
           <div className={styles.workPlcNm}>{job.workPlcNm}</div>
         </div>
       ))}

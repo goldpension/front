@@ -2,8 +2,6 @@
   box-sizing: border-box;
 }
 .main {
-  position: relative;
-  top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,12 +10,19 @@
   padding-left: 100px;
   padding-right: 100px;
 }
+.renderScreen {
+  height: 550px;
+}
 .totalCounts {
   color: red;
+}
+.areaCountsComponent {
+  height: 100%;
 }
 .areaCountsContainer {
   display: flex;
   flex-wrap: wrap;
+  padding-top: 40px;
 }
 .bigFont {
   font-size: 2.5rem;
@@ -25,12 +30,22 @@
 }
 .areaCount {
   width: 50%;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 55px;
 }
 .areaCount:hover {
   color: red;
+  font-size: 1.5rem;
+}
+.areaName {
+  flex: 1;
+}
+.count {
+  flex: 2;
 }
 .mapContainer {
   display: flex;
