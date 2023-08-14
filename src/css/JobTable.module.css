@@ -1,10 +1,17 @@
-.listComponent {
+.center {
   display: flex;
-  flex-direction: column;
-  height: 550px;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */ /* 뷰포트 높이만큼 높이 설정 (전체 화면) */
 }
 
-.listTitle {
+.tableComponent {
+  display: flex;
+  flex-direction: column;
+  /* height: 550px; */
+  width: 1000px;
+}
+.tableTitle {
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
@@ -12,15 +19,18 @@
   border-bottom: 2px solid black;
   padding-bottom: 5px;
 }
-.listContainer {
-  height: 464px;
+.tableContainer {
+  /* height: 464px; */
+  width: 1000px;
+  align-items: center;
 }
+
 .job {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
-  padding: 2px 0;
+  padding: 10px 0;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -29,34 +39,31 @@
 .job:hover {
   color: gray;
 }
-
-.job:hover .deadline {
+.job:hover .status {
   background-color: rgba(69, 7, 107, 1);
   color: gray;
 }
 
-.deadline {
+.status {
   display: inline-block;
-  padding: 10px;
-  background-color: #2400ff;
-  border-radius: 50px;
-  color: white;
+}
+.statusContainer {
+  flex-grow: 1;
+  width: 250px;
 }
 
-.deadlineContainer {
-  flex: 1;
+.jobType {
+  flex-grow: 1;
+  width: 250px;
+  /* font-size: 0.7rem; */
 }
-
-.recrtTitle {
-  flex: 1;
-  font-size: 0.7rem;
+.company {
+  flex-grow: 1;
+  width: 250px;
 }
-.oranNm {
-  flex: 1;
-}
-
-.workPlcNm {
-  flex: 1;
+.location {
+  flex-grow: 1;
+  width: 250px;
 }
 
 .pagination {

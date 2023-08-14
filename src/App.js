@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
 import { Main } from "./pages/Main";
+import ApplyCheckMem from "./pages/ApplyCheckMem";
 import Manual from "./pages/Manual";
 import CompanyPromotion from "./pages/CompanyPromotion";
 import CPAdd from "./pages/CPAdd";
@@ -24,6 +25,7 @@ const App = () => {
           <Navbar />
           <Routes>
             {/* <Route path="/" element={<Main />} /> */}
+            <Route path="/" element={<ApplyCheckMem />} />
             <Route path="/manual/*" element={<Manual />} />
             <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
             <Route path="/CompanyPromotion/add" element={<CPAdd />} />
