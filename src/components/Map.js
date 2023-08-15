@@ -139,12 +139,26 @@ function Map({ jobs, selectedArea }) {
     setClusterer(newClusterer);
   }, [map]);
 */
+  const InfoWindow = (job) => {
+    return (
+      <div style={{
+        width:'150px',
+        textAlign:'center',
+        padding: '6px 0'
+      }}>
+        {job.oranNm}
+        {job.workPlcNm}
+      </div>
+    )
+  }
   useEffect(() => {
     //클러스터러가 없으면 리턴 
     if (!map || !clusterer) return;
     clusterer.clear(); // 기존 마커들을 지웁니다.
+    
     const makeMap = async (selectedArea) => {
       const kakao = window.kakao;
+      let newMarkers = [];
       if (selectedArea === 'all') { //처음에 모든 지역의 마커를 보여줌 
         map.setLevel(13);
         map.setCenter(new kakao.maps.LatLng(36.38, 127.51));
@@ -154,10 +168,9 @@ function Map({ jobs, selectedArea }) {
             const marker = new kakao.maps.Marker({
               position: coords,
             });
-      
-            setMarkers((prevMarkers)=> [...prevMarkers, marker]);
-            marker.setMap(map);
-            clusterer.addMarker(marker);
+            
+            newMarkers.push(marker);
+            // clusterer.addMarker(marker);
             // 인포윈도우로 장소에 대한 설명을 표시합니다
             const infowindow = new kakao.maps.InfoWindow({
               content: '<div style="width:150px;text-align:center;padding:6px 0;">' + job.oranNm + "</div>",
@@ -191,13 +204,11 @@ function Map({ jobs, selectedArea }) {
             const marker = new kakao.maps.Marker({
               position: coords,
             });
-      
-            setMarkers((prevMarkers)=> [...prevMarkers, marker]);
-            marker.setMap(map);
-            clusterer.addMarker(marker);
+            newMarkers.push(marker);
+            // clusterer.addMarker(marker);
             // 인포윈도우로 장소에 대한 설명을 표시합니다
             const infowindow = new kakao.maps.InfoWindow({
-              content: '<div style="width:150px;text-align:center;padding:6px 0;">' + job.oranNm + "</div>",
+              content: `${<InfoWindow job={job}/>}`,
             });
       
             kakao.maps.event.addListener(marker, 'mouseover', function() {
@@ -219,6 +230,7 @@ function Map({ jobs, selectedArea }) {
         };
         
       }
+      clusterer.addMarkers(newMarkers);
     };
     if(map && clusterer) {
       makeMap(selectedArea);

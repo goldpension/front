@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/CompanyPromotion.module.css";
 import { Link } from "react-router-dom";
 import JobBox from "../components/JobBox";
+import Modal from "../components/modal/Modal";
+import { Axios } from "../api/axios";
 
 const CompanyPromotion = (props) => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalSelectedJob, setModalSelectedJob] = useState({})
+
+  useEffect(()=> {
+    fetchData();
+  }, [])
+
+  const fetchData = async () => {
+    const response = await Axios.get('/company/read');
+  }
+
+  const openModal = (job) => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
   const card = [
     {
       cardJstatus: "구인상태",
@@ -16,6 +36,7 @@ const CompanyPromotion = (props) => {
   ];
   return (
     <>
+      <Modal show={showModal} close={closeModal} job={modalSelectedJob}/>
       <div className={styles.cp_container}>
         <div className={styles.cp_title}>
           <h1>
@@ -24,13 +45,13 @@ const CompanyPromotion = (props) => {
         </div>
         <div className={styles.cp_content}>
           <div className={styles.cp_contentText}>
-            ~~하셔서 걱정되시나요?
+            나를 써주는 곳이 있을지 걱정이세요?
             <br />
-            (검증된 기업이라는 멘트)
+            새로운 일자리에 대해서 두려움을 느끼신다고요?
             <br />
-            (검증된 기업이라는 멘트)
+            내가 잘할 수 있을지 걱정이세요?
             <br />
-            (검증 마크 확인하라는 멘트)
+            걱정마세요. 이 기업들은 어르신을 꼭 필요로 하고 있습니다.
           </div>
           <div>
             <JobBox />

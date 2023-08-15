@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../css/Account.module.css";
 import { Link } from "react-router-dom";
+import { Axios } from "../../api/axios";
 
 const Account = ({ userEmail }) => {
   const [editing, setEditing] = useState(false); // 글 작성 모드 여부
   const [introText, setIntroText] = useState(""); // 소개글을 저장할 상태
+  const [posts, setPosts] = useState([]);
+  useEffect(()=> {
+    fetchData();
+  }, [])
 
+  const fetchData = async () => {
+    const response = await Axios.get('/company/read');
+  }
   const handleEdit = () => {
     setEditing(true);
   };

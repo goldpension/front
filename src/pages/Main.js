@@ -6,6 +6,8 @@ import First from './First';
 import List from '../components/Main/List';
 import Modal from '../components/modal/Modal';
 import styles from "../css/Main.module.css";
+import Image from "../img/어르신.png";
+import Loading from "../img/loading.gif"
 export const Main = () => {
   const [jobs, setJobs] = useState([])
   const [counts, setCounts] = useState({})
@@ -40,7 +42,7 @@ export const Main = () => {
       if (type === 'getJobList') {
         const response = await SenuriService.get('/getJobList', {
           params: {
-            numOfRows: 100,
+            numOfRows: 10000,
             pageNo: 1,
           },
         });
@@ -212,7 +214,26 @@ export const Main = () => {
         </div>
       ) : (
         <div className={styles.main}>
-          데이터를 불러오고 있습니다.
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%', 
+            height: '100%',
+            fontSize: '2.5rem',
+            fontWeight: 'bold'}}>
+            <img src={Image} style={{width: '500px'}}/>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-around',
+              height: '200px',
+            }}>
+              <div>데이터를 불러오고 있습니다.</div>
+              <img src={Loading} width={'100px'}/>
+            </div>
+          </div>
         </div>
       )
     }

@@ -18,6 +18,7 @@ import MyInfo1 from "./pages/MyInfo1";
 import MyInfo2 from "./pages/MyInfo2";
 import ApplyCheckMem from "./pages/ApplyCheck/ApplyCheckMem";
 import ApplyCheckNon from "./pages/ApplyCheck/ApplyCheckNon";
+import Account from "./components/Info/Account";
 
 const App = () => {
   return (
