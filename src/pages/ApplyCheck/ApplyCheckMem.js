@@ -1,6 +1,7 @@
 import React from "react";
-import ApplyCheckMent from "../components/ApplyCheck/ACheckMent";
-import JobTable from "../components/ApplyCheck/JobTable";
+import ApplyCheckMent from "../../components/ApplyCheck/ACheckMent";
+import JobTable from "../../components/ApplyCheck/JobTable";
+
 // import JobTable2 from "../components/ApplyCheck/JobTable2";
 
 const ApplyCheckMem = () => {

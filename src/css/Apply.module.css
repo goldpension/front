@@ -16,3 +16,22 @@ input::placeholder {
   text-align: center;
   font-size: large;
 }
+
+.hoverButton {
+  text-align: center;
+  background-color: #07236b;
+  color: #ffffff;
+  width: 125px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hoverButton:hover {
+  background-color: #ffffff;
+  color: #07236b;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../css/Apply.module.css";
+import { Link } from "react-router-dom";
 
 const AInput = () => {
   return (
@@ -45,21 +46,16 @@ const AInput = () => {
           paddingTop: "70px",
         }}
       >
-        <input
-          type="submit"
-          value="확인하기"
-          style={{
-            textAlign: "center",
-            backgroundColor: "#07236B",
-            color: "#ffffff",
-            width: "125px",
-            height: "40px",
-            border: "none",
-            borderRadius: "10px",
-            fontWeight: "bold",
-            fontSize: "medium",
-          }}
-        ></input>
+        {/* Link 컴포넌트를 사용하여 ApplyCheckMem 페이지로 이동 */}
+        {/* 보여질 곳에 추가하기
+        <Route path="/ApplyCheckMem" element={<ApplyCheckMem />} /> */}
+        <Link to="/ApplyCheckMem">
+          <input
+            type="submit"
+            value="확인하기"
+            className={styles.hoverButton}
+          />
+        </Link>
       </div>
     </div>
   );
