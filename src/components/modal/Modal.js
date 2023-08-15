@@ -1,15 +1,29 @@
 import React, {useState} from 'react'
 import styles from '../../css/Modal.module.css';
+import { ApplyVisit } from './ApplyVisit';
 
 const Modal = ({show, close, job}) => {
-  const [applyCompleted, SetApplyCompleted] = useState(true);
+  const [applyCompleted, SetApplyCompleted] = useState(false);
   if (!show) {
     return null;
   }
   const handleClickContent = (e) => {
     e.stopPropagation();
   };
-  console.log(job)
+  const renderApplyMethod = (method) => {
+    switch (method) {
+      case 'CM0801':
+        return <ApplyVisit method={'온라인'}/>;
+      case 'CM0802':
+        return <ApplyVisit method={'이메일'}/>;
+      case 'CM0803':
+        return <ApplyVisit method={'팩스'}/>;
+      case 'CM0804':
+        return <ApplyVisit method={'방문'} address={job.plDetAddr}/>;
+      default:
+        return null;
+    }
+  };
   return (
     <div className={styles.modalOverlay} onClick={close}>
       <div className={styles.modalContainer} onClick={handleClickContent}>
@@ -44,38 +58,7 @@ const Modal = ({show, close, job}) => {
             <div className={styles.jobDetail}><span style={{flex: '1'}}>등록일</span><span style={{flex: '4'}}>{job.ftAcptDd ? job.ftAcptDd : '없음'}</span></div>
             <div className={styles.jobDetail}><span style={{flex: '1'}}>마감일</span><span style={{flex: '4'}}>{job.toAcptDd ? job.toAcptDd : '없음'}</span></div>
           </div>
-          <form className={styles.applyForm}>
-            <div className={styles.formItem}>
-              <label>이름</label>
-              <input type="text" placeholder='이름을 써주세요'/>
-            </div>
-            <div className={styles.formItem}>
-              <label>나이</label>
-              <input type="number" placeholder='나이를 써주세요'/>
-            </div>
-            <div className={styles.formItem}>
-              <label>연락처</label>
-              <input
-                type="text" placeholder='전화번호를 써주세요'
-              />
-            </div>
-            <div className={styles.formItem}>
-              <label>성별</label>
-              <div>
-                <label>
-                  <input type="radio" name="gender" value="female" />
-                  여성
-                </label>
-                <label>
-                  <input type="radio" name="gender" value="male" />
-                  남성
-                </label>
-              </div>
-            </div>
-            <div className={styles.submitButtonContainer}>
-              <button className={styles.submitButton} type="submit">지원하기</button>
-            </div>
-          </form>
+          {renderApplyMethod(job.acptMthdCd)}
         </div>
         )}
       </div>

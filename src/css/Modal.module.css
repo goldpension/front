@@ -16,7 +16,7 @@
 .modalContainer {
   background-color: white;
   border-radius: 4px;
-  padding: 20px 40px;
+  padding: 20px;
   width: 1200px;
   height: 600px;
   cursor:default;
@@ -40,7 +40,7 @@
   font-weight: bold;
   display: flex;
   height: 100%;
-  padding: 0 20px;
+  padding: 30px 20px;
 }
 .applyCompletedContent {
   width: 100%;
@@ -107,7 +107,35 @@
   font-weight: bold;
   border-radius: 20px;
   border: none;
+  background-color: white;
+  color: red;
+  cursor: pointer;
+  border: 3px solid red;
+}
+.submitButton:hover {
   background-color: red;
   color: white;
-  cursor: pointer;
+}
+
+/* ApplyVisit.js */
+.applyPublicData {
+  flex: 2;
+  background-color: #EDEDED;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.applyMethod {
+  color: red;
+  font-size: 1.5rem;
+}
+.addressContainer {
+  border: 5px solid red;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
 }

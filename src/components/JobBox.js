@@ -14,7 +14,7 @@ const JobBox = (props) => {
   ];
 
   return (
-    <>
+    <div className={styles.JobBoxComponent}>
       <div className={styles.cp_content}>
         <div className={styles.cp_card}>
           <div className={styles.cp_cardJstatus}>
@@ -36,8 +36,228 @@ const JobBox = (props) => {
             <p>{card[0].cardTime}</p>
           </div>
         </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
+        <div className={styles.cp_card}>
+          <div className={styles.cp_cardJstatus}>
+            <p>{card[0].cardJstatus}</p>
+          </div>
+          <div className={styles.cp_cardJname}>
+            <p>{card[0].cardJname}</p>
+          </div>
+          <div className={styles.cp_cardCname}>
+            <p>{card[0].cardCname}</p>
+          </div>
+          <div className={styles.cp_cardJplace}>
+            <p>{card[0].cardJplace}</p>
+          </div>
+          <div className={styles.cp_cardDay}>
+            <p>{card[0].cardDay}</p>
+          </div>
+          <div className={styles.cp_cardTime}>
+            <p>{card[0].cardTime}</p>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -40,4 +40,5 @@ a:visited {
 .body {
   position: relative;
   flex-grow: 1;
+  background-color: #eeeeee;
 }

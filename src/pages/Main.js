@@ -2,14 +2,14 @@ import React, {useEffect, useState} from 'react'
 import {SenuriService} from '../api/axios'
 import Map from "../components/Map";
 import AreaCounts from '../components/Main/AreaCounts';
-import First from '../components/Main/First';
+import First from './First';
 import List from '../components/Main/List';
-import Modal from '../components/Main/Modal';
+import Modal from '../components/modal/Modal';
 import styles from "../css/Main.module.css";
 export const Main = () => {
   const [jobs, setJobs] = useState([])
   const [counts, setCounts] = useState({})
-  const [screen, setScreen] = useState('loading');
+  const [screen, setScreen] = useState('areaCounts');
   const [listArea, setListArea] = useState('all');
   const [showModal, setShowModal] = useState(false);
   const [modalSelectedJob, setModalSelectedJob] = useState({})
@@ -165,8 +165,6 @@ export const Main = () => {
 
   const renderScreen = (screen) => {
     switch (screen) {
-      case 'loading':
-        return <div>일자리를 불러오고 있습니다. 어르신들 조금만 기다리셔요~~~</div>;
       case 'areaCounts':
         return <AreaCounts counts={counts} onClickCount={onClickCount}/>;
       case 'first':
@@ -178,29 +176,31 @@ export const Main = () => {
     }
   };
   
+  const goBackHandler = () => {
+    setListArea('all')
+    goToScreen('areaCounts');
+  }
   return (
     <>
-      <Modal show={showModal} close={closeModal} job={modalSelectedJob} fetchData={fetchData}/>
-      <div className={styles.main}>
-        <div className={styles.mapContainer}>
-          {Object.keys(jobs).length > 0 ? <Map jobs={jobs} selectedArea={listArea}/> 
-          : 
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '550px', 
-            height: '550px', 
-            border: '1px solid black'
-            }}>
-              <div>지도가 생성되고 있습니다.</div>
-            </div>}
-          {/* <div style={{width: '400px', height: '550px', border: '1px solid black'}}>지도</div> */}
+      <Modal show={showModal} close={closeModal} job={modalSelectedJob}/>
+      {screen === 'list' ? <div className={styles.goBack} onClick={goBackHandler}>전체지역</div> : null}
+      {Object.keys(jobs).length > 0 ?
+      (
+        <div className={styles.main}>
+          <div className={styles.mapContainer}>
+            <Map jobs={jobs} selectedArea={listArea}/>
+          </div>
+          <div className={styles.renderScreen}>
+          {renderScreen(screen)}
+          </div>
         </div>
-        <div className={styles.renderScreen}>
-        {renderScreen(screen)}
+      ) : (
+        <div className={styles.main}>
+          데이터를 불러오고 있습니다.
         </div>
-      </div>
+      )
+    }
+
     </>
   )
 }

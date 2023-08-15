@@ -8,7 +8,25 @@ function Map({ jobs, selectedArea }) {
   const [polygons, setPolygons] = useState([])
   const [markers, setMarkers] = useState([]);
   const [clusterer, setClusterer] = useState(null);
-
+  const centerPoint = {
+    '서울': [37.5665, 126.9780],
+    '부산': [35.1796, 129.0756],
+    '대구': [35.8714, 128.6014],
+    '인천': [37.4563, 126.7052],
+    '광주': [35.1601, 126.8517],
+    '대전': [36.3504, 127.3845],
+    '울산': [35.5384, 129.3114],
+    '세종': [36.5047, 127.2448],
+    '경기': [37.4138, 127.5183],
+    '강원': [37.8228, 128.1555],
+    '충북': [36.6356, 127.4913],
+    '충남': [36.6588, 126.6730],
+    '전북': [35.7175, 127.1530],
+    '전남': [34.8679, 126.9910],
+    '경북': [36.4919, 128.8889],
+    '경남': [35.4606, 128.2132],
+    '제주': [33.4996, 126.5312],
+  }
   const closeMarker = () => {
     let markerArray = [];
     for (let marker of markerArray) {
@@ -44,25 +62,6 @@ function Map({ jobs, selectedArea }) {
       };
 
       const onPolygonClick = (mouseEvent) => {
-        const centerPoint = {
-          '서울특별시': [37.5665, 126.9780],
-          '부산광역시': [35.1796, 129.0756],
-          '대구광역시': [35.8714, 128.6014],
-          '인천광역시': [37.4563, 126.7052],
-          '광주광역시': [35.1601, 126.8517],
-          '대전광역시': [36.3504, 127.3845],
-          '울산광역시': [35.5384, 129.3114],
-          '세종특별자치시': [36.5047, 127.2448],
-          '경기도': [37.4138, 127.5183],
-          '강원도': [37.8228, 128.1555],
-          '충청북도': [36.6356, 127.4913],
-          '충청남도': [36.6588, 126.6730],
-          '전라북도': [35.7175, 127.1530],
-          '전라남도': [34.8679, 126.9910],
-          '경상북도': [36.4919, 128.8889],
-          '경상남도': [35.4606, 128.2132],
-          '제주특별자치도': [33.4996, 126.5312],
-        }
         var moveLatLon = new kakao.maps.LatLng(centerPoint[areaName][0], centerPoint[areaName][1]);
         map.setCenter(moveLatLon);
         map.setLevel(10);
@@ -115,10 +114,17 @@ function Map({ jobs, selectedArea }) {
   
         let map = new kakao.maps.Map(container, options);
         setMap(map)
+
+        const newClusterer = new kakao.maps.MarkerClusterer({
+          map: map,
+          averageCenter: true,
+          minLevel: 10,
+        });
+        setClusterer(newClusterer);
       });
     };
   }, []);
-
+/*
   useEffect(()=> {
     if (!map) return;
 
@@ -132,18 +138,18 @@ function Map({ jobs, selectedArea }) {
     });
     setClusterer(newClusterer);
   }, [map]);
-
+*/
   useEffect(() => {
+    //클러스터러가 없으면 리턴 
     if (!map || !clusterer) return;
     const makeMap = async (selectedArea) => {
-      if (clusterer) {
       clusterer.clear(); // 기존 마커들을 지웁니다.
-      }
       const kakao = window.kakao;
-      if (selectedArea === 'all') {
+      if (selectedArea === 'all') { //처음에 모든 지역의 마커를 보여줌 
+        map.setLevel(13);
+        map.setCenter(new kakao.maps.LatLng(36.38, 127.51));
         for (let job of jobs) {
           if (job.workPlcNm) {
-            console.log(job.workPlcNm);
             let coords = await getCoordsByAddress(job.workPlcNm);
             const marker = new kakao.maps.Marker({
               position: coords,
@@ -174,10 +180,12 @@ function Map({ jobs, selectedArea }) {
             });
           }
         };
-      } else {
+      } else {  //선택된 지역의 마커만 보여줌 
+        var moveLatLon = new kakao.maps.LatLng(centerPoint[selectedArea][0], centerPoint[selectedArea][1]);
+        map.setCenter(moveLatLon);
+        map.setLevel(12);
         for (let job of jobs) {
           if (job.workPlcNm && job.workPlcNm.slice(0,2) === selectedArea) {
-            console.log(job.workPlcNm);
             let coords = await getCoordsByAddress(job.workPlcNm);
             const marker = new kakao.maps.Marker({
               position: coords,
@@ -208,6 +216,7 @@ function Map({ jobs, selectedArea }) {
             });
           }
         };
+        
       }
     };
     if(map && clusterer) {
@@ -220,7 +229,7 @@ function Map({ jobs, selectedArea }) {
       let areaName = pointData.properties.CTP_KOR_NM;
       displayArea(coordinates, areaName);
     });
-  }, [map, jobs, selectedArea, clusterer]);
+  }, [selectedArea, clusterer]);
 
   return (
     <div
@@ -228,6 +237,7 @@ function Map({ jobs, selectedArea }) {
       style={{
         width: "550px",
         height: "550px",
+        borderRadius: "20px",
       }}
     ></div>
   );

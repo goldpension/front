@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
-import First from "./components/Main/First";
+import First from "./pages/First";
 import { Main } from "./pages/Main";
 import Manual from "./pages/Manual";
 import CompanyPromotion from "./pages/CompanyPromotion";
@@ -23,7 +23,7 @@ const App = () => {
       >
         <BrowserRouter>
           <Navbar />
-          <div style={{position: 'relative', top: '50px'}}>
+          <div style={{position: 'relative', top: '50px', backgroundColor: '#eeeeee'}}>
             <Routes>
               <Route path="/" element={<First />} />
               <Route path="/findJobs/" element={<Main />} />
