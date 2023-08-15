@@ -223,7 +223,6 @@ export const Main = () => {
           {/* <div style={{width: '400px', height: '550px', border: '1px solid black'}}>지도</div> */}
         </div>
         <div className={styles.renderScreen}>{renderScreen(screen)}</div>
-        <div className={styles.renderScreen}>{renderScreen(screen)}</div>
       </div>
     </>
   );
