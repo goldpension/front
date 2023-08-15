@@ -1,13 +1,5 @@
 import axios from "axios"
 
-/*const instance = axios.create({
-  baseURL: "https://api.odcloud.kr/api",
-  params: {
-    serviceKey: "mRGjg3/2UUHbsxo6/0hRd0yGtU+pjfH9HP/nfwA8nUWyBwbRChPmV85e9wPdnhuChn3lUqWxgE4iYvrHxn4VsA==",
-    
-  }
-})
-*/
 const SenuriService = axios.create({
   baseURL: "http://apis.data.go.kr/B552474/SenuriService",
   headers: {
@@ -18,12 +10,11 @@ const SenuriService = axios.create({
   }
 })
 
-const applyForm = axios.create({
-  baseURL: '',
+const Axios = axios.create({
+  baseURL: 'http://localhost:8000',
   headers: {
     'Content-Type': 'application/json',
   },
-  //body: JSON.stringify(formData),
 });
 
-export {SenuriService, applyForm}
+export {SenuriService, Axios}

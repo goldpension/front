@@ -142,8 +142,8 @@ function Map({ jobs, selectedArea }) {
   useEffect(() => {
     //클러스터러가 없으면 리턴 
     if (!map || !clusterer) return;
+    clusterer.clear(); // 기존 마커들을 지웁니다.
     const makeMap = async (selectedArea) => {
-      clusterer.clear(); // 기존 마커들을 지웁니다.
       const kakao = window.kakao;
       if (selectedArea === 'all') { //처음에 모든 지역의 마커를 보여줌 
         map.setLevel(13);
@@ -186,6 +186,7 @@ function Map({ jobs, selectedArea }) {
         map.setLevel(12);
         for (let job of jobs) {
           if (job.workPlcNm && job.workPlcNm.slice(0,2) === selectedArea) {
+            console.log(job.workPlcNm.slice(0,2))
             let coords = await getCoordsByAddress(job.workPlcNm);
             const marker = new kakao.maps.Marker({
               position: coords,

@@ -7,7 +7,7 @@ export const ContentStep1 = () => {
     <div style={{
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
     }}>
       <p>은퇴 후의 첫 걸음을 응원합니다!</p>
       <p>'새로운 시작'이라는 보물을 찾아<br/>인생의 후반기를 즐겁게 보내세요!</p>
