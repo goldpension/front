@@ -1,0 +1,131 @@
+.nbutton {
+  border-color: black;
+  border-width: 2px;
+  border-radius: 10px;
+  background-color: #03c832;
+  width: 120px;
+  height: 40px;
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nButton:hover {
+  background-color: #03c832 0.7;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* 양옆(수평) 가운데 정렬 */
+  align-items: center; /* 위아래(수직) 가운데 정렬 */
+  padding-top: 10px;
+}
+
+.text1 {
+  color: #6d6d6d;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  flex-basis: 100px;
+  /* padding-left: 30px;
+  padding-right: 30px; */
+}
+
+.text2 {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  flex-basis: 300px;
+  width: 300px;
+  /* padding-left: 40px;
+  padding-right: 40px; */
+}
+
+.text3 {
+  text-align: center;
+  flex-basis: 200px;
+  margin-left: 30px;
+  /* padding-left: 50px;
+  padding-right: 30px; */
+}
+
+.h_line {
+  border-bottom: 1px solid black; /* 가로선의 두께와 색상을 설정 */
+  margin-left: 340px;
+  padding-top: 10px;
+  margin-bottom: 15px;
+  width: 600px;
+}
+
+.a {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.b {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  border-color: none;
+  border-width: 1px;
+  border-radius: 10px;
+  background-color: #07236b;
+  color: #ffffff;
+  width: 70px;
+  height: 40px;
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.text4 {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* 양옆(수평) 가운데 정렬 */
+  align-items: center; /* 위아래(수직) 가운데 정렬 */
+  padding-top: 10px;
+}
+
+.text5 {
+  color: #6d6d6d;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  flex-basis: 100px;
+}
+
+.text6 {
+  flex-basis: 300px;
+  width: 300px;
+}
+
+.wbutton {
+  border: none;
+  border-width: 1px;
+  border-radius: 10px;
+  background-color: #07236b;
+  color: #ffffff;
+  width: 120px;
+  height: 40px;
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex-basis: 200px;
+  margin-left: 30px;
+}

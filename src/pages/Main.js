@@ -29,8 +29,8 @@ export const Main = () => {
 
   /*
   useEffect(() => {
-    if(Object.keys(counts).length > 0) {
-      setScreen('areaCounts');
+    if (Object.keys(counts).length > 0) {
+      setScreen("areaCounts");
     }
   }, [counts]);
   */
@@ -42,22 +42,28 @@ export const Main = () => {
           params: {
             numOfRows: 100,
             pageNo: 1,
-          }
+          },
         });
         const xmlText = response.data;
-        
+
         const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
-        const items = xmlDoc.getElementsByTagName('item');  //job item 
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+        const items = xmlDoc.getElementsByTagName("item"); //job item
         const parsedJobs = [];
         if (items) {
           for (let i = 0; i < items.length; i++) {
-            const jobId = items[i].getElementsByTagName("jobId")[0]?.textContent;
-            const deadline = items[i].getElementsByTagName("deadline")[0]?.textContent;
-            const jobcls = items[i].getElementsByTagName("jobcls")[0]?.textContent;
-            const oranNm = items[i].getElementsByTagName("oranNm")[0]?.textContent;
-            const workPlcNm = items[i].getElementsByTagName("workPlcNm")[0]?.textContent;
-            const recrtTitle = items[i].getElementsByTagName("recrtTitle")[0]?.textContent;
+            const jobId =
+              items[i].getElementsByTagName("jobId")[0]?.textContent;
+            const deadline =
+              items[i].getElementsByTagName("deadline")[0]?.textContent;
+            const jobcls =
+              items[i].getElementsByTagName("jobcls")[0]?.textContent;
+            const oranNm =
+              items[i].getElementsByTagName("oranNm")[0]?.textContent;
+            const workPlcNm =
+              items[i].getElementsByTagName("workPlcNm")[0]?.textContent;
+            const recrtTitle =
+              items[i].getElementsByTagName("recrtTitle")[0]?.textContent;
             parsedJobs.push({
               jobId,
               deadline,
@@ -75,44 +81,52 @@ export const Main = () => {
         const response = await SenuriService.get('/getJobInfo', {
           params: {
             id: jobId,
-          }
+          },
         });
         const xmlText = response.data;
-        console.log(xmlText)
-        
+        console.log(xmlText);
+
         const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
-        const items = xmlDoc.getElementsByTagName('item');  //job item 
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+        const items = xmlDoc.getElementsByTagName("item"); //job item
         if (items) {
           for (const item of items) {
-            const acptMthdCd = item.getElementsByTagName("acptMthdCd")[0]?.textContent;
+            const acptMthdCd =
+              item.getElementsByTagName("acptMthdCd")[0]?.textContent;
             const age = item.getElementsByTagName("age")[0]?.textContent;
             const ageLim = item.getElementsByTagName("ageLim")[0]?.textContent;
             const clerk = item.getElementsByTagName("clerk")[0]?.textContent;
-            const clerkContt = item.getElementsByTagName("clerkContt")[0]?.textContent;            
-            const clltPrnnum = item.getElementsByTagName("clltPrnnum")[0]?.textContent;            
-            const detCnts = item.getElementsByTagName("detCnts")[0]?.textContent;            
-            const plDetAddr = item.getElementsByTagName("plDetAddr")[0]?.textContent;            
-            const plbizNm = item.getElementsByTagName("plbizNm")[0]?.textContent;            
-            const ftAcptDd = item.getElementsByTagName("ftAcptDd")[0]?.textContent;            
-            const toAcptDd = item.getElementsByTagName("toAcptDd")[0]?.textContent;            
-            const wantedTitle = item.getElementsByTagName("wantedTitle")[0]?.textContent;            
+            const clerkContt =
+              item.getElementsByTagName("clerkContt")[0]?.textContent;
+            const clltPrnnum =
+              item.getElementsByTagName("clltPrnnum")[0]?.textContent;
+            const detCnts =
+              item.getElementsByTagName("detCnts")[0]?.textContent;
+            const plDetAddr =
+              item.getElementsByTagName("plDetAddr")[0]?.textContent;
+            const plbizNm =
+              item.getElementsByTagName("plbizNm")[0]?.textContent;
+            const ftAcptDd =
+              item.getElementsByTagName("ftAcptDd")[0]?.textContent;
+            const toAcptDd =
+              item.getElementsByTagName("toAcptDd")[0]?.textContent;
+            const wantedTitle =
+              item.getElementsByTagName("wantedTitle")[0]?.textContent;
             setModalSelectedJob({
               acptMthdCd, //접수방법
-              age,  //연령
+              age, //연령
               ageLim, //연령제한
-              clerk,  //담당자
+              clerk, //담당자
               clerkContt, //담당자연락처
               clltPrnnum, //모집인원
-              detCnts,  //상세내용
-              plDetAddr,  //주소
-              plbizNm,  //사업장명
+              detCnts, //상세내용
+              plDetAddr, //주소
+              plbizNm, //사업장명
               ftAcptDd, //시작접수일
               toAcptDd, //종료접수일
-              wantedTitle,  //채용제목
+              wantedTitle, //채용제목
             });
           }
-
         } else {
           console.error("Data is missing or has incorrect structure");
         }
@@ -120,31 +134,31 @@ export const Main = () => {
     } catch (error) {
       console.error("Error while fetching data:", error);
     }
-  }
+  };
 
   const getCounts = (jobs) => {
-    let areaCounts = {'전체': 0};
+    let areaCounts = { 전체: 0 };
     jobs.forEach((job) => {
-      if (job.deadline === '접수중') {
-        areaCounts['전체'] += 1;
+      if (job.deadline === "접수중") {
+        areaCounts["전체"] += 1;
         if (job.workPlcNm) {
           const area = job.workPlcNm.slice(0, 2);
-          if (!(areaCounts[area])) {
-            areaCounts[area] = 1
+          if (!areaCounts[area]) {
+            areaCounts[area] = 1;
           } else {
-            areaCounts[area] += 1
+            areaCounts[area] += 1;
           }
         } else {
-          if (!(areaCounts['기타'])) {
-            areaCounts['기타'] = 1
+          if (!areaCounts["기타"]) {
+            areaCounts["기타"] = 1;
           } else {
-            areaCounts['기타'] += 1
+            areaCounts["기타"] += 1;
           }
         }
       }
-    })
+    });
     setCounts(areaCounts);
-  }
+  };
 
   const onClickCount = (area) => {
     setListArea(area);
@@ -155,7 +169,7 @@ export const Main = () => {
     goToScreen('areaCounts')
   }
   const openModal = (job) => {
-    fetchData('modalData', job.jobId)
+    fetchData("modalData", job.jobId);
     setShowModal(true);
   };
 
@@ -165,6 +179,8 @@ export const Main = () => {
 
   const renderScreen = (screen) => {
     switch (screen) {
+      case 'loading':
+        return <div>일자리를 불러오고 있습니다. 어르신들 조금만 기다리셔요~~~</div>;
       case 'areaCounts':
         return <AreaCounts counts={counts} onClickCount={onClickCount}/>;
       case 'first':
@@ -202,5 +218,5 @@ export const Main = () => {
     }
 
     </>
-  )
-}
+  );
+};

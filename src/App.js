@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
 import First from "./pages/First";
 import { Main } from "./pages/Main";
+
 import Manual from "./pages/Manual";
 import CompanyPromotion from "./pages/CompanyPromotion";
 import CPAdd from "./pages/CPAdd";
@@ -13,6 +14,10 @@ import Login from "./pages/Login";
 
 import Join from "./pages/Join_p/Join";
 import Join_tel from "./pages/Join_p/Join_tel";
+import MyInfo1 from "./pages/MyInfo1";
+import MyInfo2 from "./pages/MyInfo2";
+import ApplyCheckMem from "./pages/ApplyCheck/ApplyCheckMem";
+import ApplyCheckNon from "./pages/ApplyCheck/ApplyCheckNon";
 
 const App = () => {
   return (

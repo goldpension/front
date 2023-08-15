@@ -11,7 +11,8 @@
   width: 100px;
   height: 30px;
   border-radius: 5px;
-  color: white;
+  font-weight: bold;
+  font-size: medium;
 }
 
 ul.popup {
@@ -21,7 +22,9 @@ ul.popup {
   background-color: rgba(69, 7, 107, 1);
   position: absolute;
   top: calc(100% + 25px);
-  right: -25px;
+  right: -45px;
+  font-weight: bold;
+  font-size: medium;
   border: 1px solid #ebebeb;
   box-shadow: var(--box-shadow);
   border-radius: 5px;

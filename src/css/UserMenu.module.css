@@ -22,6 +22,9 @@ ul.popup {
   position: absolute;
   top: calc(100% + 25px);
   right: -5px;
+  width: 120px;
+  font-weight: bold;
+  font-size: medium;
   border: 1px solid #ebebeb;
   box-shadow: var(--box-shadow);
   border-radius: 5px;

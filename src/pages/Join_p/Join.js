@@ -17,7 +17,7 @@ const Join = () => {
           </Link>
         </div>
 
-        <div style={{ marginLeft: "100px", marginRight: "100px" }}>
+        <div style={{ marginLeft: "90px", marginRight: "100px" }}>
           <div className={styles.v_line}></div>
           <div
             className={styles.text}
