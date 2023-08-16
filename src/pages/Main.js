@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../api/axios";
+import { SenuriService } from "../api/axios";
 import Map from "../components/Map";
 import AreaCounts from "../components/Main/AreaCounts";
 import First from "../components/Main/First";
@@ -30,7 +30,7 @@ export const Main = () => {
   const fetchData = async (type, jobId) => {
     try {
       if (type === "getJobList") {
-        const response = await axios.get("/getJobList", {
+        const response = await SenuriService.get("/getJobList", {
           params: {
             numOfRows: 100,
             pageNo: 1,
@@ -70,7 +70,7 @@ export const Main = () => {
           console.error("Data is missing or has incorrect structure");
         }
       } else {
-        const response = await axios.get("/getJobInfo", {
+        const response = await SenuriService.get("/getJobInfo", {
           params: {
             id: jobId,
           },
