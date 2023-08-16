@@ -25,12 +25,12 @@ const App = () => {
           <Navbar />
           <div style={{ position: "relative", top: "50px" }}>
             <Routes>
-              <Route path="/" element={<First />} />
               <Route path="/findJobs/" element={<Main />} />
               <Route path="/manual/*" element={<Manual />} />
               <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
               <Route path="/CompanyPromotion/add" element={<CPAdd />} />
               <Route path="/login/*" element={<Login />} />
+              <Route path="/" element={<First />} />
               <Route path="/companyPartner/*" element={<CompanyPartner />} />
               <Route
                 path="/companyPartner/apply"

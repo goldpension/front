@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "../../css/Menu.module.css";
 
 function Menu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleButtonClick = useCallback((e) => {
     e.stopPropagation();
@@ -13,7 +13,7 @@ function Menu() {
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleClickOutside = () => setIsOpen(false);
+    const handleClickOutside = () => setIsOpen(true);
     window.addEventListener("click", handleClickOutside);
 
     return () => {

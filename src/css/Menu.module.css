@@ -4,6 +4,7 @@
 
 .Button {
   background-color: rgba(69, 7, 107, 1);
+  color: white;
   border: none;
   cursor: pointer;
   padding: 0;
