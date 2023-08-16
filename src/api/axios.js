@@ -3,7 +3,8 @@ import axios from "axios";
 const SenuriService = axios.create({
   baseURL: "http://apis.data.go.kr/B552474/SenuriService",
   headers: {
-    accept: "application/xml", // XML 데이터를 받아올 것임을 명시합니다.
+    accept: "application/xml",
+    Authorization: `Bearer ${localStorage.getItem("token")}`, // XML 데이터를 받아올 것임을 명시합니다.
   },
   params: {
     serviceKey:

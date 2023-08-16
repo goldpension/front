@@ -43,7 +43,7 @@ const App = () => {
               path="/accounts/kakao/callback/*"
               element={<RedirectHandler />}
             />
-
+            <Route path="/loginSuccess" element={<LoginSuccess />} />
             {/* <Route
               path="/oauth/callback/kakao"
               component={<KakaoRedirectHandler />}
