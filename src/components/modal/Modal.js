@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import styles from '../../css/Modal.module.css';
 import { ApplyVisit } from './ApplyVisit';
+import { ModalContent } from './ModalContent';
+import ApplyForm from './ApplyForm';
 
-const Modal = ({show, close, job}) => {
+const Modal = ({show, close, job, type}) => {
   const [applyCompleted, SetApplyCompleted] = useState(false);
   if (!show) {
     return null;
@@ -11,6 +13,9 @@ const Modal = ({show, close, job}) => {
     e.stopPropagation();
   };
   const renderApplyMethod = (method) => {
+    if (type === 'guarantee') {
+      return <ApplyForm/>;
+    }
     switch (method) {
       case 'CM0801':
         return <ApplyVisit method={'온라인'}/>;
@@ -24,6 +29,7 @@ const Modal = ({show, close, job}) => {
         return null;
     }
   };
+
   return (
     <div className={styles.modalOverlay} onClick={close}>
       <div className={styles.modalContainer} onClick={handleClickContent}>
@@ -46,19 +52,9 @@ const Modal = ({show, close, job}) => {
         : 
         (
         <div className={styles.modalContent}>
-          <div className={styles.jobDetails}>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>제목</span><span style={{flex: '4'}}>{job.wantedTitle ? job.wantedTitle : '없음'}</span></div> 
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>상세내용</span><span style={{flex: '4'}}>{job.detCnts ? job.detCnts : '없음'}</span></div>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>모집인원</span><span style={{flex: '4'}}>{job.clltPrnnum ? job.clltPrnnum : '없음'}</span></div>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>기업</span><span style={{flex: '4'}}>{job.plbizNm ? job.plbizNm : '없음'}</span></div>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>주소</span><span style={{flex: '4'}}>{job.plDetAddr ? job.plDetAddr : '없음'}</span></div>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>담당자</span><span style={{flex: '4'}}>{job.clerk ? job.clerk : '없음'}</span></div>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>담당자연락처</span><span style={{flex: '4'}}>{job.clerkContt ? job.clerkContt : '없음'}</span></div>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>연령</span> <span style={{flex: '4'}}>{job.age}/{job.ageLim}</span></div>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>등록일</span><span style={{flex: '4'}}>{job.ftAcptDd ? job.ftAcptDd : '없음'}</span></div>
-            <div className={styles.jobDetail}><span style={{flex: '1'}}>마감일</span><span style={{flex: '4'}}>{job.toAcptDd ? job.toAcptDd : '없음'}</span></div>
-          </div>
-          {renderApplyMethod(job.acptMthdCd)}
+          <ModalContent job={job} type={type}/>
+          {/* {renderApplyMethod(job.acptMthdCd)} */}
+          <ApplyForm/>
         </div>
         )}
       </div>

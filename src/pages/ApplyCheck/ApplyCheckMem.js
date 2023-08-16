@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import ApplyCheckMent from "../../components/ApplyCheck/ACheckMent";
 import JobTable from "../../components/ApplyCheck/JobTable";
+import { Axios } from "../../api/axios";
 
 // import JobTable2 from "../components/ApplyCheck/JobTable2";
 
 const ApplyCheckMem = () => {
+  const [companies, setCompanies] = useState();
+  const fetchData = async () => {
+    const companies = await Axios.get('/guarantee/company');
+    setCompanies(companies);
+  }
   const jobData = [
     {
       status: "구인 중",
@@ -42,7 +48,7 @@ const ApplyCheckMem = () => {
   return (
     <div>
       <ApplyCheckMent />
-      <JobTable jobData={jobData} />
+      <JobTable jobData={companies} />
     </div>
   );
 };

@@ -241,3 +241,5 @@ export const Main = () => {
     </>
   );
 };
+
+export default Map;

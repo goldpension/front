@@ -6,7 +6,6 @@ import { Main } from "./pages/Main";
 
 import Manual from "./pages/Manual";
 import CompanyPromotion from "./pages/CompanyPromotion";
-import CPAdd from "./pages/CPAdd";
 import CompanyPartner from "./pages/companyPartner";
 import CompanyPartnerApply from "./pages/companyPartnerApply";
 import NotFound from "./pages/NotFound";
@@ -35,13 +34,13 @@ const App = () => {
               <Route path="/findJobs/" element={<Main />} />
               <Route path="/manual/*" element={<Manual />} />
               <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
-              <Route path="/CompanyPromotion/add" element={<CPAdd />} />
               <Route path="/login/*" element={<Login />} />
               <Route path="/companyPartner/*" element={<CompanyPartner />} />
               <Route
                 path="/companyPartner/apply"
                 element={<CompanyPartnerApply />}
               />
+              <Route path="/apply" element={<ApplyCheckNon />} />
               <Route path="/join/*" element={<Join />} />
               <Route path="/join/join_tel" element={<Join_tel />} />
               <Route path="/*" element={<NotFound />}></Route>
