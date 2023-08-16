@@ -8,7 +8,12 @@ import { Axios } from "../../api/axios";
 const ApplyCheckMem = () => {
   const [companies, setCompanies] = useState();
   const fetchData = async () => {
-    const companies = await Axios.get('/guarantee/company');
+    const companies = await Axios.get('/guarantee/company',{
+      params: {
+        name: name,
+        phone_number: phone_number
+      }
+    });
     setCompanies(companies);
   }
   const jobData = [
