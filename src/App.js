@@ -1,4 +1,5 @@
 import React from "react";
+import { RecoilRoot } from "recoil";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
 import First from "./pages/First";
@@ -24,52 +25,54 @@ import Account from "./components/Info/Account";
 
 const App = () => {
   return (
-    <div>
-      <div
-        className="App"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-          padding: "1px",
-        }}
-      >
-        <BrowserRouter>
-          <Navbar />
-          <div
-            style={{
-              position: "relative",
-              top: "50px",
-              backgroundColor: "#eeeeee",
-            }}
-          >
-            <Routes>
-              <Route path="/findJobs/" element={<Main />} />
-              <Route path="/manual/*" element={<Manual />} />
-              <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
-              <Route path="/login/*" element={<Login />} />
+    <RecoilRoot>
+      <div>
+        <div
+          className="App"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+            padding: "1px",
+          }}
+        >
+          <BrowserRouter>
+            <Navbar />
+            <div
+              style={{
+                position: "relative",
+                top: "50px",
+                backgroundColor: "#eeeeee",
+              }}
+            >
+              <Routes>
+                <Route path="/findJobs/" element={<Main />} />
+                <Route path="/manual/*" element={<Manual />} />
+                <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
+                <Route path="/login/*" element={<Login />} />
 
-              <Route
-                path="/accounts/kakao/callback/*"
-                element={<RedirectHandler />}
-              />
-              <Route path="/loginSuccess" element={<First />} />
+                <Route
+                  path="/accounts/kakao/callback/*"
+                  element={<RedirectHandler />}
+                />
+                <Route path="/loginSuccess" element={<First />} />
 
-              <Route path="/" element={<First />} />
-              <Route path="/companyPartner/*" element={<CompanyPartner />} />
-              <Route
-                path="/companyPartner/apply"
-                element={<CompanyPartnerApply />}
-              />
-              <Route path="/apply" element={<ApplyCheckNon />} />
-              <Route path="/join/*" element={<Join />} />
-              <Route path="/join/join_tel" element={<Join_tel />} />
-              <Route path="/*" element={<NotFound />}></Route>
-            </Routes>
-          </div>
-        </BrowserRouter>
+                <Route path="/" element={<First />} />
+                <Route path="/companyPartner/*" element={<CompanyPartner />} />
+                <Route
+                  path="/companyPartner/apply"
+                  element={<CompanyPartnerApply />}
+                />
+                <Route path="/apply" element={<ApplyCheckNon />} />
+                <Route path="/join/*" element={<Join />} />
+                <Route path="/join/join_tel" element={<Join_tel />} />
+                <Route path="/*" element={<NotFound />}></Route>
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </div>
       </div>
-    </div>
+    </RecoilRoot>
   );
 };
 
