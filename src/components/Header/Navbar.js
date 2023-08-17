@@ -21,14 +21,13 @@ function Navbar() {
           </Link>
         </div>
         <div className={styles.navItemlogin}>
-          {loggedInUser.isLoggedIn ?
-          <div>반갑습니다 {loggedInUser.name}로그아웃</div>  
-          :
-          <Link to="/Login">
-            <p>로그인</p>
-          </Link>
-
-        }
+          {loggedInUser.isLoggedIn ? (
+            <div>{loggedInUser.userName}로그아웃</div>
+          ) : (
+            <Link to="/Login">
+              <p>로그인</p>
+            </Link>
+          )}
         </div>
       </div>
     </>
