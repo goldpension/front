@@ -21,13 +21,24 @@
   align-content: center;
 }
 .navItem {
-  width: 100px;
   height: auto;
   margin: 1px;
   align-items: center;
   padding: 10px;
   vertical-align: middle;
   left: 10%;
+  color: white;
+}
+.navItemlogin p {
+  height: auto;
+  margin: 5px 20px 5px 5px;
+  align-items: center;
+  padding: 10px;
+  vertical-align: middle;
+  left: 10%;
+  color: white;
+  font-weight: bold;
+  font-size: medium;
 }
 
 img {

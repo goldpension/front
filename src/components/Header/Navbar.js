@@ -18,8 +18,10 @@ function Navbar() {
             <img src={logoImg} alt="goldenPension Logo" />
           </Link>
         </div>
-        <div className={styles.navItem}>
-          <UserMenu />
+        <div className={styles.navItemlogin}>
+          <Link to="/Login">
+            <p>로그인</p>
+          </Link>
         </div>
       </div>
     </>
