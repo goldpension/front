@@ -1,32 +1,32 @@
-import React, {useEffect, useState} from 'react'
-import {SenuriService} from '../api/axios'
+import React, { useEffect, useState } from "react";
+import { SenuriService } from "../api/axios";
 import Map from "../components/Map";
-import AreaCounts from '../components/Main/AreaCounts';
-import First from './First';
-import List from '../components/Main/List';
-import Modal from '../components/modal/Modal';
+import AreaCounts from "../components/Main/AreaCounts";
+import First from "./First";
+import List from "../components/Main/List";
+import Modal from "../components/modal/Modal";
 import styles from "../css/Main.module.css";
 import Image from "../img/어르신.png";
-import Loading from "../img/loading.gif"
+import Loading from "../img/loading.gif";
 export const Main = () => {
-  const [jobs, setJobs] = useState([])
-  const [counts, setCounts] = useState({})
-  const [screen, setScreen] = useState('areaCounts');
-  const [listArea, setListArea] = useState('all');
+  const [jobs, setJobs] = useState([]);
+  const [counts, setCounts] = useState({});
+  const [screen, setScreen] = useState("areaCounts");
+  const [listArea, setListArea] = useState("all");
   const [showModal, setShowModal] = useState(false);
-  const [modalSelectedJob, setModalSelectedJob] = useState({})
+  const [modalSelectedJob, setModalSelectedJob] = useState({});
 
   const goToScreen = (screenName) => {
     setScreen(screenName);
   };
-  
-  useEffect(()=>{
-    fetchData('getJobList')
-  }, [])
-  
+
+  useEffect(() => {
+    fetchData("getJobList");
+  }, []);
+
   useEffect(() => {
     getCounts(jobs);
-    goToScreen('areaCounts');
+    goToScreen("areaCounts");
   }, [jobs]);
 
   /*
@@ -39,8 +39,8 @@ export const Main = () => {
 
   const fetchData = async (type, jobId) => {
     try {
-      if (type === 'getJobList') {
-        const response = await SenuriService.get('/getJobList', {
+      if (type === "getJobList") {
+        const response = await SenuriService.get("/getJobList", {
           params: {
             numOfRows: 10000,
             pageNo: 1,
@@ -80,7 +80,7 @@ export const Main = () => {
           console.error("Data is missing or has incorrect structure");
         }
       } else {
-        const response = await SenuriService.get('/getJobInfo', {
+        const response = await SenuriService.get("/getJobInfo", {
           params: {
             id: jobId,
           },
@@ -164,12 +164,12 @@ export const Main = () => {
 
   const onClickCount = (area) => {
     setListArea(area);
-    goToScreen('list');
-  }
+    goToScreen("list");
+  };
 
   const onClickGoCounts = () => {
-    goToScreen('areaCounts')
-  }
+    goToScreen("areaCounts");
+  };
   const openModal = (job) => {
     fetchData("modalData", job.jobId);
     setShowModal(true);
@@ -181,63 +181,69 @@ export const Main = () => {
 
   const renderScreen = (screen) => {
     switch (screen) {
-      case 'loading':
-        return <div>일자리를 불러오고 있습니다. 어르신들 조금만 기다리셔요~~~</div>;
-      case 'areaCounts':
-        return <AreaCounts counts={counts} onClickCount={onClickCount}/>;
-      case 'first':
-        return <First onClickGoCounts={onClickGoCounts}/>;
-      case 'list':
-        return <List area={listArea} jobs={jobs} openModal={openModal}/>;
+      case "loading":
+        return (
+          <div>일자리를 불러오고 있습니다. 어르신들 조금만 기다리셔요~~~</div>
+        );
+      case "areaCounts":
+        return <AreaCounts counts={counts} onClickCount={onClickCount} />;
+      case "first":
+        return <First onClickGoCounts={onClickGoCounts} />;
+      case "list":
+        return <List area={listArea} jobs={jobs} openModal={openModal} />;
       default:
         return null;
     }
   };
-  
+
   const goBackHandler = () => {
-    setListArea('all')
-    goToScreen('areaCounts');
-  }
+    setListArea("all");
+    goToScreen("areaCounts");
+  };
   return (
     <>
-      <Modal show={showModal} close={closeModal} job={modalSelectedJob}/>
-      {screen === 'list' ? <div className={styles.goBack} onClick={goBackHandler}>전체지역</div> : null}
-      {Object.keys(jobs).length > 0 ?
-      (
+      <Modal show={showModal} close={closeModal} job={modalSelectedJob} />
+      {screen === "list" ? (
+        <div className={styles.goBack} onClick={goBackHandler}>
+          전체지역
+        </div>
+      ) : null}
+      {Object.keys(jobs).length > 0 ? (
         <div className={styles.main}>
           <div className={styles.mapContainer}>
-            <Map jobs={jobs} selectedArea={listArea}/>
+            <Map jobs={jobs} selectedArea={listArea} />
           </div>
-          <div className={styles.renderScreen}>
-          {renderScreen(screen)}
-          </div>
+          <div className={styles.renderScreen}>{renderScreen(screen)}</div>
         </div>
       ) : (
         <div className={styles.main}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%', 
-            height: '100%',
-            fontSize: '2.5rem',
-            fontWeight: 'bold'}}>
-            <img src={Image} style={{width: '500px'}}/>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'space-around',
-              height: '200px',
-            }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+              fontSize: "2.5rem",
+              fontWeight: "bold",
+            }}
+          >
+            <img src={Image} style={{ width: "500px" }} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-around",
+                height: "200px",
+              }}
+            >
               <div>데이터를 불러오고 있습니다.</div>
-              <img src={Loading} width={'100px'}/>
+              <img src={Loading} width={"100px"} />
             </div>
           </div>
         </div>
-      )
-    }
-
+      )}
     </>
   );
 };

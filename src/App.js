@@ -17,6 +17,9 @@ import MyInfo1 from "./pages/MyInfo1";
 import MyInfo2 from "./pages/MyInfo2";
 import ApplyCheckMem from "./pages/ApplyCheck/ApplyCheckMem";
 import ApplyCheckNon from "./pages/ApplyCheck/ApplyCheckNon";
+import RedirectHandler from "./components/Login/RedirectHandler";
+import LoginSuccess from "./components/Login/LoginSuccess";
+import KakaoRedirectHandler from "./components/Login/KakaoRedirectionHandler";
 import Account from "./components/Info/Account";
 
 const App = () => {
@@ -45,6 +48,13 @@ const App = () => {
               <Route path="/manual/*" element={<Manual />} />
               <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
               <Route path="/login/*" element={<Login />} />
+
+              <Route
+                path="/accounts/kakao/callback/*"
+                element={<RedirectHandler />}
+              />
+              <Route path="/loginSuccess" element={<First />} />
+
               <Route path="/" element={<First />} />
               <Route path="/companyPartner/*" element={<CompanyPartner />} />
               <Route

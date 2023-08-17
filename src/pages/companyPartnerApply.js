@@ -111,26 +111,25 @@ const CompanyPartnerApply = (props) => {
                 </div>
                 <div className={styles.cp_inforcontentinput}>
                   <input
-                    type="tel"
+                    type="number"
                     name="company_number"
                     value={formData.company_number}
                     onChange={handleValueChange}
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{5}"
                     placeholder="135-82-11191"
                   />
                 </div>
                 <div className={styles.cp_inforcontentinput}>
                   <input
                     type="text"
-                    name="company_addres"
-                    value={formData.company_addres}
+                    name="company_address"
+                    value={formData.company_address}
                     onChange={handleValueChange}
                     placeholder="경기도 용인시 처인구 모현읍 외대로 81 "
                   />
                 </div>
                 <div className={styles.cp_inforcontentinput}>
                   <input
-                    type="number"
+                    type="text"
                     name="company_call"
                     value={formData.company_call}
                     onChange={handleValueChange}
@@ -177,7 +176,7 @@ const CompanyPartnerApply = (props) => {
                 </div>
                 <div className={styles.cp_inforcontentinput}>
                   <input
-                    type="url"
+                    type="text"
                     name="company_homepage"
                     value={formData.company_homepage}
                     onChange={handleValueChange}
@@ -246,7 +245,7 @@ const CompanyPartnerApply = (props) => {
                 </div>
                 <div className={styles.cp_inforcontentinput}>
                   <input
-                    type="time"
+                    type="text"
                     name="work_hour"
                     value={formData.work_hour}
                     onChange={handleValueChange}
@@ -255,7 +254,7 @@ const CompanyPartnerApply = (props) => {
                 </div>
                 <div className={styles.cp_inforcontentinput}>
                   <input
-                    type="number"
+                    type="text"
                     name="work_pay"
                     value={formData.work_pay}
                     onChange={handleValueChange}
@@ -362,7 +361,7 @@ const CompanyPartnerApply = (props) => {
                 </div>
                 <div className={styles.cp_inforcontentinput}>
                   <input
-                    type="date"
+                    type="text"
                     name="apply_deadline"
                     value={formData.apply_deadline}
                     onChange={handleValueChange}
