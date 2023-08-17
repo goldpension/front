@@ -39,9 +39,9 @@ function Map({jobs, selectedArea}) {
         map: map,
         path: path,
         strokeWeight: 3,
-        strokeColor: "#39DE2A",
+        strokeColor: '#3C5B73',
         strokeOpacity: 0.8,
-        fillColor: "#A2FF99",
+        fillColor: "#7FACCF",
         fillOpacity: 0.5,
       });
     };
@@ -50,8 +50,8 @@ function Map({jobs, selectedArea}) {
       let path = coordinate.map((coor) => new kakao.maps.LatLng(coor[1], coor[0]));
       let polygon = createPolygon(path);
   
-      const onPolygonMouseOver = () => polygon.setOptions({ fillColor: "green" });
-      const onPolygonMouseOut = () => polygon.setOptions({ fillColor: "#A2FF99" });
+      const onPolygonMouseOver = () => polygon.setOptions({ fillColor: "#6288A8" });
+      const onPolygonMouseOut = () => polygon.setOptions({ fillColor: "#7FACCF" });
   
       const onPolygonClick = () => {
         var moveLatLon = new kakao.maps.LatLng(
