@@ -23,7 +23,7 @@ const RedirectHandler = () => {
           console.log("백엔드 응답:", response.data);
           setLoggedInUser({
             isLoggedIn: true,
-            userName: response.name,
+            userName: response.data.name,
           });
           navigate("/loginSuccess");
         })

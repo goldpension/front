@@ -96,8 +96,7 @@ function Map({jobs, selectedArea}) {
 
   useEffect(() => {
     const script = document.createElement("script");
-    script.src =
-      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=c42993669a187ffcee67bc25740ee4f6&autoload=false";
+    script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=c42993669a187ffcee67bc25740ee4f6&autoload=false";
     document.head.appendChild(script);
 
     script.onload = () => {
