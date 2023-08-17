@@ -4,19 +4,10 @@
 }
 .navContainer {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
   justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  flex-basis: 100px;
-  background-color: rgba(232, 156, 49, 1);
-  text-align: center;
+  background-color: rgba(7, 35, 107, 1);
   position: relative;
-  padding: 8px 12px;
   width: 100%;
-  margin: 5;
   height: 50px;
   padding: 1px;
   position: fixed;
@@ -24,8 +15,7 @@
 }
 .nav {
   display: flex;
-  justify-content: space-around;
-  margin-left: 5%;
+  justify-content: space-between;
   text-align: center;
   align-items: center;
   align-content: center;
@@ -38,12 +28,6 @@
   padding: 10px;
   vertical-align: middle;
   left: 10%;
-}
-
-.space {
-  background-color: brown;
-  width: 30%;
-  z-index: 1;
 }
 
 img {

@@ -10,18 +10,13 @@ function Navbar() {
   return (
     <>
       <div className={styles.navContainer}>
-        <div className={styles.nav}>
-          <div className={styles.navItem}>
-            <Menu />
-          </div>
-          <div className={styles.navItem}>
-            <Link to="/" state={"first"}>
-              <img src={logoImg} alt="goldenPension Logo" />
-            </Link>
-          </div>
+        <div className={styles.navItem}>
+          <Menu />
         </div>
         <div className={styles.navItem}>
-          <span className={styles.space}></span>
+          <Link to="/" state={"first"}>
+            <img src={logoImg} alt="goldenPension Logo" />
+          </Link>
         </div>
         <div className={styles.navItem}>
           <UserMenu />
