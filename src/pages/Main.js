@@ -181,10 +181,6 @@ export const Main = () => {
 
   const renderScreen = (screen) => {
     switch (screen) {
-      case "loading":
-        return (
-          <div>일자리를 불러오고 있습니다. 어르신들 조금만 기다리셔요~~~</div>
-        );
       case "areaCounts":
         return <AreaCounts counts={counts} onClickCount={onClickCount} />;
       case "first":
