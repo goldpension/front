@@ -58,7 +58,7 @@
 .cp_inforcontentinput {
   margin: 10px;
 }
-span {
+.cp_inforcontenttext span {
   color: red;
 }
 .cp_radio {
