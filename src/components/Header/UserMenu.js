@@ -25,7 +25,7 @@ function UserMenu() {
   return (
     <div className={styles.userMenu}>
       <button className={styles.iconButton} onClick={handleButtonClick}>
-        <img src={personIcon} alt="유저 메뉴" />
+        로그인
       </button>
       {isOpen && (
         <ul className={styles.popup}>
