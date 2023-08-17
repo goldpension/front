@@ -19,7 +19,12 @@ const App = () => {
     <div>
       <div
         className="App"
-        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          padding: "1px",
+        }}
       >
         <BrowserRouter>
           <Navbar />
