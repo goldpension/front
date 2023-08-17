@@ -16,7 +16,7 @@
 .modalContainer {
   background-color: white;
   border-radius: 4px;
-  padding: 20px 40px;
+  padding: 20px;
   width: 1200px;
   height: 600px;
   cursor:default;
@@ -40,7 +40,7 @@
   font-weight: bold;
   display: flex;
   height: 100%;
-  padding: 0 20px;
+  padding: 30px 20px;
 }
 .applyCompletedContent {
   width: 100%;
@@ -95,6 +95,7 @@
   padding: 10px 20px;
 }
 
+/*button */
 .submitButtonContainer {
   display: flex;
   justify-content: center;
@@ -107,7 +108,69 @@
   font-weight: bold;
   border-radius: 20px;
   border: none;
+  background-color: white;
+  color: red;
+  cursor: pointer;
+  border: 3px solid red;
+}
+.submitButton:hover {
   background-color: red;
   color: white;
+}
+.genderBtnContainer {
+  display: flex;
+  justify-content: space-around;
+  flex: 3;
+
+}
+.genderButton {
+  /* 원하는 디자인을 적용하세요. 예를 들어: */
+  background-color: #f0f0f0;
+  border: 3px solid #000;
+  border-radius: 20px;
+  padding: 8px 12px;
   cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+}
+
+.selectedGenderButton {
+  /* 선택된 버튼의 디자인을 적용하세요. 예를 들어: */
+  background-color: #E89C31;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 20px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+}
+
+
+
+
+
+/* ApplyVisit.js */
+.applyPublicData {
+  flex: 2;
+  background-color: #EDEDED;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.applyMethod {
+  color: red;
+  font-size: 1.5rem;
+}
+.addressContainer {
+  border: 5px solid red;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
 }

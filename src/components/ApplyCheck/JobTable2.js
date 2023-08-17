@@ -1,37 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../css/JobTable.module.css";
 
-const JobTable = ({ jobData, openModal }) => {
-  const jobsPerPage = 4; // 한 페이지당 보여줄 직업 수
-  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
-
-  // 현재 페이지에 해당하는 직업 목록 계산
-  const indexOfLastJob = currentPage * jobsPerPage;
-  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-  const currentJobs = jobData.slice(indexOfFirstJob, indexOfLastJob);
-
-  // 전체 페이지 수 계산
-  const totalPages = Math.ceil(jobData.length / jobsPerPage);
-
-  // 페이지 번호 버튼 렌더링
-  const renderPageNumbers = () => {
-    const pages = [];
-
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(
-        <button
-          className={styles.paginationButton}
-          key={i}
-          onClick={() => setCurrentPage(i)}
-        >
-          {i}
-        </button>
-      );
-    }
-
-    return pages;
-  };
-
+const JobTable = ({ jobData }) => {
   return (
     <div className={styles.center}>
       <div className={styles.tableComponent}>
@@ -42,12 +12,16 @@ const JobTable = ({ jobData, openModal }) => {
           <div style={{ flex: "1", textAlign: "center" }}>근무지역</div>
         </div>
         <div className={styles.tableContainer}>
-          {currentJobs.map((job, index) => (
-            <div
-              className={styles.job}
+          {jobData.map((job, index) => (
+            <div className={styles.job}>
+              {/* <div
               key={index}
-              onClick={() => openModal(job)}
-            >
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: "10px 0",
+              }}
+            > */}
               <div className={styles.statusContainer}>
                 <div
                   style={{
@@ -77,7 +51,6 @@ const JobTable = ({ jobData, openModal }) => {
             </div>
           ))}
         </div>
-        <div className={styles.pagination}>{renderPageNumbers()}</div>
       </div>
     </div>
   );

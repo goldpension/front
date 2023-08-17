@@ -24,7 +24,7 @@ function Menu() {
   return (
     <div className={styles.Menu}>
       <button className={styles.Button} onClick={handleButtonClick}>
-        <Link to="/">메뉴</Link>
+        메뉴
       </button>
       {isOpen && (
         <ul className={styles.popup}>

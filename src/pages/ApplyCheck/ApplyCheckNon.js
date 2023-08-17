@@ -1,6 +1,6 @@
 import React from "react";
-import ApplyCheckMent from "../components/ApplyCheck/ACheckMent";
-import AInput from "../components/ApplyCheck/AInput";
+import ApplyCheckMent from "../../components/ApplyCheck/ACheckMent";
+import AInput from "../../components/ApplyCheck/AInput";
 
 const ApplyCheckNon = () => {
   return (

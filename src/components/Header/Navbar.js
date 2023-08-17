@@ -15,7 +15,7 @@ function Navbar() {
             <Menu />
           </div>
           <div className={styles.navItem}>
-            <Link to="/">
+            <Link to="/" state={'first'}>
               <img src={logoImg} alt="goldenPension Logo" />
             </Link>
           </div>

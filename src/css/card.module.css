@@ -1,23 +1,35 @@
-.cp_content {
+
+.JobBoxComponent {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
+.cp_content {
+  width: 1120px;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 50px 90px;
+  overflow-y: scroll;
+}
 .cp_contentText {
-  align-items: stretch;
-  justify-content: center;
   margin: 50px;
   font-weight: bold;
 }
 .cp_card {
-  margin: 10px;
   width: 300px;
+  box-sizing: border-box;
   border-radius: 10px;
   background-color: white;
   align-items: center;
   justify-content: center;
   position: relative;
   box-shadow: 5px 5px 10px gray;
+  cursor: pointer;
+}
+.cp_card:hover {
+  opacity: 0.5;
 }
 .cp_card div {
   margin: 10px 20px 10px 20px;

@@ -1,19 +1,19 @@
 import React from "react";
 
-const ApplyCheckMent = () => {
+const InfoMent = () => {
   return (
     <div>
       <h2
         style={{
           textAlign: "center",
           paddingTop: "100px",
-          paddingBottom: "50px",
+          paddingBottom: "20px",
         }}
       >
-        지원했던 일자리를 확인할 수 있어요!
+        내 정보
       </h2>
     </div>
   );
 };
 
-export default ApplyCheckMent;
+export default InfoMent;

@@ -4,14 +4,13 @@ body {
 .cp_container {
   width: 100%;
   height: 100%;
-  padding: 1;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .cp_title {
   padding-top: 1px;
-  margin-top: 150px;
   margin-bottom: 50px;
   justify-content: center;
   align-items: center;
@@ -84,6 +83,7 @@ body {
   font-weight: bolder;
   text-decoration: none;
   text-decoration-line: none;
+  cursor: pointer;
 }
 .cp_btn p {
   margin: 10px 20px 10px 20px;
