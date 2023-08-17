@@ -30,9 +30,11 @@ function Navbar() {
           {loggedInUser.isLoggedIn ? (
             <div className={styles.logoutBtnContainer}>
               {loggedInUser.userName}님{" "}
-              <div className={styles.logoutBtn} onClick={logout}>
-                로그아웃
-              </div>
+              <Link to="/">
+                <div className={styles.logoutBtn} onClick={logout}>
+                  로그아웃
+                </div>
+              </Link>
             </div>
           ) : (
             <Link to="/Login">

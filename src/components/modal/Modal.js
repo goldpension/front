@@ -53,7 +53,6 @@ const Modal = ({ show, close, job, type }) => {
           <div className={styles.modalContent}>
             <ModalContent job={job} type={type} />
             {renderApplyMethod(job.acptMthdCd)}
-            {/* <ApplyForm/> */}
           </div>
         )}
       </div>
