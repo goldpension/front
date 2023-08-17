@@ -3,8 +3,12 @@ import { ContentStep1, ContentStep2 } from "../components/First/FirstContents";
 import styles from "../css/First.module.css";
 import { Link } from "react-router-dom";
 import koreaMap from "../img/지도.png";
+import { useRecoilState } from "recoil";
+import userState from "../recoil/userState";
+
 
 const First = ({ onClickGoCounts }) => {
+  const [loggedInUser, setLoggedInUser] = useRecoilState(userState);
   const [activeIndex, setActiveIndex] = useState(0);
   const titles = ["일자리 찾기", "회사 홍보"];
   const contents = [<ContentStep1 />, <ContentStep2 />];
@@ -67,7 +71,11 @@ const First = ({ onClickGoCounts }) => {
               }`}
               onClick={() => handleClickTitle(1)}
             >
+              {loggedInUser.isLoggedIn ?
               <Link to={link[2]}>파트너사 신청하기</Link>
+              :
+              <Link to='/Login'>파트너사 신청하기</Link>
+            }
             </div>
           </div>
         </div>
