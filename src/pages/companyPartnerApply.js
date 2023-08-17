@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../css/companyPartnerApply.module.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { Axios } from "../api/axios";
 
 const CompanyPartnerApply = (props) => {
   const [formData, setFormData] = useState({
@@ -29,10 +29,10 @@ const CompanyPartnerApply = (props) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "company/create"; // API endpoint URL
+    const url = "company/register"; // API endpoint URL
 
     try {
-      const response = await axios.post(url, formData, {
+      const response = await Axios.post(url, formData, {
         headers: {
           "Content-Type": "application/json",
         },
