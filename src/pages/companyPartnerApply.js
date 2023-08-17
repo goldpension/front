@@ -51,10 +51,11 @@ const CompanyPartnerApply = (props) => {
   };
 
   const handleValueChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+    const newValue = type === "number" ? (isNaN(value) ? "" : value) : value;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: newValue,
     }));
   };
   const handleFileChange = (e) => {
