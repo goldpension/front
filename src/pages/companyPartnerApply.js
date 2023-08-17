@@ -30,7 +30,7 @@ const CompanyPartnerApply = (props) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "company/register/"; // API endpoint URL
+    const url = "company/register"; // API endpoint URL
 
     try {
       console.log(formData);
