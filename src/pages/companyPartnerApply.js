@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Axios } from "../api/axios";
 
 const CompanyPartnerApply = (props) => {
+  //console.log(setFormData);
   const [formData, setFormData] = useState({
     company_name: "",
     company_address: "",
@@ -32,6 +33,7 @@ const CompanyPartnerApply = (props) => {
     const url = "company/register/"; // API endpoint URL
 
     try {
+      console.log(formData);
       const response = await Axios.post(url, formData, {
         headers: {
           "Content-Type": "application/json",
