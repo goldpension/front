@@ -49,12 +49,14 @@ const Modal = ({ show, close, job, type }) => {
               </p>
             </div>
           </div>
-        ) : (
-          <div className={styles.modalContent}>
-            <ModalContent job={job} type={type} />
-            {renderApplyMethod(job.acptMthdCd)}
-            {/* <ApplyForm/> */}
-          </div>
+        </div>
+        ) 
+        : 
+        (
+        <div className={styles.modalContent}>
+          <ModalContent job={job} type={type}/>
+          {renderApplyMethod(job.acptMthdCd)}
+        </div>
         )}
       </div>
     </div>

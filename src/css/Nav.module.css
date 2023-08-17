@@ -50,6 +50,9 @@
   color: white;
   font-weight: bold;
 }
+.logoutBtnContainer > a {
+  color: white;
+}
 .logoutBtn {
   margin: 5px 20px 5px 5px;
   align-items: center;
