@@ -15,34 +15,8 @@ const Login = () => {
 
       <div className={styles.container}>
         <div>
-          <div>
-            <LInput />
-          </div>
+          <LKakao />
         </div>
-
-        <div style={{ marginLeft: "100px", marginRight: "100px" }}>
-          <div className={styles.v_line}></div>
-          <div
-            className={styles.text}
-            style={{ paddingTop: "10px", paddingBottom: "10px" }}
-          >
-            또는
-          </div>
-          <div className={styles.v_line}></div>
-        </div>
-
-        <div>
-          <div>
-            <LKakao />
-          </div>
-          <div>
-            <LNaver />
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <LoginMent2 />
       </div>
     </div>
   );

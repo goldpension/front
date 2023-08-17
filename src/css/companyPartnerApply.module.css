@@ -88,11 +88,13 @@ span {
   justify-content: center;
   margin-bottom: 30px;
   text-align: center;
+  flex-direction: column;
 }
 .cp_btn {
-  margin: 30px;
-  text-align: right;
-  float: right;
+  display: flex;
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
   background-color: transparent;
   border-style: solid;
   border-width: medium medium medium medium;
@@ -102,22 +104,13 @@ span {
   font-weight: bolder;
   text-decoration: none;
   text-decoration-line: none;
-}
-.cp_btn button {
-  margin: 10px 20px 10px 20px;
-
-  color: rgba(7, 35, 107, 1);
-  text-decoration: none;
+  vertical-align: middle;
+  width: 200px;
 }
 .cp_btn:hover {
   background-color: rgba(7, 35, 107, 1);
   color: white;
 }
-.cp_btn button:hover {
-  color: white;
-
-  text-decoration: none;
-}
 a {
-  text-decoration-line: none;
+  text-decoration: none;
 }

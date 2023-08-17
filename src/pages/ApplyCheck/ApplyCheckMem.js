@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ApplyCheckMent from "../../components/ApplyCheck/ACheckMent";
 import JobTable from "../../components/ApplyCheck/JobTable";
 import { Axios } from "../../api/axios";
@@ -8,14 +8,14 @@ import { Axios } from "../../api/axios";
 const ApplyCheckMem = () => {
   const [companies, setCompanies] = useState();
   const fetchData = async () => {
-    const companies = await Axios.get('/guarantee/company',{
-      params: {
-        name: name,
-        phone_number: phone_number
-      }
+    const companies = await Axios.get("/guarantee/company", {
+      // params: {
+      //   name: name,
+      //   phone_number: phone_number,
+      // },
     });
     setCompanies(companies);
-  }
+  };
   const jobData = [
     {
       status: "구인 중",

@@ -1,49 +1,29 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { SenuriService } from "../api/axios";
-=======
-import React, {useEffect, useState} from 'react'
-import {SenuriService} from '../api/axios'
->>>>>>> a7d2e158963e0a74ad4ccf53d6d2ef94cea5e831
 import Map from "../components/Map";
-import AreaCounts from '../components/Main/AreaCounts';
-import First from './First';
-import List from '../components/Main/List';
-import Modal from '../components/modal/Modal';
+import AreaCounts from "../components/Main/AreaCounts";
+import First from "./First";
+import List from "../components/Main/List";
+import Modal from "../components/modal/Modal";
 import styles from "../css/Main.module.css";
 import Image from "../img/어르신.png";
-import Loading from "../img/loading.gif"
+import Loading from "../img/loading.gif";
 export const Main = () => {
-<<<<<<< HEAD
   const [jobs, setJobs] = useState([]);
   const [counts, setCounts] = useState({});
   const [screen, setScreen] = useState("loading");
   const [listArea, setListArea] = useState("all");
-=======
-  const [jobs, setJobs] = useState([])
-  const [counts, setCounts] = useState({})
-  const [screen, setScreen] = useState('areaCounts');
-  const [listArea, setListArea] = useState('all');
->>>>>>> a7d2e158963e0a74ad4ccf53d6d2ef94cea5e831
   const [showModal, setShowModal] = useState(false);
   const [modalSelectedJob, setModalSelectedJob] = useState({});
 
   const goToScreen = (screenName) => {
     setScreen(screenName);
   };
-<<<<<<< HEAD
 
   useEffect(() => {
     fetchData("getJobList");
   }, []);
 
-=======
-  
-  useEffect(()=>{
-    fetchData('getJobList')
-  }, [])
-  
->>>>>>> a7d2e158963e0a74ad4ccf53d6d2ef94cea5e831
   useEffect(() => {
     getCounts(jobs);
     goToScreen("areaCounts");
@@ -59,13 +39,8 @@ export const Main = () => {
 
   const fetchData = async (type, jobId) => {
     try {
-<<<<<<< HEAD
       if (type === "getJobList") {
         const response = await SenuriService.get("/getJobList", {
-=======
-      if (type === 'getJobList') {
-        const response = await SenuriService.get('/getJobList', {
->>>>>>> a7d2e158963e0a74ad4ccf53d6d2ef94cea5e831
           params: {
             numOfRows: 10000,
             pageNo: 1,
@@ -105,11 +80,7 @@ export const Main = () => {
           console.error("Data is missing or has incorrect structure");
         }
       } else {
-<<<<<<< HEAD
         const response = await SenuriService.get("/getJobInfo", {
-=======
-        const response = await SenuriService.get('/getJobInfo', {
->>>>>>> a7d2e158963e0a74ad4ccf53d6d2ef94cea5e831
           params: {
             id: jobId,
           },
@@ -193,21 +164,12 @@ export const Main = () => {
 
   const onClickCount = (area) => {
     setListArea(area);
-<<<<<<< HEAD
     goToScreen("list");
   };
 
   const onClickGoCounts = () => {
     goToScreen("areaCounts");
   };
-=======
-    goToScreen('list');
-  }
-
-  const onClickGoCounts = () => {
-    goToScreen('areaCounts')
-  }
->>>>>>> a7d2e158963e0a74ad4ccf53d6d2ef94cea5e831
   const openModal = (job) => {
     fetchData("modalData", job.jobId);
     setShowModal(true);
@@ -219,26 +181,27 @@ export const Main = () => {
 
   const renderScreen = (screen) => {
     switch (screen) {
-      case 'loading':
-        return <div>일자리를 불러오고 있습니다. 어르신들 조금만 기다리셔요~~~</div>;
-      case 'areaCounts':
-        return <AreaCounts counts={counts} onClickCount={onClickCount}/>;
-      case 'first':
-        return <First onClickGoCounts={onClickGoCounts}/>;
-      case 'list':
-        return <List area={listArea} jobs={jobs} openModal={openModal}/>;
+      case "loading":
+        return (
+          <div>일자리를 불러오고 있습니다. 어르신들 조금만 기다리셔요~~~</div>
+        );
+      case "areaCounts":
+        return <AreaCounts counts={counts} onClickCount={onClickCount} />;
+      case "first":
+        return <First onClickGoCounts={onClickGoCounts} />;
+      case "list":
+        return <List area={listArea} jobs={jobs} openModal={openModal} />;
       default:
         return null;
     }
   };
-  
+
   const goBackHandler = () => {
-    setListArea('all')
-    goToScreen('areaCounts');
-  }
+    setListArea("all");
+    goToScreen("areaCounts");
+  };
   return (
     <>
-<<<<<<< HEAD
       <Modal
         show={showModal}
         close={closeModal}
@@ -267,46 +230,6 @@ export const Main = () => {
         </div>
         <div className={styles.renderScreen}>{renderScreen(screen)}</div>
       </div>
-=======
-      <Modal show={showModal} close={closeModal} job={modalSelectedJob}/>
-      {screen === 'list' ? <div className={styles.goBack} onClick={goBackHandler}>전체지역</div> : null}
-      {Object.keys(jobs).length > 0 ?
-      (
-        <div className={styles.main}>
-          <div className={styles.mapContainer}>
-            <Map jobs={jobs} selectedArea={listArea}/>
-          </div>
-          <div className={styles.renderScreen}>
-          {renderScreen(screen)}
-          </div>
-        </div>
-      ) : (
-        <div className={styles.main}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%', 
-            height: '100%',
-            fontSize: '2.5rem',
-            fontWeight: 'bold'}}>
-            <img src={Image} style={{width: '500px'}}/>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'space-around',
-              height: '200px',
-            }}>
-              <div>데이터를 불러오고 있습니다.</div>
-              <img src={Loading} width={'100px'}/>
-            </div>
-          </div>
-        </div>
-      )
-    }
-
->>>>>>> a7d2e158963e0a74ad4ccf53d6d2ef94cea5e831
     </>
   );
 };

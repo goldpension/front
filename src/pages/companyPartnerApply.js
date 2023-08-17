@@ -446,14 +446,13 @@ const CompanyPartnerApply = (props) => {
           제공해드립니다.
           <br />더 자세한 내용은 추후 미팅을 통해 안내드리고 있습니다.
         </p>
-      </div>
-
-      <div className={styles.cp_btn}>
-        <Link to="/">
-          <button type="submit" onClick={handleFormSubmit}>
-            공고 등록하기
-          </button>
-        </Link>
+        <button
+          className={styles.cp_btn}
+          type="submit"
+          onClick={handleFormSubmit}
+        >
+          공고 등록하기
+        </button>
       </div>
     </form>
   );

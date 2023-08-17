@@ -1,11 +1,10 @@
-
 .JobBoxComponent {
   display: flex;
   justify-content: center;
 }
 .cp_content {
   width: 1120px;
-  height: 440px;
+  height: 250px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -16,6 +15,9 @@
 .cp_contentText {
   margin: 50px;
   font-weight: bold;
+}
+.cp_card div {
+  margin: 10px 20px 10px 20px;
 }
 .cp_card {
   width: 300px;
@@ -30,9 +32,6 @@
 }
 .cp_card:hover {
   opacity: 0.5;
-}
-.cp_card div {
-  margin: 10px 20px 10px 20px;
 }
 .cp_cardJstatus {
   top: 5px;
