@@ -8,7 +8,7 @@ const First = ({ onClickGoCounts }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const titles = ["일자리 찾기", "회사 홍보"];
   const contents = [<ContentStep1 />, <ContentStep2 />];
-  const link = ["/findJobs", "/companyPromotion", "/CompanyPromotion/"];
+  const link = ["/findJobs", "/companyPromotion", "/companyPartner/apply"];
 
   const handleClickTitle = (index) => {
     setActiveIndex(index);

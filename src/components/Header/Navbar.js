@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Menu from "./Menu";
 import UserMenu from "./UserMenu";
 import styles from "../../css/Nav.module.css";
-import logoImg from "../../img/logo.svg";
+import logoImg from "../../img/logo.png";
 
 function Navbar() {
   return (
@@ -15,7 +15,7 @@ function Navbar() {
             <Menu />
           </div>
           <div className={styles.navItem}>
-            <Link to="/" state={'first'}>
+            <Link to="/" state={"first"}>
               <img src={logoImg} alt="goldenPension Logo" />
             </Link>
           </div>
