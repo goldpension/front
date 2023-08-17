@@ -2,37 +2,47 @@ import React, { useEffect, useState } from "react";
 import { SenuriService } from "../api/axios";
 import Map from "../components/Map";
 import AreaCounts from "../components/Main/AreaCounts";
-import First from "../components/Main/First";
+import First from "./First";
 import List from "../components/Main/List";
-import Modal from "../components/Main/Modal";
+import Modal from "../components/modal/Modal";
 import styles from "../css/Main.module.css";
+import Image from "../img/어르신.png";
+import Loading from "../img/loading.gif";
 export const Main = () => {
   const [jobs, setJobs] = useState([]);
   const [counts, setCounts] = useState({});
-  const [screen, setScreen] = useState("loading");
-  const [listArea, setListArea] = useState();
+  const [screen, setScreen] = useState("areaCounts");
+  const [listArea, setListArea] = useState("all");
   const [showModal, setShowModal] = useState(false);
   const [modalSelectedJob, setModalSelectedJob] = useState({});
+
+  const goToScreen = (screenName) => {
+    setScreen(screenName);
+  };
+
   useEffect(() => {
     fetchData("getJobList");
   }, []);
 
   useEffect(() => {
     getCounts(jobs);
+    goToScreen("areaCounts");
   }, [jobs]);
 
+  /*
   useEffect(() => {
     if (Object.keys(counts).length > 0) {
       setScreen("areaCounts");
     }
   }, [counts]);
+  */
 
   const fetchData = async (type, jobId) => {
     try {
       if (type === "getJobList") {
         const response = await SenuriService.get("/getJobList", {
           params: {
-            numOfRows: 100,
+            numOfRows: 10000,
             pageNo: 1,
           },
         });
@@ -154,11 +164,11 @@ export const Main = () => {
 
   const onClickCount = (area) => {
     setListArea(area);
-    setScreen("list");
+    goToScreen("list");
   };
 
   const onClickGoCounts = () => {
-    setScreen("areaCounts");
+    goToScreen("areaCounts");
   };
   const openModal = (job) => {
     fetchData("modalData", job.jobId);
@@ -186,29 +196,56 @@ export const Main = () => {
     }
   };
 
+  const goBackHandler = () => {
+    setListArea("all");
+    goToScreen("areaCounts");
+  };
   return (
     <>
-      <Modal
-        show={showModal}
-        close={closeModal}
-        job={modalSelectedJob}
-        fetchData={fetchData}
-      />
-      <div className={styles.main}>
-        {/* <Map jobs={jobs}/> */}
-        <div className={styles.mapContainer}>
+      <Modal show={showModal} close={closeModal} job={modalSelectedJob} />
+      {screen === "list" ? (
+        <div className={styles.goBack} onClick={goBackHandler}>
+          전체지역
+        </div>
+      ) : null}
+      {Object.keys(jobs).length > 0 ? (
+        <div className={styles.main}>
+          <div className={styles.mapContainer}>
+            <Map jobs={jobs} selectedArea={listArea} />
+          </div>
+          <div className={styles.renderScreen}>{renderScreen(screen)}</div>
+        </div>
+      ) : (
+        <div className={styles.main}>
           <div
             style={{
-              width: "400px",
-              height: "550px",
-              border: "1px solid black",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+              fontSize: "2.5rem",
+              fontWeight: "bold",
             }}
           >
-            지도
+            <img src={Image} style={{ width: "500px" }} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-around",
+                height: "200px",
+              }}
+            >
+              <div>데이터를 불러오고 있습니다.</div>
+              <img src={Loading} width={"100px"} />
+            </div>
           </div>
         </div>
-        <div className={styles.renderScreen}>{renderScreen(screen)}</div>
-      </div>
+      )}
     </>
   );
 };
+
+export default Map;

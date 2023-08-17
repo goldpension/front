@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "../../css/Menu.module.css";
 
 function Menu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleButtonClick = useCallback((e) => {
     e.stopPropagation();
@@ -13,7 +13,7 @@ function Menu() {
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleClickOutside = () => setIsOpen(false);
+    const handleClickOutside = () => setIsOpen(true);
     window.addEventListener("click", handleClickOutside);
 
     return () => {
@@ -24,11 +24,11 @@ function Menu() {
   return (
     <div className={styles.Menu}>
       <button className={styles.Button} onClick={handleButtonClick}>
-        <Link to="/">메뉴</Link>
+        메뉴
       </button>
       {isOpen && (
         <ul className={styles.popup}>
-          <Link to="/">
+          <Link to="/findJobs">
             <li>일자리 찾기</li>
           </Link>
           <Link to="/companyPromotion">
@@ -39,12 +39,9 @@ function Menu() {
               사용방법 <br /> & <br /> 공지사항
             </li>
           </Link>
-          <Link to="/companyPartner">
-            <li>
-              (기업)
-              <br />
-              파트너 지원하기
-            </li>
+
+          <Link to="/apply">
+            <li>지원한 일자리 확인하기</li>
           </Link>
         </ul>
       )}

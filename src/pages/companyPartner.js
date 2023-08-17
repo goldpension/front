@@ -19,11 +19,6 @@ const companyPartner = (props) => {
         <div>
           <div className={styles.cp_btn}>
             <Link to="/companyPartner/apply">
-              <p>더보러가기</p>
-            </Link>
-          </div>
-          <div className={styles.cp_btn}>
-            <Link to="/companyPartner/apply">
               <p>파트너 지원하기</p>
             </Link>
           </div>

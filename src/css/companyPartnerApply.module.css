@@ -4,38 +4,97 @@
   padding: 1;
   display: flex;
   flex-direction: column;
-}
-.cp_general {
-  padding-top: 1px;
-  margin-top: 300px;
-  margin-bottom: 50px;
-  margin-right: 200px;
-  display: flex;
-  flex-direction: row;
-}
-.cp_power {
-  padding-top: 1px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  margin-right: 200px;
-  display: flex;
-  flex-direction: row;
+  align-items: center;
 }
 .cp_title {
-  flex: 1;
+  padding-top: 1px;
+  margin-top: 100px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.cp_inforContainer {
+  position: relative;
+  width: 80%;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.cp_infortitle {
+  position: absolute;
+  left: 10%;
+  top: 5%;
+}
+.cp_inforWarning {
+  position: absolute;
+  right: 10%;
+  top: 5%;
+  color: red;
+}
+.cp_inforcontentBox {
+  display: flex;
+  width: 80%;
+  margin: 40px;
+  padding: 20px 5px 20px 5px;
+  border: 2px solid rgba(7, 35, 107, 1);
+  border-radius: 10px;
+}
+.cp_inforcontents {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.cp_inforcontent input {
+  width: 300px;
+  border-radius: 5px;
+  height: 30px;
+  justify-content: center;
   text-align: center;
 }
-.cp_content {
-  flex: 1;
+.cp_inforcontenttext {
+  display: flex;
+  margin: 18px;
 }
-.cp_Add {
-  flex: 1;
+.cp_inforcontentinput {
+  margin: 10px;
+}
+.cp_inforcontenttext span {
+  color: red;
+}
+.cp_radio {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+.cp_radio input {
+  width: auto;
+  margin-right: 5px;
+}
+.cp_radio label {
+  margin-right: 15px;
+}
+.cp_inforPower {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+.cp_inforPower label {
+  margin-left: 10px;
+}
+.cp_inforPowerText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
   text-align: center;
+  flex-direction: column;
 }
 .cp_btn {
-  margin: 30px;
-  text-align: right;
-  float: right;
+  display: flex;
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
   background-color: transparent;
   border-style: solid;
   border-width: medium medium medium medium;
@@ -45,19 +104,13 @@
   font-weight: bolder;
   text-decoration: none;
   text-decoration-line: none;
-}
-.cp_btn p {
-  margin: 10px 20px 10px 20px;
-
-  color: rgba(7, 35, 107, 1);
-  text-decoration: none;
+  vertical-align: middle;
+  width: 200px;
 }
 .cp_btn:hover {
   background-color: rgba(7, 35, 107, 1);
   color: white;
 }
-.cp_btn p:hover {
-  color: white;
-
+a {
   text-decoration: none;
 }

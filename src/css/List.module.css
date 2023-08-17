@@ -1,29 +1,69 @@
 .listComponent {
   display: flex;
   flex-direction: column;
-  height: 550px;
+  height: 600px;
+  font-weight: bold;
 }
-
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+.listMainComment {
+  margin-bottom: 10px;
+  align-self: center;
+}
+.areaAndCounts {
+  color: red;
+  font-size: 2.5rem;
+}
+.search {
+  display: flex;
+  align-items: center;
+  padding: 0 3rem;
+}
+.searchInput {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  padding: 20px;
+  font-size: 1rem;
+  margin-right: 0.8rem;
+}
+.clearSearchButton {
+  font-size: 1.5rem;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+.clearSearchButton:hover {
+  opacity: 0.3;
+}
 .listTitle {
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
-  font-weight: bold;
   border-bottom: 2px solid black;
   padding-bottom: 5px;
 }
 .listContainer {
-  height: 464px;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
 }
 .job {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
-  padding: 2px 0;
-  font-weight: bold;
   text-align: center;
   cursor: pointer;
+  height: 40px;
+  font-size: 0.85rem;
 }
 
 .job:hover {
@@ -37,33 +77,41 @@
 
 .deadline {
   display: inline-block;
-  padding: 10px;
-  background-color: #2400ff;
-  border-radius: 50px;
+  padding: 5px 10px;
+  background-color: #2400FF;
+  border-radius: 30px;
   color: white;
 }
 
 .deadlineContainer {
   flex: 1;
+  padding: 0 1px;
 }
 
 .recrtTitle {
   flex: 1;
   font-size: 0.7rem;
+  padding: 0 1px;
+
 }
 .oranNm {
   flex: 1;
+  padding: 0 1px;
+
+
 }
 
 .workPlcNm {
   flex: 1;
+  padding: 0 1px;
+
 }
 
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
 .paginationButton {

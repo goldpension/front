@@ -1,23 +1,42 @@
 * {
   box-sizing: border-box;
 }
+.goBack {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  background-color: #ffffff;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: bold;
+}
+.goBack:hover {
+  opacity: 0.6;
+}
 .main {
-  position: relative;
-  top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: calc((100vh - 600px)/2);
-  padding-bottom: calc((100vh - 600px)/2);
+  padding-top: 2.5rem;
   padding-left: 100px;
   padding-right: 100px;
+}
+.renderScreen {
+  height: 550px;
 }
 .totalCounts {
   color: red;
 }
+.areaCountsComponent {
+  height: 100%;
+}
 .areaCountsContainer {
   display: flex;
   flex-wrap: wrap;
+  padding-top: 40px;
 }
 .bigFont {
   font-size: 2.5rem;
@@ -25,12 +44,22 @@
 }
 .areaCount {
   width: 50%;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 55px;
 }
 .areaCount:hover {
   color: red;
+  font-size: 1.5rem;
+}
+.areaName {
+  flex: 1;
+}
+.count {
+  flex: 2;
 }
 .mapContainer {
   display: flex;
