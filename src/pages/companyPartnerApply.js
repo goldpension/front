@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Axios } from "../api/axios";
 
 const CompanyPartnerApply = (props) => {
-  // ... (기존 코드)
+  //console.log(setFormData);
   const [formData, setFormData] = useState({
     company_name: "",
     company_address: "",
@@ -12,8 +12,8 @@ const CompanyPartnerApply = (props) => {
     company_call: "",
     company_boss: "",
     company_size: "",
-    company_logo: null,
     company_homepage: "",
+    company_logo: null,
     work_place: "",
     work_day: "",
     work_hour: "",
@@ -30,43 +30,31 @@ const CompanyPartnerApply = (props) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "/company/register/";
+    const url = "/company/register/"; // API endpoint URL
 
     try {
-      // 숫자 타입 필드들을 숫자로 변환
-      const transformedData = {
-        ...formData,
-        company_number: parseInt(formData.company_number),
-        company_size: parseInt(formData.company_size),
-        apply_num: parseInt(formData.apply_num),
-        apply_age: parseInt(formData.apply_age),
-      };
-
-      // 날짜 필드 변환
-      /*       const [year, month, day] = formData.apply_deadline.split(' ');
-      const deadlineDate = new Date(`${year}-${month}-${day}`);
-      transformedData.apply_deadline = deadlineDate.toISOString(); */
-
-      const response = await Axios.post(url, transformedData, {
+      console.log(formData);
+      const response = await Axios.post(url, formData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      // 성공 시 처리
+      // Successfully submitted data to the server
       alert("공고가 성공적으로 등록되었습니다.");
+      // Additional handling or redirection if needed
     } catch (error) {
       console.error("데이터 전송 오류:", error);
+      // Data submission error handling
       alert("공고 등록에 실패하였습니다. 다시 시도해주세요.");
     }
   };
 
   const handleValueChange = (e) => {
-    const { name, value, type } = e.target;
-    const newValue = type === "number" ? (isNaN(value) ? "" : value) : value;
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: newValue,
+      [name]: value,
     }));
   };
   const handleFileChange = (e) => {
@@ -296,6 +284,7 @@ const CompanyPartnerApply = (props) => {
                       id="1Month"
                       name="work_term"
                       value="1"
+                      onChange={handleValueChange}
                     />
                     <label for="1Month">1개월</label>
                     <input
@@ -303,6 +292,7 @@ const CompanyPartnerApply = (props) => {
                       id="3Month"
                       name="work_term"
                       value="3"
+                      onChange={handleValueChange}
                     />
                     <label for="3Month">3개월</label>
                     <input
@@ -310,6 +300,7 @@ const CompanyPartnerApply = (props) => {
                       id="6Month"
                       name="work_term"
                       value="6"
+                      onChange={handleValueChange}
                     />
                     <label for="6Month">6개월</label>
                     <input
@@ -317,6 +308,7 @@ const CompanyPartnerApply = (props) => {
                       id="12Month"
                       name="work_term"
                       value="12"
+                      onChange={handleValueChange}
                     />
                     <label for="12Month">1년 이상</label>
                   </div>
@@ -389,11 +381,24 @@ const CompanyPartnerApply = (props) => {
                       id="ignore"
                       name="apply_sex"
                       value="X"
+                      onChange={handleValueChange}
                     />
                     <label for="1Month">성별무관</label>
-                    <input type="radio" id="Men" name="apply_sex" value="M" />
+                    <input
+                      type="radio"
+                      id="Men"
+                      name="apply_sex"
+                      value="M"
+                      onChange={handleValueChange}
+                    />
                     <label for="3Month">남자</label>
-                    <input type="radio" id="Woman" name="apply_sex" value="W" />
+                    <input
+                      type="radio"
+                      id="Woman"
+                      name="apply_sex"
+                      value="W"
+                      onChange={handleValueChange}
+                    />
                     <label for="6Month">여자</label>
                   </div>
                 </div>
@@ -459,7 +464,11 @@ const CompanyPartnerApply = (props) => {
           제공해드립니다.
           <br />더 자세한 내용은 추후 미팅을 통해 안내드리고 있습니다.
         </p>
-        <button className={styles.cp_btn} type="submit">
+        <button
+          className={styles.cp_btn}
+          type="submit"
+          onClick={handleFormSubmit}
+        >
           공고 등록하기
         </button>
       </div>

@@ -1,12 +1,10 @@
-//예림이 기존 코드
-
 import React, { useState } from "react";
 import styles from "../css/companyPartnerApply.module.css";
 import { Link } from "react-router-dom";
 import { Axios } from "../api/axios";
 
 const CompanyPartnerApply = (props) => {
-  //console.log(formData);
+  //console.log(setFormData);
   const [formData, setFormData] = useState({
     company_name: "",
     company_address: "",
@@ -20,7 +18,7 @@ const CompanyPartnerApply = (props) => {
     work_day: "",
     work_hour: "",
     work_pay: "",
-    work_term: "",
+    work_term: "aaaaaaaa",
     work_experience: "",
     apply_num: "",
     apply_deadline: "",
@@ -32,7 +30,7 @@ const CompanyPartnerApply = (props) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "company/register"; // API endpoint URL
+    const url = "company/register/"; // API endpoint URL
 
     try {
       console.log(formData);
@@ -53,11 +51,10 @@ const CompanyPartnerApply = (props) => {
   };
 
   const handleValueChange = (e) => {
-    const { name, value, type } = e.target;
-    const newValue = type === "number" ? (isNaN(value) ? "" : value) : value;
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: newValue,
+      [name]: value,
     }));
   };
   const handleFileChange = (e) => {
@@ -287,6 +284,7 @@ const CompanyPartnerApply = (props) => {
                       id="1Month"
                       name="work_term"
                       value="1"
+                      onChange={handleValueChange}
                     />
                     <label for="1Month">1개월</label>
                     <input
@@ -294,6 +292,7 @@ const CompanyPartnerApply = (props) => {
                       id="3Month"
                       name="work_term"
                       value="3"
+                      onChange={handleValueChange}
                     />
                     <label for="3Month">3개월</label>
                     <input
@@ -301,6 +300,7 @@ const CompanyPartnerApply = (props) => {
                       id="6Month"
                       name="work_term"
                       value="6"
+                      onChange={handleValueChange}
                     />
                     <label for="6Month">6개월</label>
                     <input
@@ -308,6 +308,7 @@ const CompanyPartnerApply = (props) => {
                       id="12Month"
                       name="work_term"
                       value="12"
+                      onChange={handleValueChange}
                     />
                     <label for="12Month">1년 이상</label>
                   </div>
@@ -380,11 +381,24 @@ const CompanyPartnerApply = (props) => {
                       id="ignore"
                       name="apply_sex"
                       value="X"
+                      onChange={handleValueChange}
                     />
                     <label for="1Month">성별무관</label>
-                    <input type="radio" id="Men" name="apply_sex" value="M" />
+                    <input
+                      type="radio"
+                      id="Men"
+                      name="apply_sex"
+                      value="M"
+                      onChange={handleValueChange}
+                    />
                     <label for="3Month">남자</label>
-                    <input type="radio" id="Woman" name="apply_sex" value="W" />
+                    <input
+                      type="radio"
+                      id="Woman"
+                      name="apply_sex"
+                      value="W"
+                      onChange={handleValueChange}
+                    />
                     <label for="6Month">여자</label>
                   </div>
                 </div>
