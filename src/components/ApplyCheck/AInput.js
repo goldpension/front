@@ -15,7 +15,10 @@ const AInput = ({ convertScreen }) => {
       phone_number: phone_number,
     };
     try {
-      const request = await Axios.get("/guarantee/company/", formData);
+      const request = await Axios.get("/guarantee/company/", {
+        params: formData,
+      });
+      console.log(request);
       convertScreen(request);
     } catch (error) {
       console.error(error);
