@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Axios } from "../api/axios";
 
 const CompanyPartnerApply = (props) => {
-  //console.log(setFormData);
   const [formData, setFormData] = useState({
     company_name: "",
     company_address: "",
@@ -371,7 +370,7 @@ const CompanyPartnerApply = (props) => {
                     name="apply_deadline"
                     value={formData.apply_deadline}
                     onChange={handleValueChange}
-                    placeholder="2023-8-30"
+                    placeholder="2023년 8월 30일"
                   />
                 </div>
                 <div className={styles.cp_inforcontentinput}>
