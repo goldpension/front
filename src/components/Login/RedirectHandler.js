@@ -13,14 +13,14 @@ const RedirectHandler = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (code && code !== prevCode) {
-      const url = "http://localhost:8000/accounts/kakao/callback/";
+      const url = "http://123.212.65.172:8000/accounts/kakao/callback/";
       console.log("요청 URL:", `${url}?code=${code}`);
       axios
         .get(url, {
           params: { code },
         })
         .then((response) => {
-          console.log("백엔드 응답:", response.data);
+          console.log("백엔드 응답:", response);
           setLoggedInUser({
             isLoggedIn: true,
             userName: response.data.name,

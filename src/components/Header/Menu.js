@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../css/Menu.module.css";
 
-function Menu({isLoggedIn}) {
+function Menu({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleButtonClick = useCallback((e) => {
@@ -13,7 +13,7 @@ function Menu({isLoggedIn}) {
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleClickOutside = () => setIsOpen(true);
+    const handleClickOutside = () => setIsOpen(false);
     window.addEventListener("click", handleClickOutside);
 
     return () => {
@@ -39,12 +39,11 @@ function Menu({isLoggedIn}) {
               사용방법 <br /> & <br /> 공지사항
             </li>
           </Link>
-          {isLoggedIn ?
-           null :
-          <Link to="/apply">
-            <li>지원한 일자리 확인하기</li>
-          </Link>
-          }
+          {isLoggedIn ? null : (
+            <Link to="/apply">
+              <li>지원한 일자리 확인하기</li>
+            </Link>
+          )}
         </ul>
       )}
     </div>

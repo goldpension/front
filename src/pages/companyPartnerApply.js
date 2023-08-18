@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Axios } from "../api/axios";
 
 const CompanyPartnerApply = (props) => {
-  //console.log(setFormData);
   const [formData, setFormData] = useState({
     company_name: "",
     company_address: "",
@@ -27,25 +26,34 @@ const CompanyPartnerApply = (props) => {
     apply_work: "",
     apply_detail: "",
   });
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "/company/register/"; // API endpoint URL
+    const url = "/company/register/"; // API 엔드포인트 URL
 
     try {
-      console.log(formData);
+      console.log("폼 데이터 전송:", formData);
+
+      // 데이터 타입 체크를 위해 객체의 속성들을 탐색하고 데이터 타입을 확인합니다
+      for (const key in formData) {
+        if (formData.hasOwnProperty(key)) {
+          console.log(`속성: ${key}, 데이터 타입: ${typeof formData[key]}`);
+        }
+      }
+
       const response = await Axios.post(url, formData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      // Successfully submitted data to the server
+      // 서버로 데이터가 성공적으로 제출되었을 때
       alert("공고가 성공적으로 등록되었습니다.");
-      // Additional handling or redirection if needed
+      // 필요한 추가 처리 또는 리다이렉션
     } catch (error) {
       console.error("데이터 전송 오류:", error);
-      // Data submission error handling
+      // 데이터 제출 오류 처리
       alert("공고 등록에 실패하였습니다. 다시 시도해주세요.");
     }
   };
@@ -57,6 +65,7 @@ const CompanyPartnerApply = (props) => {
       [name]: value,
     }));
   };
+
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     setFormData((prevData) => ({
@@ -64,6 +73,8 @@ const CompanyPartnerApply = (props) => {
       [name]: files[0],
     }));
   };
+
+  console.log("렌더링된 데이터:", formData); // 현재 폼 데이터 체크
 
   return (
     <form onSubmit={handleFormSubmit}>
