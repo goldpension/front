@@ -19,7 +19,7 @@ const AInput = ({ convertScreen }) => {
         params: formData,
       });
       console.log(request);
-      convertScreen(request);
+      convertScreen(request.data);
     } catch (error) {
       console.error(error);
       alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
@@ -73,11 +73,9 @@ const AInput = ({ convertScreen }) => {
           paddingTop: "70px",
         }}
       >
-        <Link to="/apply/lists">
-          <button type="submit" className={styles.hoverButton}>
-            확인하기
-          </button>
-        </Link>
+        <button type="submit" className={styles.hoverButton}>
+          확인하기
+        </button>
       </div>
       {/* 필요한 Route 설정 및 Link 코드를 이 곳에 추가하세요. */}
     </form>

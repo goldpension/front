@@ -81,7 +81,7 @@ const CompanyPromotion = (props) => {
                 걱정마세요. 이 기업들은 어르신을 꼭 필요로 하고 있습니다.
               </div>
               <div className={styles.cp_card}>
-                <JobBox companies={companies} />
+                <JobBox companies={companies} openModal={openModal} />
               </div>
             </div>
             <div className={styles.cp_btn} onClick={onClickNextButton}>

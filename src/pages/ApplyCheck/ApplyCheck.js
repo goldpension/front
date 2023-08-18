@@ -3,7 +3,7 @@ import ApplyCheckMent from "../../components/ApplyCheck/ACheckMent";
 import AInput from "../../components/ApplyCheck/AInput";
 import JobTable from "../../components/ApplyCheck/JobTable";
 const ApplyCheck = () => {
-  const [applyCompanies, setApplyCompanies] = useState();
+  const [applyCompanies, setApplyCompanies] = useState([]);
   const [fetchCompleted, setFetchCompleted] = useState(false);
 
   const convertScreen = (companies) => {
