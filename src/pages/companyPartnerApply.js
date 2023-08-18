@@ -3,7 +3,7 @@ import styles from "../css/companyPartnerApply.module.css";
 import { Link } from "react-router-dom";
 import { Axios } from "../api/axios";
 import { useRecoilState } from "recoil";
-import userState from "../../recoil/userState";
+import userState from "../recoil/userState";
 
 const CompanyPartnerApply = (props) => {
   const [loggedInUser, setLoggedInUser] = useRecoilState(userState);

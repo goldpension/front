@@ -13,7 +13,7 @@ function Menu({isLoggedIn}) {
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleClickOutside = () => setIsOpen(true);
+    const handleClickOutside = () => setIsOpen(false);
     window.addEventListener("click", handleClickOutside);
 
     return () => {

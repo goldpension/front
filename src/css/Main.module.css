@@ -69,3 +69,37 @@
 .renderScreen {
   flex: 1;
 }
+
+/* 테블릿 크기 (가로 768px ~ 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* 테블릿 크기에 맞는 스타일 */
+    .main {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .renderScreen {
+        height: 350px;
+    }
+    .areaCount {
+        width: 100%;
+        font-size: 1rem;
+        height: 40px;
+    }
+}
+
+/* 모바일 크기 (가로 최대 767px) */
+@media (max-width: 767px) {
+    /* 모바일 크기에 맞는 스타일 */
+    .main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .renderScreen {
+        height: 200px;
+    }
+    .areaCount {
+        width: 100%;
+        font-size: 0.8rem;
+        height: 30px;
+    }
+}
