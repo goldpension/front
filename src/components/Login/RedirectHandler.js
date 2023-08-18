@@ -24,6 +24,7 @@ const RedirectHandler = () => {
           setLoggedInUser({
             isLoggedIn: true,
             userName: response.data.name,
+            email: response.data.email,
           });
           navigate("/loginSuccess");
         })

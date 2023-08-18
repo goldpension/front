@@ -5,16 +5,37 @@ import { ModalContent } from "./ModalContent";
 import ApplyForm from "./ApplyForm";
 
 const Modal = ({ show, close, job, type }) => {
-  const [applyCompleted, SetApplyCompleted] = useState(false);
+  const [applyCompleted, setApplyCompleted] = useState(false);
   if (!show) {
     return null;
   }
+  const onClickSubmit = () => {
+    setApplyCompleted(true);
+  };
+  const checkDeadline = (apply_deadline) => {
+    const today = new Date();
+    const deadline = new Date(apply_deadline);
+    today.setHours(0, 0, 0, 0);
+    if (deadline < today) {
+      return "구인마감";
+    } else if (deadline > today) {
+      return "구인중";
+    } else {
+      return "오늘마감";
+    }
+  };
   const handleClickContent = (e) => {
     e.stopPropagation();
   };
   const renderApplyMethod = (method) => {
     if (type === "guarantee") {
-      return <ApplyForm />;
+      return (
+        <ApplyForm
+          job={job}
+          checkDeadline={checkDeadline}
+          onClickSubmit={onClickSubmit}
+        />
+      );
     }
     switch (method) {
       case "CM0801":
@@ -51,7 +72,7 @@ const Modal = ({ show, close, job, type }) => {
           </div>
         ) : (
           <div className={styles.modalContent}>
-            <ModalContent job={job} type={type} />
+            <ModalContent job={job} type={type} checkDeadline={checkDeadline} />
             {renderApplyMethod(job.acptMthdCd)}
           </div>
         )}

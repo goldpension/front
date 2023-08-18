@@ -16,8 +16,9 @@ const CompanyPromotion = (props) => {
   }, []);
 
   const fetchData = async () => {
-    const companies = await Axios.get("/company/register");
-    setCompanies(companies);
+    const companies = await Axios.get("/company/register/");
+    console.log("회사들", companies.data);
+    setCompanies(companies.data);
   };
 
   const openModal = (company) => {

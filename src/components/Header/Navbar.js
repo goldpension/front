@@ -13,6 +13,7 @@ function Navbar() {
     setLoggedInUser({
       isLoggedIn: false,
       userName: null,
+      email: null,
     });
   };
   return (
@@ -29,24 +30,12 @@ function Navbar() {
         <div className={styles.navItemlogin}>
           {loggedInUser.isLoggedIn ? (
             <div className={styles.logoutBtnContainer}>
-              {loggedInUser.userName}님{" "}
+              <Link to="/myinfo">{loggedInUser.userName}</Link>님{" "}
               <Link to="/">
                 <div className={styles.logoutBtn} onClick={logout}>
                   로그아웃
                 </div>
               </Link>
-            </div>
-          ) : (
-            <Link to="/Login">
-              <p>로그인</p>
-            </Link>
-          )}
-          {loggedInUser.isLoggedIn ? (
-            <div className={styles.logoutBtnContainer}>
-              {loggedInUser.userName}님{" "}
-              <div className={styles.logoutBtn} onClick={logout}>
-                로그아웃
-              </div>
             </div>
           ) : (
             <Link to="/Login">

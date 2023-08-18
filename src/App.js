@@ -16,8 +16,7 @@ import Join from "./pages/Join_p/Join";
 import Join_tel from "./pages/Join_p/Join_tel";
 import MyInfo1 from "./pages/MyInfo1";
 import MyInfo2 from "./pages/MyInfo2";
-import ApplyCheckMem from "./pages/ApplyCheck/ApplyCheckMem";
-import ApplyCheckNon from "./pages/ApplyCheck/ApplyCheckNon";
+import ApplyCheck from "./pages/ApplyCheck/ApplyCheck";
 import RedirectHandler from "./components/Login/RedirectHandler";
 import LoginSuccess from "./components/Login/LoginSuccess";
 import KakaoRedirectHandler from "./components/Login/KakaoRedirectionHandler";
@@ -48,8 +47,12 @@ const App = () => {
               <Routes>
                 <Route path="/findJobs/" element={<Main />} />
                 <Route path="/manual/*" element={<Manual />} />
-                <Route path="/CompanyPromotion/" element={<CompanyPromotion />} />
+                <Route
+                  path="/CompanyPromotion/"
+                  element={<CompanyPromotion />}
+                />
                 <Route path="/login/*" element={<Login />} />
+                <Route path="/myinfo" element={<MyInfo1 />} />
 
                 <Route
                   path="/accounts/kakao/callback/*"
@@ -63,7 +66,7 @@ const App = () => {
                   path="/companyPartner/apply"
                   element={<CompanyPartnerApply />}
                 />
-                <Route path="/apply" element={<ApplyCheckNon />} />
+                <Route path="/apply" element={<ApplyCheck />} />
                 <Route path="/join/*" element={<Join />} />
                 <Route path="/join/join_tel" element={<Join_tel />} />
                 <Route path="/*" element={<NotFound />}></Route>
