@@ -205,11 +205,16 @@ export const Main = () => {
         </div>
       ) : null}
       {Object.keys(jobs).length > 0 ? (
-        <div className={styles.main}>
-          <div className={styles.mapContainer}>
-            <Map jobs={jobs} selectedArea={listArea} />
+        <div>
+          <div className={styles.main}>
+            <div className={styles.mapContainer}>
+              <Map jobs={jobs} selectedArea={listArea} onClickCount={onClickCount}/>
+            </div>
+            <div className={styles.renderScreen}>{renderScreen(screen)}</div>
           </div>
-          <div className={styles.renderScreen}>{renderScreen(screen)}</div>
+          <h2 style={{ marginTop: "100px", textAlign: "center" }}>
+            새벽 00시부터 01시까지 정확한 데이터를 불러올 수 없습니다.
+          </h2>
         </div>
       ) : (
         <div className={styles.main}>

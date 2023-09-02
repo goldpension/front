@@ -1,12 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "../../css/Apply.module.css";
 import { Link } from "react-router-dom";
 import { Axios } from "../../api/axios";
 
-const AInput = () => {
-  const [companies, setCompanies] = useState();
-  const [name, setName] = useState('');
-  const [phone_number, setPhoneNumber] = useState('');
+const AInput = ({ convertScreen }) => {
+  const [name, setName] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,11 +15,14 @@ const AInput = () => {
       phone_number: phone_number,
     };
     try {
-      await Axios.post('/guarantee/company', formData);
-      alert('성공적으로 전송되었습니다!');
+      const request = await Axios.get("/guarantee/company/", {
+        params: formData,
+      });
+      console.log(request);
+      convertScreen(request.data);
     } catch (error) {
       console.error(error);
-      alert('전송 중 오류가 발생했습니다. 다시 시도해주세요.');
+      alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
     }
   };
 
@@ -28,15 +30,17 @@ const AInput = () => {
     <form onSubmit={handleSubmit}>
       <div
         style={{
-          textAlign: 'center',
-          paddingTop: '30px',
+          textAlign: "center",
+          paddingTop: "30px",
         }}
       >
-        <h4 style={{ textAlign: 'center', paddingBottom: '10px' }}>전화번호 입력</h4>
-        <div style={{ textAlign: 'center' }}>
+        <h4 style={{ textAlign: "center", paddingBottom: "10px" }}>
+          전화번호 입력
+        </h4>
+        <div style={{ textAlign: "center" }}>
           <input
             type="tel"
-            placeholder={'010-1234-1234'}
+            placeholder={"010-1234-1234"}
             pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}"
             className={styles.box}
             value={phone_number}
@@ -46,15 +50,17 @@ const AInput = () => {
       </div>
       <div
         style={{
-          textAlign: 'center',
-          paddingTop: '30px',
+          textAlign: "center",
+          paddingTop: "30px",
         }}
       >
-        <h4 style={{ textAlign: 'center', paddingBottom: '10px' }}>이름 입력</h4>
-        <div style={{ textAlign: 'center' }}>
+        <h4 style={{ textAlign: "center", paddingBottom: "10px" }}>
+          이름 입력
+        </h4>
+        <div style={{ textAlign: "center" }}>
           <input
             type="text"
-            placeholder={'이름을 써주세요'}
+            placeholder={"이름을 써주세요"}
             className={styles.box}
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -63,8 +69,8 @@ const AInput = () => {
       </div>
       <div
         style={{
-          textAlign: 'center',
-          paddingTop: '70px',
+          textAlign: "center",
+          paddingTop: "70px",
         }}
       >
         <button type="submit" className={styles.hoverButton}>

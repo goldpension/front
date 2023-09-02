@@ -4,20 +4,22 @@ import styles from '../../css/List.module.css';
 const List = ({ area, jobs, openModal }) => {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const jobsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState('');
+  const jobsPerPage = 10;
+  const groupPerPage = 10;
+  const [currentGroup, setCurrentGroup] = useState(1);
 
   useEffect(() => {
     filterJobs(jobs);
   }, [jobs, searchTerm]);
 
+  //전체 jobs를 보냅니다 
   const filterJobs = (jobs) => {
     let newFilterJobs = jobs.filter((job) => {
       if (job.workPlcNm) {
         return area === job.workPlcNm.slice(0, 2);
       }
     });
-
     if (searchTerm) {
       newFilterJobs = newFilterJobs.filter((job) =>
         job.recrtTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -27,6 +29,7 @@ const List = ({ area, jobs, openModal }) => {
     }
 
     setFilteredJobs(newFilterJobs);
+    console.log(newFilterJobs)
     setCurrentPage(1);
   };
 
@@ -51,10 +54,24 @@ const List = ({ area, jobs, openModal }) => {
 
   const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
 
+  const nextGroup = () => {
+    if (currentGroup < Math.ceil(totalPages / groupPerPage)) {
+      setCurrentGroup(currentGroup + 1);
+    }
+  };
+
+  const prevGroup = () => {
+    if (currentGroup > 1) {
+      setCurrentGroup(currentGroup - 1);
+    }
+  };
+  
   const renderPageNumbers = () => {
     const pages = [];
 
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = (currentGroup - 1) * groupPerPage + 1;
+    i <= currentGroup * groupPerPage && i <= totalPages;
+    i++) {
       pages.push(
         <button
           className={`${styles.paginationButton} ${currentPage === i ? styles.active : ''}`}
@@ -114,7 +131,19 @@ const List = ({ area, jobs, openModal }) => {
           </div>
         ))}
       </div>
-      <div className={styles.pagination}>{renderPageNumbers()}</div>
+      <div className={styles.pagination}>
+        {currentGroup >1 && (
+          <button className={styles.paginationButton} onClick={prevGroup}>
+            Prev
+          </button>
+        )}
+        {renderPageNumbers()}
+        {currentPage<Math.ceil(totalPages/groupPerPage) && (
+          <button className={styles.paginationButton} onClick={nextGroup}>
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 };

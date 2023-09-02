@@ -16,8 +16,9 @@ const CompanyPromotion = (props) => {
   }, []);
 
   const fetchData = async () => {
-    const companies = await Axios.get("/company/register");
-    setCompanies(companies);
+    const companies = await Axios.get("/company/register/");
+    console.log("회사들", companies.data);
+    setCompanies(companies.data);
   };
 
   const openModal = (company) => {
@@ -80,7 +81,7 @@ const CompanyPromotion = (props) => {
                 걱정마세요. 이 기업들은 어르신을 꼭 필요로 하고 있습니다.
               </div>
               <div className={styles.cp_card}>
-                <JobBox companies={companies} />
+                <JobBox companies={companies} openModal={openModal} />
               </div>
             </div>
             <div className={styles.cp_btn} onClick={onClickNextButton}>

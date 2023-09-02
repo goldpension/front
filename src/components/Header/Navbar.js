@@ -13,13 +13,14 @@ function Navbar() {
     setLoggedInUser({
       isLoggedIn: false,
       userName: null,
-    })
-  }
+      email: null,
+    });
+  };
   return (
     <>
       <div className={styles.navContainer}>
         <div className={styles.navItem}>
-          <Menu isLoggedIn={loggedInUser.isLoggedIn}/>
+          <Menu isLoggedIn={loggedInUser.isLoggedIn} />
         </div>
         <div className={styles.navItem}>
           <Link to="/" state={"first"}>
@@ -27,14 +28,20 @@ function Navbar() {
           </Link>
         </div>
         <div className={styles.navItemlogin}>
-          {loggedInUser.isLoggedIn ?
-          <div className={styles.logoutBtnContainer}>{loggedInUser.userName}님 <Link to='/'><div className={styles.logoutBtn} onClick={logout}>로그아웃</div></Link></div>  
-          :
-          <Link to="/Login">
-            <p>로그인</p>
-          </Link>
-
-        }
+          {loggedInUser.isLoggedIn ? (
+            <div className={styles.logoutBtnContainer}>
+              <Link to="/myinfo">{loggedInUser.userName}</Link>님{" "}
+              <Link to="/">
+                <div className={styles.logoutBtn} onClick={logout}>
+                  로그아웃
+                </div>
+              </Link>
+            </div>
+          ) : (
+            <Link to="/Login">
+              <p>로그인</p>
+            </Link>
+          )}
         </div>
       </div>
     </>

@@ -5,17 +5,7 @@ import { Axios } from "../../api/axios";
 
 // import JobTable2 from "../components/ApplyCheck/JobTable2";
 
-const ApplyCheckMem = () => {
-  const [companies, setCompanies] = useState();
-  const fetchData = async () => {
-    const companies = await Axios.get("/guarantee/company", {
-      // params: {
-      //   name: name,
-      //   phone_number: phone_number,
-      // },
-    });
-    setCompanies(companies);
-  };
+const ApplyCheckMem = ({ companies }) => {
   const jobData = [
     {
       status: "구인 중",

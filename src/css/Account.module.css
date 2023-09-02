@@ -14,7 +14,10 @@
 .nButton:hover {
   background-color: #03c832 0.7;
 }
-
+.accountComponent {
+  display: flex;
+  justify-content: center;
+}
 .container {
   display: flex;
   flex-direction: row;
@@ -42,22 +45,6 @@
   width: 300px;
   /* padding-left: 40px;
   padding-right: 40px; */
-}
-
-.text3 {
-  text-align: center;
-  flex-basis: 200px;
-  margin-left: 30px;
-  /* padding-left: 50px;
-  padding-right: 30px; */
-}
-
-.h_line {
-  border-bottom: 1px solid black; /* 가로선의 두께와 색상을 설정 */
-  margin-left: 340px;
-  padding-top: 10px;
-  margin-bottom: 15px;
-  width: 600px;
 }
 
 .a {

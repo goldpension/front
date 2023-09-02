@@ -6,6 +6,7 @@ const userState = atom({
   default: {
     isLoggedIn: false,
     userName: null,
+    email: null,
   },
 });
 
