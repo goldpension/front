@@ -8,7 +8,6 @@ const List = ({ area, jobs, openModal }) => {
   const jobsPerPage = 10;
   const groupPerPage = 10;
   const [currentGroup, setCurrentGroup] = useState(1);
-
   useEffect(() => {
     filterJobs(jobs);
   }, [jobs, searchTerm]);
@@ -18,6 +17,8 @@ const List = ({ area, jobs, openModal }) => {
     let newFilterJobs = jobs.filter((job) => {
       if (job.workPlcNm) {
         return area === job.workPlcNm.slice(0, 2);
+      } else {
+        return (area === job.workPlcNm) && (job.deadline === '접수중');
       }
     });
     if (searchTerm) {
@@ -90,7 +91,7 @@ const List = ({ area, jobs, openModal }) => {
     <div className={styles.listComponent}>
       <div className={styles.searchContainer}>
         <p className={styles.listMainComment}>
-          지금 <span className={styles.areaAndCounts}>{area}</span>에 등록된 일자리 수{' '}
+          지금 <span className={styles.areaAndCounts}>{area ? area : '기타'}</span>에 등록된 일자리 수{' '}
           <span className={styles.areaAndCounts}>{filteredJobs.length}</span>개!
         </p>
         <div className={styles.search}>

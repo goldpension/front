@@ -1,6 +1,6 @@
   import React, { useCallback, useEffect, useState } from "react";
 import Json from "../json/TL_SCCO_CTPRVN.json";
-function Map({jobs, selectedArea, onClickCount}) {
+function Map({jobs, selectedArea, onClickCount, openModal}) {
   const [map, setMap] = useState();
   const [polygons, setPolygons] = useState([]);
   const [markers, setMarkers] = useState([]);
@@ -221,6 +221,7 @@ function Map({jobs, selectedArea, onClickCount}) {
             const onClick = () => {
               infowindow.open(map, marker);
               map.setCenter(coords);
+              openModal(job);
             };
   
             kakao.maps.event.addListener(marker, "mouseover", onMouseOver);
@@ -266,7 +267,8 @@ function Map({jobs, selectedArea, onClickCount}) {
         height: "550px",
         borderRadius: "20px",
       }}
-    ></div>
+    >
+    </div>
   );
 }
 
