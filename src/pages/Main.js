@@ -42,7 +42,7 @@ export const Main = () => {
       if (type === "getJobList") {
         const response = await SenuriService.get("/getJobList", {
           params: {
-            numOfRows: 10000,
+            numOfRows: 1500,
             pageNo: 1,
           },
         });
@@ -76,6 +76,7 @@ export const Main = () => {
             });
           }
           setJobs(parsedJobs);
+          console.log(parsedJobs);
         } else {
           console.error("Data is missing or has incorrect structure");
         }
@@ -208,7 +209,12 @@ export const Main = () => {
         <div>
           <div className={styles.main}>
             <div className={styles.mapContainer}>
-              <Map jobs={jobs} selectedArea={listArea} />
+              <Map
+                jobs={jobs}
+                selectedArea={listArea}
+                onClickCount={onClickCount}
+                openModal={openModal}
+              />
             </div>
             <div className={styles.renderScreen}>{renderScreen(screen)}</div>
           </div>

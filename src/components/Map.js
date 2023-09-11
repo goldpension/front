@@ -1,33 +1,85 @@
   import React, { useCallback, useEffect, useState } from "react";
 import Json from "../json/TL_SCCO_CTPRVN.json";
-import axios from "axios"
-import SenuriService from "../api/axios";
-function Map({jobs, selectedArea}) {
+function Map({jobs, selectedArea, onClickCount, openModal}) {
   const [map, setMap] = useState();
   const [polygons, setPolygons] = useState([]);
   const [markers, setMarkers] = useState([]);
   const [clusterer, setClusterer] = useState(null);
   const centerPoint = {
     서울: [37.5665, 126.978],
+    서울특별시: [37.5665, 126.978],
     부산: [35.1796, 129.0756],
+    부산광역시: [35.1796, 129.0756],
     대구: [35.8714, 128.6014],
+    대구광역시: [35.8714, 128.6014],
     인천: [37.4563, 126.7052],
+    인천광역시: [37.4563, 126.7052],
     광주: [35.1601, 126.8517],
+    광주광역시: [35.1601, 126.8517],
     대전: [36.3504, 127.3845],
+    대전광역시: [36.3504, 127.3845],
     울산: [35.5384, 129.3114],
+    울산광역시: [35.5384, 129.3114],
     세종: [36.5047, 127.2448],
+    세종특별자치시: [36.5047, 127.2448],
     경기: [37.4138, 127.5183],
+    경기도: [37.4138, 127.5183],
     강원: [37.8228, 128.1555],
+    강원도: [37.8228, 128.1555],
     충북: [36.6356, 127.4913],
+    충청북도: [36.6356, 127.4913],
     충남: [36.6588, 126.673],
+    충청남도: [36.6588, 126.673],
     전북: [35.7175, 127.153],
+    전라북도: [35.7175, 127.153],
     전남: [34.8679, 126.991],
+    전라남도: [34.8679, 126.991],
     경북: [36.4919, 128.8889],
+    경상북도: [36.4919, 128.8889],
     경남: [35.4606, 128.2132],
+    경상남도: [35.4606, 128.2132],
     제주: [33.4996, 126.5312],
+    제주특별자치도: [33.4996, 126.5312],
   };
 
-
+  const getAreaName = (areaName) => {
+    switch (areaName) {
+      case '서울특별시':
+        return '서울';
+      case '부산광역시':
+        return '부산';
+      case '대구광역시':
+        return '대구';
+      case '인천광역시':
+        return '인천';
+      case '광주광역시':
+        return '광주';
+      case '대전광역시':
+        return '대전';
+      case '울산광역시':
+        return '울산';
+      case '세종특별자치시':
+        return '세종';
+      case '경기도':
+        return '경기';
+      case '강원도':
+        return '강원';
+      case '충청북도':
+        return '충북';
+      case '충청남도':
+        return '충남';
+      case '전라북도':
+        return '전북';
+      case '전라남도':
+        return '전남';
+      case '경상북도':
+        return '경북';
+      case '경상남도':
+        return '경남';
+      case '제주특별자치도':
+        return '제주';
+    }
+  }
   const displayArea = useCallback((coordinates, areaName) => {
     if (!map) return;
   
@@ -49,17 +101,17 @@ function Map({jobs, selectedArea}) {
     coordinates.forEach((coordinate) => {
       let path = coordinate.map((coor) => new kakao.maps.LatLng(coor[1], coor[0]));
       let polygon = createPolygon(path);
-  
-      const onPolygonMouseOver = () => polygon.setOptions({ fillColor: "#6288A8" });
-      const onPolygonMouseOut = () => polygon.setOptions({ fillColor: "#7FACCF" });
-  
+      const onPolygonMouseOver = (mouseEvent) => {
+        polygon.setOptions({ fillColor: "#6288A8" });
+      };
+
+      const onPolygonMouseOut = () => {
+        polygon.setOptions({ fillColor: "#7FACCF" });
+      };
+
       const onPolygonClick = () => {
-        var moveLatLon = new kakao.maps.LatLng(
-          centerPoint[areaName][0],
-          centerPoint[areaName][1]
-        );
-        map.setCenter(moveLatLon);
-        map.setLevel(10);
+        let polygonAreaName = getAreaName(areaName);
+        onClickCount(polygonAreaName)
       };
   
       kakao.maps.event.addListener(polygon, "mouseover", onPolygonMouseOver);
@@ -128,7 +180,7 @@ function Map({jobs, selectedArea}) {
     const makeMap = async (selectedArea) => {
       const kakao = window.kakao;
       let newMarkers = [];
-      if (selectedArea === "all") { //전체 지역 
+      if (selectedArea === "all" || selectedArea === undefined) { //전체 지역 
         map.setLevel(13);
         map.setCenter(new kakao.maps.LatLng(36.38, 127.51));
 
@@ -169,6 +221,7 @@ function Map({jobs, selectedArea}) {
             const onClick = () => {
               infowindow.open(map, marker);
               map.setCenter(coords);
+              openModal(job);
             };
   
             kakao.maps.event.addListener(marker, "mouseover", onMouseOver);
@@ -214,7 +267,8 @@ function Map({jobs, selectedArea}) {
         height: "550px",
         borderRadius: "20px",
       }}
-    ></div>
+    >
+    </div>
   );
 }
 

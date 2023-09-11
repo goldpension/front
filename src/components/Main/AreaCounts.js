@@ -26,7 +26,7 @@ const AreaCounts = ({counts, onClickCount}) => {
           <div className={styles.areaCount} onClick={()=>onClickCount('광주')}><div className={styles.areaName}>광주</div> <div className={styles.count}>{counts['광주'] ? counts['광주'] : '0'}</div></div>
           <div className={styles.areaCount} onClick={()=>onClickCount('울산')}><div className={styles.areaName}>울산</div> <div className={styles.count}>{counts['울산'] ? counts['울산'] : '0'}</div></div>
           <div className={styles.areaCount} onClick={()=>onClickCount('세종')}><div className={styles.areaName}>세종</div> <div className={styles.count}>{counts['세종'] ? counts['세종'] : '0'}</div></div>
-          <div className={styles.areaCount} onClick={()=>onClickCount('기타')}><div className={styles.areaName}>기타</div> <div className={styles.count}>{counts['기타'] ? counts['기타'] : '0'}</div></div>
+          <div className={styles.areaCount} onClick={()=>onClickCount()}><div className={styles.areaName}>기타</div> <div className={styles.count}>{counts['기타'] ? counts['기타'] : '0'}</div></div>
         </div>
       </div>
     )
