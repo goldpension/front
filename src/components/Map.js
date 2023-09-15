@@ -147,33 +147,25 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
   };
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=c42993669a187ffcee67bc25740ee4f6&autoload=false";
-    document.head.appendChild(script);
-
-    script.onload = () => {
-      const kakao = window.kakao;
-
-      kakao.maps.load(() => {
-        let container = document.getElementById("map");
-        let options = {
-          center: new kakao.maps.LatLng(36.38, 127.51),
-          level: 13,
-        };
-
-        let map = new kakao.maps.Map(container, options);
-        setMap(map);
-
-        const newClusterer = new kakao.maps.MarkerClusterer({
-          map: map,
-          averageCenter: true,
-          minLevel: 10,
-        });
-        setClusterer(newClusterer);
-      });
+    const kakao = window.kakao;
+  
+    let container = document.getElementById("map");
+    let options = {
+      center: new kakao.maps.LatLng(36.38, 127.51),
+      level: 13,
     };
+  
+    let map = new kakao.maps.Map(container, options);
+    setMap(map);
+  
+    const newClusterer = new kakao.maps.MarkerClusterer({
+      map: map,
+      averageCenter: true,
+      minLevel: 10,
+     });
+     setClusterer(newClusterer);
   }, []);
-
+  
   useEffect(() => {
     if (!map || !clusterer) return;
 
