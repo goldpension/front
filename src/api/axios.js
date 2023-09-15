@@ -6,7 +6,7 @@ const SenuriService = axios.create({
     accept: "application/xml", // XML 데이터를 받아올 것임을 명시합니다.
   },
   params: {
-    serviceKey: process.env.SENURI_API_KEY,
+    serviceKey: process.env.REACT_APP_SENURI_API_KEY,
   },
 });
 
