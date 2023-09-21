@@ -21,7 +21,7 @@ const First = ({ onClickGoCounts }) => {
   return (
     <div className={styles.main}>
       <div className={styles.leftSide}>
-        <img src={koreaMap} alt="한반도이미지" style={{ height: "550px" }} />
+        <img src={koreaMap} alt="한반도이미지"/>
       </div>
       <div className={styles.rightSide}>
         <div className={styles.firstMainComment}>

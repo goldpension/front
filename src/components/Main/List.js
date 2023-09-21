@@ -7,7 +7,7 @@ const List = ({ area, jobs, openModal }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const jobsPerPage = 10;
   const groupPerPage = 10;
-  const [currentGroup, setCurrentGroup] = useState(1);
+  const [currentGroup, setCurrentGroup] = useState(1);  //10단위의 버튼들 
   useEffect(() => {
     filterJobs(jobs);
   }, [jobs, searchTerm]);
@@ -139,7 +139,7 @@ const List = ({ area, jobs, openModal }) => {
           </button>
         )}
         {renderPageNumbers()}
-        {currentPage<Math.ceil(totalPages/groupPerPage) && (
+        {currentGroup<Math.ceil(totalPages/groupPerPage) && (
           <button className={styles.paginationButton} onClick={nextGroup}>
             Next
           </button>
