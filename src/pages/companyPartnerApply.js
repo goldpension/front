@@ -85,7 +85,7 @@ const CompanyPartnerApply = (props) => {
           </div>
           <div className={styles.cp_inforcontentBox}>
             <div className={styles.cp_inforcontents}>
-              <div className={styles.cp_inforcontent}>
+              <div className={styles.cp_inforcontentName}>
                 <div className={styles.cp_inforcontenttext}>
                   <span>*</span>
                   <p>회사/점포명</p>
@@ -144,7 +144,7 @@ const CompanyPartnerApply = (props) => {
             </div>
 
             <div className={styles.cp_inforcontents}>
-              <div className={styles.cp_inforcontent}>
+              <div className={styles.cp_inforcontentName}>
                 <div className={styles.cp_inforcontenttext}>
                   <span>*</span>
                   <p>대표자명</p>
@@ -210,7 +210,7 @@ const CompanyPartnerApply = (props) => {
           </div>
           <div className={styles.cp_inforcontentBox}>
             <div className={styles.cp_inforcontents}>
-              <div className={styles.cp_inforcontent}>
+              <div className={styles.cp_inforcontentName}>
                 <div className={styles.cp_inforcontenttext}>
                   <span>*</span>
                   <p>근무지</p>
@@ -269,7 +269,7 @@ const CompanyPartnerApply = (props) => {
             </div>
 
             <div className={styles.cp_inforcontents}>
-              <div className={styles.cp_inforcontent}>
+              <div className={styles.cp_inforcontentName}>
                 <div className={styles.cp_inforcontenttext}>
                   <span>*</span>
                   <p>근무기간</p>
@@ -339,7 +339,7 @@ const CompanyPartnerApply = (props) => {
           </div>
           <div className={styles.cp_inforcontentBox}>
             <div className={styles.cp_inforcontents}>
-              <div className={styles.cp_inforcontent}>
+              <div className={styles.cp_inforcontentName}>
                 <div className={styles.cp_inforcontenttext}>
                   <span>*</span>
                   <p>모집 인원</p>
@@ -417,7 +417,7 @@ const CompanyPartnerApply = (props) => {
             </div>
 
             <div className={styles.cp_inforcontents}>
-              <div className={styles.cp_inforcontent}>
+              <div className={styles.cp_inforcontentName}>
                 <div className={styles.cp_inforcontenttext}>
                   <span>*</span>
                   <p>직종</p>
@@ -471,6 +471,7 @@ const CompanyPartnerApply = (props) => {
           type="submit"
           onClick={handleFormSubmit}
         >
+          <Link to="/companyPartner/apply/done"></Link>
           공고 등록하기
         </button>
       </div>

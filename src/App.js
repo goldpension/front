@@ -9,6 +9,7 @@ import Manual from "./pages/Manual";
 import CompanyPromotion from "./pages/CompanyPromotion";
 import CompanyPartner from "./pages/companyPartner";
 import CompanyPartnerApply from "./pages/companyPartnerApply";
+import CompanyPartnerApplyDone from "./pages/CompanyPartnerApplyDone";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 
@@ -65,6 +66,10 @@ const App = () => {
                 <Route
                   path="/companyPartner/apply"
                   element={<CompanyPartnerApply />}
+                />
+                <Route
+                  path="/companyPartner/apply/done"
+                  element={<CompanyPartnerApplyDone />}
                 />
                 <Route path="/apply" element={<ApplyCheck />} />
                 <Route path="/join/*" element={<Join />} />

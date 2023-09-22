@@ -16,11 +16,16 @@ const companyPartner = (props) => {
             <b>황금연금의 파트너가 되세요</b>
           </h1>
         </div>
-        <div>
+        <div className={styles.cp_comentContainer}>
           <div className={styles.cp_btn}>
             <Link to="/companyPartner/apply">
               <p>파트너 지원하기</p>
             </Link>
+          </div>
+          <div className={styles.cp_coment}>
+            <h4>
+              <b>황금연금 설명</b>
+            </h4>
           </div>
         </div>
       </div>
