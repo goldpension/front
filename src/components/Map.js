@@ -1,5 +1,6 @@
   import React, { useCallback, useEffect, useState } from "react";
 import Json from "../json/TL_SCCO_CTPRVN.json";
+import styles from "../css/Map.module.css";
 function Map({jobs, selectedArea, onClickCount, openModal}) {
   const [map, setMap] = useState();
   const [polygons, setPolygons] = useState([]);
@@ -255,10 +256,11 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
     <div
       id="map"
       style={{
-        width: "550px",
-        height: "550px",
+        width: "100%",
+        height: "500px",
         borderRadius: "20px",
       }}
+      className={styles.map}
     >
     </div>
   );

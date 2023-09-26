@@ -5,7 +5,7 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  z-index: 1;
+  z-index: 99;
   background-color: #ffffff;
   padding: 0.7rem;
   border-radius: 0.5rem;
@@ -20,12 +20,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 5.5rem;
   padding-left: 100px;
   padding-right: 100px;
+  height: calc(100vh - 50px);
 }
 .renderScreen {
-  height: 550px;
+  padding: 20px;
 }
 .totalCounts {
   color: red;
@@ -41,6 +41,7 @@
 .bigFont {
   font-size: 2.5rem;
   font-weight: bold;
+  text-align: center;
 }
 .areaCount {
   width: 50%;
@@ -69,10 +70,34 @@
 .renderScreen {
   flex: 1;
 }
+.loadingComponent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
 
 @media screen and (max-width: 768px) {
   /* 모바일 */
+  .main {
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
   }
-@media screen and (max-width: 1024px) {
+  .mapContainer {
+    width: 100%;
+    padding: 20px;
+  }
+  .loadingComponent {
+    
+  }
+  .areaCountsContainer {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
 /* 태블릿 */
 }
