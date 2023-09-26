@@ -1,8 +1,8 @@
 // userState.js
 import { atom } from "recoil";
 
-const userState = atom({
-  key: "userState",
+const seniorState = atom({
+  key: "seniorState",
   default: {
     isLoggedIn: false,
     userName: null,
@@ -10,4 +10,4 @@ const userState = atom({
   },
 });
 
-export default userState;
+export default seniorState;
