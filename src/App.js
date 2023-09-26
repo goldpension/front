@@ -22,6 +22,7 @@ import RedirectHandler from "./components/Login/RedirectHandler";
 import LoginSuccess from "./components/Login/LoginSuccess";
 import KakaoRedirectHandler from "./components/Login/KakaoRedirectionHandler";
 import Account from "./components/Info/Account";
+import Zero from "./pages/Zero";
 
 const App = () => {
   return (
@@ -59,9 +60,11 @@ const App = () => {
                   path="/accounts/kakao/callback/*"
                   element={<RedirectHandler />}
                 />
-                <Route path="/loginSuccess" element={<First />} />
-
-                <Route path="/" element={<First />} />
+                {/* <Route path="/loginSuccess" element={<First />} /> */}
+                <Route path="/loginSuccess" element={<Zero />} />
+                {/* <Route path="/first" element={<First />} /> */}
+                <Route path="/" element={<Zero />} />
+                <Route path="/first" element={<First />} />
                 <Route path="/companyPartner/*" element={<CompanyPartner />} />
                 <Route
                   path="/companyPartner/apply"
