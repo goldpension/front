@@ -1,0 +1,45 @@
+@media screen and (max-width: 768px) {
+  .mobileBr {
+    display: block;
+  }
+}
+
+span {
+  display: inline;
+}
+
+.btop {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.bsenior {
+  border: none;
+  border-radius: 10px;
+  background-color: #e89c31;
+  width: 150px;
+  height: 50px;
+  font-weight: bold;
+  font-size: large;
+  cursor: pointer;
+}
+
+.bsenior:hover {
+  opacity: 0.3;
+}
+
+.bcompany {
+  border: none;
+  border-radius: 10px;
+  background-color: #07236b;
+  width: 150px;
+  height: 50px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: large;
+  cursor: pointer;
+}
+
+.bcompany:hover {
+  opacity: 0.3;
+}
