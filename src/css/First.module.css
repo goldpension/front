@@ -140,17 +140,23 @@
   .main {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
+  }
+  .leftSide {
+    display: none;
   }
   .rightSide {
     display: flex;
     align-items: center;
     width: 100%;
   }
+  .titles {
+    font-size: 1.1rem;
+  }
   .goCountsButton {
     padding: 0.5rem;
-    width: 8rem;
+    width: 6rem;
     height: 2.5rem;
     display: flex;
     align-items: center;
@@ -160,7 +166,7 @@
     font-size: 0.2rem;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
 /* 태블릿 */
   .main {
     padding: 20px;

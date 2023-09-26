@@ -218,24 +218,11 @@ export const Main = () => {
             </div>
             <div className={styles.renderScreen}>{renderScreen(screen)}</div>
           </div>
-          <h2 style={{ marginTop: "100px", textAlign: "center" }}>
-            새벽 00시부터 01시까지 정확한 데이터를 불러올 수 없습니다.
-          </h2>
         </div>
       ) : (
         <div className={styles.main}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: "100%",
-              fontSize: "2.5rem",
-              fontWeight: "bold",
-            }}
-          >
-            <img src={Image} style={{ width: "500px" }} />
+          <div className={styles.loadingComponent}>
+            <img src={Image} style={{ width: "40%" }} />
             <div
               style={{
                 display: "flex",

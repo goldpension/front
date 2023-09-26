@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../css/List.module.css';
+import Job from './Job';
 
 const List = ({ area, jobs, openModal }) => {
   const [filteredJobs, setFilteredJobs] = useState([]);
@@ -91,8 +92,8 @@ const List = ({ area, jobs, openModal }) => {
     <div className={styles.listComponent}>
       <div className={styles.searchContainer}>
         <p className={styles.listMainComment}>
-          지금 <span className={styles.areaAndCounts}>{area ? area : '기타'}</span>에 등록된 일자리 수{' '}
-          <span className={styles.areaAndCounts}>{filteredJobs.length}</span>개!
+          지금 <span className={styles.selectedArea}>{area ? area : '기타'}</span>에 등록된 일자리 수{' '}
+          <span className={styles.selectedAreaCounts}>{filteredJobs.length}</span>개!
         </p>
         <div className={styles.search}>
           <input
@@ -118,18 +119,7 @@ const List = ({ area, jobs, openModal }) => {
       </div>
       <div className={styles.listContainer}>
         {currentJobs.map((job) => (
-          <div className={styles.job} onClick={() => openModal(job)}>
-            <div className={styles.deadlineContainer}>
-              <div className={styles.deadline}>{job.deadline}</div>
-            </div>
-            <div className={styles.recrtTitle}>
-              {job.recrtTitle.length > 30 ? `${job.recrtTitle.slice(0, 29)}...` : job.recrtTitle}
-            </div>
-            <div className={styles.oranNm}>
-              {job.oranNm.length > 20 ? `${job.oranNm.slice(0, 20)}...` : job.oranNm}
-            </div>
-            <div className={styles.workPlcNm}>{job.workPlcNm}</div>
-          </div>
+          <Job job={job} openModal={openModal}/>
         ))}
       </div>
       <div className={styles.pagination}>
