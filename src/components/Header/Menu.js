@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "../../css/Menu.module.css";
 
 function Menu({ isLoggedIn }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleButtonClick = useCallback((e) => {
     e.stopPropagation();
