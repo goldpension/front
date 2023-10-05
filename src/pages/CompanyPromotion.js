@@ -9,7 +9,13 @@ const CompanyPromotion = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [expandedJobbox, setExpandedJobbox] = useState(false);
   const [modalSelectedJob, setModalSelectedJob] = useState({});
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState([{
+    apply_work: '경비',
+    company_name: '혁수그룹',
+    work_place: '서울 강남구',
+    work_day: '월~금',
+    work_hour: '09~15'
+  }]);
 
   useEffect(() => {
     fetchData();
