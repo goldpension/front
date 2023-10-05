@@ -177,6 +177,9 @@
 
 @media screen and (max-width: 768px) {
   /* 모바일 */
+  html {
+    font-size: 12px;
+  }
   .modalContainer {
     width: 90vw;
     cursor:default;
@@ -184,6 +187,11 @@
   }
   .modalContent {
     flex-direction: column;
+    padding: 30px 0;
+  }
+  .jobDetails {
+    gap: 1rem;
+    padding: 1rem 0;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {

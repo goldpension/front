@@ -1,3 +1,6 @@
+a {
+  color: black;
+}
 .main {
   display: flex;
   justify-content: center;
@@ -26,9 +29,11 @@
 
 }
 .firstMainComment {
-  width: 80%;
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 .firstContainer {
   width: 80%;
@@ -40,7 +45,7 @@
   padding: 0 2.5rem;
 }
 .title {
-  padding-bottom: "3px";
+  padding-bottom: 3px;
   opacity: 0.3;
   color: "black";
 }
@@ -103,6 +108,7 @@
 .link {
   text-decoration: none;
   color: inherit;
+  color: black;
 }
 .firstContentbtn {
   display: flex;
@@ -140,7 +146,7 @@
   .main {
     display: flex;
     flex-direction: column;
-    padding: 40px 20px;
+    padding: 4rem 1rem;
     text-align: center;
   }
   .leftSide {
@@ -151,8 +157,37 @@
     align-items: center;
     width: 100%;
   }
-  .titles {
-    font-size: 1.1rem;
+  .firstContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .firstContent {
+    margin: 4rem 0;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    height: auto;
+  }
+  .firstContent:hover {
+    color:#6D6D6D;
+  }
+  .title {
+    font-size: 2rem;
+    opacity: 1;
+    color: black;
+    cursor: pointer;
+    padding-bottom: 1.6rem;
+  }
+  .title:hover {
+    border: none;
+  }
+  .link {
+    border-bottom: 3px solid black;
+  }
+  .link:hover {
+    border-color: red;
+    color: red;
   }
   .goCountsButton {
     padding: 0.5rem;
