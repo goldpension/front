@@ -109,8 +109,8 @@ export const Main = () => {
               item.getElementsByTagName("plDetAddr")[0]?.textContent;
             const plbizNm =
               item.getElementsByTagName("plbizNm")[0]?.textContent;
-            const ftAcptDd =
-              item.getElementsByTagName("ftAcptDd")[0]?.textContent;
+            const frAcptDd =
+              item.getElementsByTagName("frAcptDd")[0]?.textContent;
             const toAcptDd =
               item.getElementsByTagName("toAcptDd")[0]?.textContent;
             const wantedTitle =
@@ -125,7 +125,7 @@ export const Main = () => {
               detCnts, //상세내용
               plDetAddr, //주소
               plbizNm, //사업장명
-              ftAcptDd, //시작접수일
+              frAcptDd, //시작접수일
               toAcptDd, //종료접수일
               wantedTitle, //채용제목
             });

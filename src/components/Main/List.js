@@ -105,21 +105,34 @@ const List = ({ area, jobs, openModal }) => {
             className={styles.searchInput}
           />
           {searchTerm && (
-            <button className={styles.clearSearchButton} onClick={clearSearch}>
-              지우기
-            </button>
+            <div className={styles.clearSearchButtonContainer}>
+              <button className={styles.clearSearchButton} onClick={clearSearch}>
+                지우기
+              </button>
+            </div>
           )}
         </div>
       </div>
       <div className={styles.listTitle}>
         <div style={{ flex: '1', textAlign: 'center' }}>구인상태</div>
         <div style={{ flex: '1', textAlign: 'center' }}>제목</div>
-        <div style={{ flex: '1', textAlign: 'center' }}>기업</div>
+        <div style={{ flex: '1', textAlign: 'center' }} className={styles.oranNmTitle}>기업</div>
         <div style={{ flex: '1', textAlign: 'center' }}>근무지역</div>
       </div>
       <div className={styles.listContainer}>
-        {currentJobs.map((job) => (
-          <Job job={job} openModal={openModal}/>
+        {currentJobs.map((job, i) => (
+          <div className={styles.job} key={i} onClick={() => openModal(job)}>
+            <div className={styles.deadlineContainer}>
+              <div className={styles.deadline}>{job.deadline}</div>
+            </div>
+            <div className={styles.recrtTitle}>
+              {job.recrtTitle.length > 30 ? `${job.recrtTitle.slice(0, 29)}...` : job.recrtTitle}
+            </div>
+            <div className={styles.oranNm}>
+              {job.oranNm.length > 20 ? `${job.oranNm.slice(0, 20)}...` : job.oranNm}
+            </div>
+            <div className={styles.workPlcNm}>{job.workPlcNm}</div>
+          </div>
         ))}
       </div>
       <div className={styles.pagination}>

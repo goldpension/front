@@ -4,12 +4,62 @@ import { Link } from "react-router-dom";
 import JobBox from "../components/JobBox";
 import Modal from "../components/modal/Modal";
 import { Axios } from "../api/axios";
+import Image from "../img/보증공고이미지.png"
 
 const CompanyPromotion = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [expandedJobbox, setExpandedJobbox] = useState(false);
   const [modalSelectedJob, setModalSelectedJob] = useState({});
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState([
+    {
+      apply_work: '경비',
+      company_name: '혁수그룹',
+      work_place: '서울 강남구',
+      work_day: '월~금',
+      work_hour: '09~15',
+      apply_detail: '혁수그룹에서 미래를 함께할 시니어 인재를 구합니다.',
+      work_term: '최소 6개월',
+      work_pay: '협의',
+      apply_deadline: '20231120',
+      
+    },
+    {
+      apply_work: '경비',
+      company_name: '혁수그룹',
+      work_place: '서울 강남구',
+      work_day: '월~금',
+      work_hour: '09~15'
+    },
+    {
+      apply_work: '경비',
+      company_name: '혁수그룹',
+      work_place: '서울 강남구',
+      work_day: '월~금',
+      work_hour: '09~15'
+    },
+    {
+      apply_work: '경비',
+      company_name: '혁수그룹',
+      work_place: '서울 강남구',
+      work_day: '월~금',
+      work_hour: '09~15'
+    },
+    {
+      apply_work: '경비',
+      company_name: '혁수그룹',
+      work_place: '서울 강남구',
+      work_day: '월~금',
+      work_hour: '09~15'
+    },
+    {
+      apply_work: '경비',
+      company_name: '혁수그룹',
+      work_place: '서울 강남구',
+      work_day: '월~금',
+      work_hour: '09~15'
+    },
+    
+]);
 
   useEffect(() => {
     fetchData();
@@ -72,16 +122,16 @@ const CompanyPromotion = (props) => {
           <>
             <div className={styles.cp_content}>
               <div className={styles.cp_contentText}>
-                나를 써주는 곳이 있을지 걱정이세요?
-                <br />
-                새로운 일자리에 대해서 두려움을 느끼신다고요?
-                <br />
-                내가 잘할 수 있을지 걱정이세요?
-                <br />
-                걱정마세요. 이 기업들은 어르신을 꼭 필요로 하고 있습니다.
+                <p>혹시 이상한 일자리가 올라오지 않을까 걱정되시나요?</p>
+                <p>황금연금에서 제공되는 모든 일자리는 철저하게 검토했습니다.</p>
+                <p>그 중에서도 특별히 추천드리는 좋은 일자리는
+                <span style={{color: 'red', fontSize: '30px'}}>별표</span>
+                가 붙어있습니다!</p>
+                <p>빛나는 노후를 위한 필수 도구! 황금연금과 함께하세요!</p>
               </div>
               <div className={styles.cp_card}>
-                <JobBox companies={companies} openModal={openModal} />
+                <img src={Image} alt="보증공고예시이미지"/>
+                {/* <JobBox companies={companies} openModal={openModal} /> */}
               </div>
             </div>
             <div className={styles.cp_btn} onClick={onClickNextButton}>

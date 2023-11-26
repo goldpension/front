@@ -4,7 +4,7 @@
 }
 .cp_content {
   width: 1120px;
-  height: 250px;
+  height: 400px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -24,11 +24,11 @@
   box-sizing: border-box;
   border-radius: 10px;
   background-color: white;
-  align-items: center;
-  justify-content: center;
   position: relative;
   box-shadow: 5px 5px 10px gray;
   cursor: pointer;
+  text-align: left;
+
 }
 .cp_card:hover {
   opacity: 0.5;
@@ -52,7 +52,7 @@
 }
 .cp_cardCname {
   font-size: 18px;
-  font-weight: bolder;
+  font-weight: bold;
 }
 .cp_cardJplace {
   font-size: 14px;

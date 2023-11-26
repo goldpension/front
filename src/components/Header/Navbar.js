@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import userState from "../../recoil/userState";
+import seniorState from "../../recoil/seniorState";
 import Menu from "./Menu";
 import UserMenu from "./UserMenu";
 import styles from "../../css/Nav.module.css";
 import logoImg from "../../img/logo.png";
 
 function Navbar() {
-  const [loggedInUser, setLoggedInUser] = useRecoilState(userState);
+  const [loggedInUser, setLoggedInUser] = useRecoilState(seniorState);
   const logout = () => {
     setLoggedInUser({
       isLoggedIn: false,

@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "./Spinner";
 import { useRecoilState } from "recoil";
-import userState from "../../recoil/userState";
+import seniorState from "../../recoil/seniorState";
 // 중복 콘솔 출력을 해결 코드
 // 백에서 토큰 받아옴
 const RedirectHandler = () => {
   const [code, setCode] = useState(null);
   const [prevCode, setPrevCode] = useState(null);
-  const [loggedInUser, setLoggedInUser] = useRecoilState(userState);
+  const [loggedInUser, setLoggedInUser] = useRecoilState(seniorState);
   const navigate = useNavigate();
   useEffect(() => {
     if (code && code !== prevCode) {
