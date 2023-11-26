@@ -115,7 +115,7 @@ a {
   text-decoration: none;
 }
 @media screen and (max-width: 768px) {
-  /* 모바일 */
+  /* 태블릿 */
   .cp_infortitle {
     left: 15%;
     top: 3%;
@@ -135,6 +135,45 @@ a {
   }
   .cp_inforcontentName {
     width: 130px;
+  }
+}
+@media screen and (max-width: 360px) {
+  /* 모바일 */
+  .cp_infortitle {
+    left: 12%;
+    top: 2%;
+  }
+  .cp_inforWarning {
+    position: absolute;
+    right: 10%;
+    top: 2%;
+  }
+  .cp_inforcontentBox {
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 40px;
+    padding: 20px 5px 20px 5px;
+    border: 2px solid rgba(7, 35, 107, 1);
+    border-radius: 10px;
+  }
+  .cp_inforcontentName {
+    width: 130px;
+  }
+  .cp_inforcontent input {
+    width: 100px;
+    border-radius: 5px;
+    height: 30px;
+    justify-content: center;
+    text-align: center;
+    font-size: small;
+  }
+  .cp_inforcontent {
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 40px;
+    padding: 10px 5px 20px 5px;
+    border: 2px solid rgba(7, 35, 107, 1);
+    border-radius: 10px;
   }
 }
 @media screen and (max-width: 1024px) {

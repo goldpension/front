@@ -13,7 +13,7 @@ const RedirectHandler = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (code && code !== prevCode) {
-      const url = "http://123.212.65.172:8000/accounts/kakao/callback/";
+      const url = "http://220.67.126.26:8000/accounts/kakao/callback/";
       console.log("요청 URL:", `${url}?code=${code}`);
       axios
         .get(url, {
