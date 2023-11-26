@@ -4,7 +4,7 @@ import styles from "../css/card.module.css";
 const JobBox = ({ companies, openModal }) => {
   const card = [
     {
-      cardJstatus: "구인상태",
+      cardJstatus: "구인중",
       cardJname: "건물경비원",
       cardCname: "잠실한양3차아파트대표회의",
       cardJplace: "서울시 송파구 방이동",

@@ -37,6 +37,7 @@
   display: flex;
   flex-wrap: wrap;
   padding-top: 40px;
+  text-align: center;
 }
 .bigFont {
   font-size: 2.5rem;
@@ -65,10 +66,11 @@
 .mapContainer {
   display: flex;
   justify-content: center;
-  flex: 1;
+  width: 50%;
+  padding: 20px;
 }
 .renderScreen {
-  flex: 1;
+  width: 50%;
 }
 .loadingComponent {
   display: flex;
@@ -82,20 +84,47 @@
 
 @media screen and (max-width: 768px) {
   /* 모바일 */
+  
   .main {
     flex-direction: column;
     padding: 20px;
+    padding-top: 0;
     height: auto;
   }
   .mapContainer {
     width: 100%;
-    padding: 20px;
+    padding: 0;
+    padding-top: 20px;
+    position:sticky;
+    top: 50px;
+    left: 0;
+    background-color: #eeeeee;
+  }
+  .renderScreen {
+    width: 100%;
   }
   .loadingComponent {
     
   }
+  /* areaCounts */
+  .bigFont {
+    font-size: 2rem;
+    min-width: 250px;
+  }
   .areaCountsContainer {
-    text-align: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .areaCount {
+    font-size: 2rem;
+    width: 100%;
+  }
+  .areaName {
+    flex: 1;
+  }
+  .count {
+    flex: 1;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {

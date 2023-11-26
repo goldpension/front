@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 600px;
+  width: 100%;
   font-weight: bold;
 }
 .searchContainer {
@@ -41,8 +42,15 @@
   font-size: 1rem;
   margin-right: 0.8rem;
 }
+.clearSearchButtonContainer {
+  display: flex;
+  align-items: center;
+  width: 72px;
+  height: 32px;
+
+}
 .clearSearchButton {
-  font-size: 1.5rem;
+  font-size: 20px;
   border: none;
   color: red;
   font-weight: bold;
@@ -148,7 +156,35 @@
 }
 
 @media screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
   .selectedAreaCounts {
     width: 53px;
+  }
+  .clearSearchButton {
+    font-size: 12px;
+  }
+  .listMainComment {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .oranNmTitle {
+    display: none;
+  }
+  .oranNm {
+    display: none;
+  }
+  .selectedArea {
+    font-size: 2rem;
+  }
+  .selectedAreaCounts {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .clearSearchButton {
+    font-size: 16px;
   }
 }
