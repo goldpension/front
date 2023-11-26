@@ -5,12 +5,12 @@ import cards from "../css/card.module.css";
 import { Link } from "react-router-dom";
 import koreaMap from "../img/지도.png";
 import { useRecoilState } from "recoil";
-import userState from "../recoil/userState";
+import seniorState from "../recoil/seniorState";
 import { useMediaQuery } from 'react-responsive'
 import JobBox from "../components/JobBox";
 
 const First = ({ onClickGoCounts }) => {
-  const [loggedInUser, setLoggedInUser] = useRecoilState(userState);
+  const [loggedInUser, setLoggedInUser] = useRecoilState(seniorState);
   const [activeIndex, setActiveIndex] = useState(0);
   const titles = ["일자리 찾기", "회사 홍보"];
   const contents = [<ContentStep1 />, <ContentStep2 />];

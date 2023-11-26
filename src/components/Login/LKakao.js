@@ -5,7 +5,7 @@ import styles from "../../css/Login.module.css";
 const LKakao = () => {
   const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
   const REDIRECT_URI =
-    "https://front-phi-one.vercel.app/accounts/kakao/callback/";
+    "http://localhost:3000/accounts/kakao/callback/";
   const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   const KakaoLoginHandler = () => {

@@ -20,7 +20,6 @@ import MyInfo2 from "./pages/MyInfo2";
 import ApplyCheck from "./pages/ApplyCheck/ApplyCheck";
 import RedirectHandler from "./components/Login/RedirectHandler";
 import LoginSuccess from "./components/Login/LoginSuccess";
-import KakaoRedirectHandler from "./components/Login/KakaoRedirectionHandler";
 import Account from "./components/Info/Account";
 import Zero from "./pages/Zero";
 

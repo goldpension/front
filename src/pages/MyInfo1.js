@@ -2,10 +2,10 @@ import React from "react";
 import InfoMent from "../components/Info/IMent";
 import Account from "../components/Info/Account";
 import { useRecoilState } from "recoil";
-import userState from "../recoil/userState";
+import seniorState from "../recoil/seniorState";
 
 const MyInfo1 = () => {
-  const [loggedInUser, setLoggedInUser] = useRecoilState(userState);
+  const [loggedInUser, setLoggedInUser] = useRecoilState(seniorState);
   return (
     <div>
       <InfoMent />

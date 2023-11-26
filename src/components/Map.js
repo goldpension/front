@@ -256,7 +256,7 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
     <div
       id="map"
       style={{
-        width: "80%",
+        width: "100%",
         height: "500px",
         borderRadius: "20px",
       }}

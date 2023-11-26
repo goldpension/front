@@ -129,7 +129,7 @@ export const ModalContent = ({ job, type, checkDeadline }) => {
           <div className={styles.jobDetail}>
             <span style={{ flex: "1" }}>등록일</span>
             <span style={{ flex: "4" }}>
-              {job.ftAcptDd ? job.ftAcptDd : "없음"}
+              {job.frAcptDd ? job.frAcptDd : "없음"}
             </span>
           </div>
           <div className={styles.jobDetail}>

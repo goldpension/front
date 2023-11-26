@@ -32,7 +32,7 @@ function Menu({ isLoggedIn }) {
             <li>일자리 찾기</li>
           </Link>
           <Link to="/companyPromotion">
-            <li>회사홍보</li>
+            <li>검증된 일자리 찾기</li>
           </Link>
           <Link to="/manual/useMethod">
             <li>
