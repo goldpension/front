@@ -12,7 +12,7 @@ import JobBox from "../components/JobBox";
 const First = ({ onClickGoCounts }) => {
   const [loggedInUser, setLoggedInUser] = useRecoilState(seniorState);
   const [activeIndex, setActiveIndex] = useState(0);
-  const titles = ["일자리 찾기", "회사 홍보"];
+  const titles = ["일반 일자리", "검증된 일자리"];
   const contents = [<ContentStep1 />, <ContentStep2 />];
   const link = ["/findJobs", "/companyPromotion", "/companyPartner/apply"];
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
@@ -46,7 +46,7 @@ const First = ({ onClickGoCounts }) => {
             <Link to={link[0]}>
               <div className={styles.firstContent}>
                 <div className={styles.title}>
-                  <span className={styles.link}>공공 일자리</span>
+                  <span className={styles.link}>일반 일자리</span>
                 </div>
                 <div>
                   지역사회와 함께 성장하고 싶으신가요?<br/>
@@ -59,7 +59,7 @@ const First = ({ onClickGoCounts }) => {
             <Link to={link[1]}>
               <div className={styles.firstContent}>
                 <div className={styles.title}>
-                  <span className={styles.link}>일반기업 일자리</span>
+                  <span className={styles.link}>검증된 일자리</span>
                 </div>
                 <div style={{margin: '10px 0'}}>
                   여러분과 함께 성장하려는 기업들이 기다려요.<br/>
@@ -134,7 +134,7 @@ const First = ({ onClickGoCounts }) => {
               }`}
               onClick={() => handleClickTitle(0)}
             >
-              <Link to={link[0]}>일자리 찾기</Link>
+              <Link to={link[0]}>일반 일자리</Link>
             </div>
 
             <div
@@ -143,7 +143,7 @@ const First = ({ onClickGoCounts }) => {
               }`}
               onClick={() => handleClickTitle(1)}
             >
-              <Link to={link[1]}>회사 홍보</Link>
+              <Link to={link[1]}>검증된 일자리</Link>
             </div>
             <div
               className={`${styles.goCountsButton} ${
