@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../css/companyPartnerApply.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Axios } from "../api/axios";
 import { useRecoilState } from "recoil";
 import seniorState from "../recoil/seniorState";
@@ -29,22 +29,24 @@ const CompanyPartnerApply = (props) => {
     apply_work: "",
     apply_detail: "",
   });
+  const navigate = useNavigate();
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     const url = "/company/register/"; // API endpoint URL
-
     try {
-      console.log(formData);
       const response = await Axios.post(url, formData, {
         headers: {
           "Content-Type": "application/json",
         },
+        timeout :30000000
       });
+      console.log('성공!', formData);
 
       // Successfully submitted data to the server
       alert("공고가 성공적으로 등록되었습니다.");
       // Additional handling or redirection if needed
+      navigate("/companyPartner/apply/done");
     } catch (error) {
       console.error("데이터 전송 오류:", error);
       // Data submission error handling
@@ -471,7 +473,6 @@ const CompanyPartnerApply = (props) => {
           type="submit"
           onClick={handleFormSubmit}
         >
-          <Link to="/companyPartner/apply/done"></Link>
           공고 등록하기
         </button>
       </div>
