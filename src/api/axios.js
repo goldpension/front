@@ -12,13 +12,9 @@ const SenuriService = axios.create({
 
 const Axios = axios.create({
   // baseURL: "http://123.212.65.172:8000",
-  baseURL: "http://220.67.126.26:80/",
+  baseURL: "http://220.67.126.26:80",
   headers: {
     "Content-Type": "application/json",
-    // headers: {
-    //   accept: "application/xml",
-    //   Authorization: `Bearer ${localStorage.getItem("token")}`, // XML 데이터를 받아올 것임을 명시합니다.
-    // },
   },
 });
 
