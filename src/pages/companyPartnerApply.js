@@ -288,7 +288,7 @@ const CompanyPartnerApply = (props) => {
                       value="1"
                       onChange={handleValueChange}
                     />
-                    <label for="1Month">1개월</label>
+                    <label htmlFor="1Month">1개월</label>
                     <input
                       type="radio"
                       id="3Month"
@@ -296,7 +296,7 @@ const CompanyPartnerApply = (props) => {
                       value="3"
                       onChange={handleValueChange}
                     />
-                    <label for="3Month">3개월</label>
+                    <label htmlFor="3Month">3개월</label>
                     <input
                       type="radio"
                       id="6Month"
@@ -304,7 +304,7 @@ const CompanyPartnerApply = (props) => {
                       value="6"
                       onChange={handleValueChange}
                     />
-                    <label for="6Month">6개월</label>
+                    <label htmlFor="6Month">6개월</label>
                     <input
                       type="radio"
                       id="12Month"
@@ -312,7 +312,7 @@ const CompanyPartnerApply = (props) => {
                       value="12"
                       onChange={handleValueChange}
                     />
-                    <label for="12Month">1년 이상</label>
+                    <label htmlFor="12Month">1년 이상</label>
                   </div>
                 </div>
                 <div className={styles.cp_inforcontentinput}>
@@ -385,7 +385,7 @@ const CompanyPartnerApply = (props) => {
                       value="X"
                       onChange={handleValueChange}
                     />
-                    <label for="1Month">성별무관</label>
+                    <label htmlFor="1Month">성별무관</label>
                     <input
                       type="radio"
                       id="Men"
@@ -393,7 +393,7 @@ const CompanyPartnerApply = (props) => {
                       value="M"
                       onChange={handleValueChange}
                     />
-                    <label for="3Month">남자</label>
+                    <label htmlFor="3Month">남자</label>
                     <input
                       type="radio"
                       id="Woman"
@@ -401,7 +401,7 @@ const CompanyPartnerApply = (props) => {
                       value="W"
                       onChange={handleValueChange}
                     />
-                    <label for="6Month">여자</label>
+                    <label htmlFor="6Month">여자</label>
                   </div>
                 </div>
                 <div className={styles.cp_inforcontentinput}>

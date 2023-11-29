@@ -141,39 +141,28 @@ a {
   /* 모바일 */
   .cp_infortitle {
     left: 12%;
-    top: 2%;
+    top: 0.5%;
   }
   .cp_inforWarning {
-    position: absolute;
     right: 10%;
-    top: 2%;
+    top: 0.5%;
   }
   .cp_inforcontentBox {
     flex-wrap: wrap;
-    width: 80%;
-    margin: 40px;
-    padding: 20px 5px 20px 5px;
-    border: 2px solid rgba(7, 35, 107, 1);
-    border-radius: 10px;
+    width: 90%; /* 조금 더 좁게 조절 */
+    margin: 20px;
+    padding: 10px 5px 10px 5px;
   }
   .cp_inforcontentName {
-    width: 130px;
+    width: 100px;
   }
   .cp_inforcontent input {
-    width: 100px;
-    border-radius: 5px;
-    height: 30px;
-    justify-content: center;
-    text-align: center;
-    font-size: small;
+    width: calc(100% - 20px); /* input 요소의 폭에서 여백을 뺀 값으로 설정 */
+    margin-right: 10px; /* 오른쪽 여백 추가 */
+    margin-bottom: 10px; /* 하단 여백 추가 */
   }
-  .cp_inforcontent {
-    flex-wrap: wrap;
-    width: 80%;
-    margin: 40px;
-    padding: 10px 5px 20px 5px;
-    border: 2px solid rgba(7, 35, 107, 1);
-    border-radius: 10px;
+  .cp_radio label {
+    margin-right: 10px;
   }
 }
 @media screen and (max-width: 1024px) {
