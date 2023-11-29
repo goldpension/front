@@ -15,6 +15,7 @@ import Login from "./pages/Login";
 
 import Join from "./pages/Join_p/Join";
 import Join_tel from "./pages/Join_p/Join_tel";
+import MyInfo from "./pages/MyInfo";
 import MyInfo1 from "./pages/MyInfo1";
 import MyInfo2 from "./pages/MyInfo2";
 import ApplyCheck from "./pages/ApplyCheck/ApplyCheck";
@@ -53,7 +54,7 @@ const App = () => {
                   element={<CompanyPromotion />}
                 />
                 <Route path="/login/*" element={<Login />} />
-                <Route path="/myinfo" element={<MyInfo1 />} />
+                <Route path="/myinfo" element={<MyInfo />} />
 
                 <Route
                   path="/accounts/kakao/callback/*"

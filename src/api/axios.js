@@ -12,7 +12,7 @@ const SenuriService = axios.create({
 
 const Axios = axios.create({
   // baseURL: "http://123.212.65.172:8000",
-  baseURL: "http://220.67.126.26:8000/",
+  baseURL: "http://220.67.126.26:80/",
   headers: {
     "Content-Type": "application/json",
     // headers: {

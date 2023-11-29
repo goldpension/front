@@ -1,6 +1,6 @@
 .cp_container {
   width: 100%;
-  height: 800px;
+  height: calc(100vh - 51px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .cp_title {
   padding-top: 1px;
@@ -25,7 +25,7 @@
   align-items: center;
   color: white;
 }
-.cp_comentContainer {
+.cp_commentContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -46,12 +46,16 @@
   text-decoration: none;
   text-decoration-line: none;
 }
-.cp_coment {
+.cp_comment {
   padding-top: 1px;
   margin-bottom: 10px;
   justify-content: center;
   align-items: center;
   color: white;
+  cursor: pointer;
+}
+.cp_comment:hover {
+  text-decoration: underline;
 }
 .cp_btn p {
   margin: 10px 20px 10px 20px;
@@ -67,4 +71,47 @@
   color: white;
 
   text-decoration: none;
+}
+.comments {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 100px;
+}
+.comment {
+  display: flex;
+}
+.comment_title {
+  margin-right: 70px;
+  font-size: 2.5rem;
+}
+.comment_detail {
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.back_button {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .cp_comment {
+    font-size: 1.5rem;
+  }
+  .comments {
+    margin-top: 60px;
+    text-align: center;
+    gap: 50px;
+    height: auto;
+  }
+  .comment {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .comment_title {
+    margin: 0;
+  }
 }
