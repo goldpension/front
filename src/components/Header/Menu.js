@@ -29,7 +29,7 @@ function Menu({ isLoggedIn }) {
       {isOpen && (
         <ul className={styles.popup}>
           <Link to="/findJobs">
-            <li>일자리 찾기</li>
+            <li>일반 일자리<br></br>찾기</li>
           </Link>
           <Link to="/companyPromotion">
             <li>검증된 일자리 찾기</li>
