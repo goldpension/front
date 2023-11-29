@@ -65,6 +65,7 @@ const MyInfo = () => {
       ) : (
         <div className={styles.accountComponent}>
           <table
+            className={styles.table}
             style={{
               textAlign: "center",
               paddingTop: "20px",
@@ -88,17 +89,33 @@ const MyInfo = () => {
             </tr>
             <tr>
               <td className={styles.text1}>올린 공고</td>
-              <td className={styles.text2} colSpan={2}>
+              <td
+                className={styles.text2}
+                colSpan={2}
+                style={{
+                  backgroundColor: "#D9D9D9",
+                  borderRadius: "10px",
+                }}
+              >
                 {/* 공고를 테이블에 표시합니다. */}
-                <table>
-                  <tbody>
-                    {uploadedAds.map((ad, index) => (
-                      <tr key={index}>
-                        <td>{ad.title}</td>
-                        {/* 다른 공고 세부 정보에 대한 추가 열을 만들 수 있습니다. */}
-                      </tr>
-                    ))}
-                  </tbody>
+                <table
+                  className={styles.text2}
+                  style={{
+                    paddingLeft: "10px",
+                  }}
+                >
+                  <tr>
+                    <td>1</td>
+                    <td colSpan={3}>프론트 개발자 모집</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td colSpan={3}>백엔드 개발자 모집</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td colSpan={3}>프롬프트 개발자 모집</td>
+                  </tr>
                 </table>
               </td>
             </tr>
@@ -110,5 +127,3 @@ const MyInfo = () => {
 };
 
 export default MyInfo;
-
-//파트너사 지원 연동 성공하면 이 컴포넌트로 사용하기

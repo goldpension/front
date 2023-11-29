@@ -116,3 +116,8 @@
   flex-basis: 200px;
   margin-left: 30px;
 }
+
+.table {
+  border-collapse: separate;
+  border-spacing: 10px 10px;
+}
