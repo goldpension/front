@@ -222,7 +222,10 @@ export const Main = () => {
       ) : (
         <div className={styles.main}>
           <div className={styles.loadingComponent}>
-            <img src={Image} style={{ width: "40%" }} />
+            <div>
+              <img src={Image}/>
+              <div className={styles.ambassador}>황금연금 홍보대사 - 한사랑 산악회</div>
+            </div>
             <div
               style={{
                 display: "flex",
@@ -232,7 +235,7 @@ export const Main = () => {
                 height: "200px",
               }}
             >
-              <div>데이터를 불러오고 있습니다.</div>
+              <div style={{textAlign: 'center'}}>데이터를 불러오고 있습니다.</div>
               <img src={Loading} width={"100px"} />
             </div>
           </div>
