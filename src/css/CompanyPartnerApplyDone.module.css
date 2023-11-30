@@ -22,6 +22,30 @@
   font-size: 20px;
   font-weight: bold;
 }
+.cp_btn {
+  display: flex;
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
+  background-color: transparent;
+  border-style: solid;
+  border-width: medium medium medium medium;
+  border-color: rgba(7, 35, 107, 1);
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bolder;
+  text-decoration: none;
+  text-decoration-line: none;
+  vertical-align: middle;
+  width: 200px;
+}
+.cp_btn:hover {
+  background-color: rgba(7, 35, 107, 1);
+  color: white;
+}
+a {
+  text-decoration: none;
+}
 @media screen and (max-width: 768px) {
   /* 모바일 */
   .content1 {

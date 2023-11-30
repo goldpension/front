@@ -20,6 +20,11 @@ const companyPartner = (props) => {
             추후 저희가 연락드리겠습니다.
           </p>
         </div>
+        <button className={styles.cp_btn}>
+          <Link to="/">
+            <p>홈으로 돌아가기</p>
+          </Link>
+        </button>
       </div>
     </>
   );
