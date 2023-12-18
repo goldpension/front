@@ -33,16 +33,16 @@ const App = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            minHeight: "100vh",
-            padding: "1px",
+            height: '100vh'
           }}
         >
           <BrowserRouter>
             <Navbar />
             <div
               style={{
+                height: '100vh',
+                paddingTop: '50px',
                 position: "relative",
-                top: "50px",
                 backgroundColor: "#eeeeee",
               }}
             >

@@ -1,72 +1,35 @@
 .relati {
-  padding: 2;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }
-* {
-  padding: 0;
-  margin: 0;
+.image {
+  height: 80%;
+}
+.image > img{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  object-fit: contain; 
+  margin: 0 auto; 
+}
+.change_button {
+  width: 60px;
+  margin: 0 auto;
+  border: none;
+  background-color: transparent;
+}
+.change_button:hover {
+  transform: scale(1.2);
+  transition: .3s ease-in-out;
 }
 
-@media (max-width: 768px) {
-  .image1,
-  .image2,
-  .image3 {
-    height: auto;
-  }
-  .image1 {
-    width: 100%;
-    background: url(../img/useMethod1.png) no-repeat;
-  }
-  .image2 {
-    width: 100%;
-    background: url(../img/useMethod2.png) no-repeat;
-    background-size: contain;
-  }
-  .image3 {
-    width: 100%;
-    background: url(../img/useMethod3.png) no-repeat;
-    background-size: contain;
-  }
-}
-@media (min-width: 768px) and (max-width: 1024px) {
-  img {
-    display: none;
-  }
-  .image1 {
-    width: 100%;
-    height: 100vh;
-    background: url(../img/useMethod1.png) no-repeat;
-    background-attachment: fixed;
-    background-size: contain;
-  }
 
-  .image2 {
-    width: 100%;
-    height: 100vh;
-    background: url(../img/useMethod2.png) no-repeat;
-    background-attachment: fixed;
-    background-size: contain;
-  }
 
-  .image3 {
-    width: 100%;
-    height: 100vh;
-    background: url(../img/useMethod3.png) no-repeat;
-    background-attachment: fixed;
-    background-size: contain;
-  }
-
-  /*-----  */
-
-  .text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    background: #1e3932;
-    font-size: 1.5rem;
-    width: 100%;
-    height: 500vh;
-    position: relative;
+@media (min-width: 768px) {
+  .relati {
+    height: 100%;
   }
 }
