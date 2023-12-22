@@ -2,8 +2,9 @@
   box-sizing: border-box;
 }
 .goBack {
-  position: absolute;
+  position: fixed;
   right: 1rem;
+  top: 5rem;
   z-index: 99;
   background-color: #ffffff;
   padding: 0.7rem;
@@ -26,6 +27,7 @@
 .renderScreen {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 20px;
   height: 100%;
 }

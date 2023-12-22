@@ -6,8 +6,9 @@ const List = ({ area, jobs, openModal }) => {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [width, setWidth] = useState(window.innerWidth);
   const jobsPerPage = 10;
-  const groupPerPage = 10;
+  const groupPerPage = width <= 768 ? 5 : 10;
   const [currentGroup, setCurrentGroup] = useState(1);  //10단위의 버튼들 
   useEffect(() => {
     filterJobs(jobs);
@@ -50,6 +51,15 @@ const List = ({ area, jobs, openModal }) => {
   };
 
   // 페이지네이션 관련
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
   const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
@@ -131,7 +141,7 @@ const List = ({ area, jobs, openModal }) => {
             <div className={styles.oranNm}>
               {job.oranNm.length > 20 ? `${job.oranNm.slice(0, 20)}...` : job.oranNm}
             </div>
-            <div className={styles.workPlcNm}>{job.workPlcNm}</div>
+            <div className={styles.workPlcNm}>{job.workPlcNm ? job.workPlcNm : '기타'}</div>
           </div>
         ))}
       </div>
