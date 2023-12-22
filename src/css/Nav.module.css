@@ -25,7 +25,6 @@
 .navItem {
   display: flex;
   height: 100%;
-  margin: 1px;
   align-items: center;
   vertical-align: middle;
   color: white;
@@ -48,7 +47,7 @@
   left: 10%;
   color: white;
   font-weight: bold;
-  font-size: medium;
+  font-size: 16px;
 }
 .navItemlogin p:hover {
   opacity: 0.3;
