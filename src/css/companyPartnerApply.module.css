@@ -114,31 +114,12 @@
 a {
   text-decoration: none;
 }
+
 @media screen and (max-width: 768px) {
-  /* 태블릿 */
-  .cp_infortitle {
-    left: 15%;
-    top: 3%;
-  }
-  .cp_inforWarning {
-    position: absolute;
-    right: 15%;
-    top: 3%;
-  }
-  .cp_inforcontentBox {
-    flex-wrap: wrap;
-    width: 80%;
-    margin: 40px;
-    padding: 20px 5px 20px 5px;
-    border: 2px solid rgba(7, 35, 107, 1);
-    border-radius: 10px;
-  }
-  .cp_inforcontentName {
-    width: 130px;
-  }
-}
-@media screen and (max-width: 360px) {
   /* 모바일 */
+  .cp_inforContainer {
+    width: 90%;
+  }
   .cp_infortitle {
     left: 12%;
     top: 0.5%;
@@ -164,7 +145,4 @@ a {
   .cp_radio label {
     margin-right: 10px;
   }
-}
-@media screen and (max-width: 1024px) {
-  /* 태블릿 */
 }
