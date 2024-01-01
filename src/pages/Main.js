@@ -29,7 +29,7 @@ export const Main = () => {
 
   useEffect(() => {
     getCounts(jobs);
-    goToScreen("areaCounts");
+    // goToScreen("areaCounts");
   }, [jobs]);
 
   /*
@@ -131,18 +131,17 @@ export const Main = () => {
     setShowModal(false);
   };
 
-  const renderScreen = (screen) => {
-    switch (screen) {
-      case "areaCounts":
-        return <AreaCounts counts={counts} onClickCount={onClickCount} />;
-      case "first":
-        return <First onClickGoCounts={onClickGoCounts} />;
-      case "list":
-        return <List area={listArea} jobs={jobs} openModal={openModal} />;
-      default:
-        return null;
-    }
-  };
+  function renderScreen(screen) {
+    const screens = {
+      'areaCounts': () => <AreaCounts counts={counts} onClickCount={onClickCount} />,
+      'first': () => <First onClickGoCounts={onClickGoCounts} />,
+      'list': () => <List area={listArea} jobs={jobs} openModal={openModal} />
+    };
+  
+    const ScreenComponent = screens[screen];
+    return ScreenComponent ? ScreenComponent() : <div>Invalid screen</div>;
+  }
+  
 
   const goBackHandler = () => {
     setListArea("all");

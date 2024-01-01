@@ -138,7 +138,7 @@ a {
   justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   /* 모바일 */
   html {
     font-size: 12px;
@@ -199,15 +199,5 @@ a {
   }
   .goCountsButton a {
     font-size: 0.2rem;
-  }
-}
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-/* 태블릿 */
-  .main {
-    padding: 20px;
-  }
-  .leftSide > img {
-    width: 250px;
-    object-fit: contain;
   }
 }

@@ -15,7 +15,7 @@ const First = ({ onClickGoCounts }) => {
   const titles = ["일반 일자리", "검증된 일자리"];
   const contents = [<ContentStep1 />, <ContentStep2 />];
   const link = ["/findJobs", "/companyPromotion", "/companyPartner/apply"];
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' })
   const isTablet = useMediaQuery({ query: '(max-width: 1024px)' })
   const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
 

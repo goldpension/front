@@ -135,7 +135,6 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
           if (status === kakao.maps.services.Status.OK) {
             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
             resolve(coords);
-            return;
           }
           reject(
             new Error(
@@ -195,13 +194,11 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
         map.setLevel(12);
         for (let job of jobs) {
           if (job.workPlcNm &&job.workPlcNm.slice(0, 2) === selectedArea) {
-            console.log(job.workPlcNm.slice(0, 2));
+            // console.log(job.workPlcNm.slice(0, 2));
             let coords = await getCoordsByAddress(job.workPlcNm);
             const marker = new kakao.maps.Marker({
               position: coords,
             });
-            // clusterer.addMarker(marker);
-            // 인포윈도우로 장소에 대한 설명을 표시합니다
             const infowindow = new kakao.maps.InfoWindow({
               content:
                 "<div style='width:150px;text-align:center;padding:6px 0;'>" +
