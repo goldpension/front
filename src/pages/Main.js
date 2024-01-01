@@ -8,6 +8,7 @@ import Modal from "../components/modal/Modal";
 import styles from "../css/Main.module.css";
 import Image from "../img/어르신.png";
 import Loading from "../img/loading.gif";
+
 export const Main = () => {
   const [jobs, setJobs] = useState([]);
   const [counts, setCounts] = useState({});
@@ -15,13 +16,15 @@ export const Main = () => {
   const [listArea, setListArea] = useState("all");
   const [showModal, setShowModal] = useState(false);
   const [modalSelectedJob, setModalSelectedJob] = useState({});
+  const XML_ELEMENTS_JOB_LIST = ["jobId", "deadline", "jobcls", "oranNm", "workPlcNm", "recrtTitle"];
+  const XML_ELEMENTS_JOB_INFO = ["acptMthdCd", "age", "ageLim", "clerk", "clerkContt", "clltPrnnum", "detCnts", "plDetAddr", "plbizNm", "frAcptDd", "toAcptDd", "wantedTitle"];
 
   const goToScreen = (screenName) => {
     setScreen(screenName);
   };
 
   useEffect(() => {
-    fetchData("getJobList");
+    fetchJobList();
   }, []);
 
   useEffect(() => {
@@ -37,107 +40,55 @@ export const Main = () => {
   }, [counts]);
   */
 
-  const fetchData = async (type, jobId) => {
-    try {
-      if (type === "getJobList") {
-        const response = await SenuriService.get("/getJobList", {
-          params: {
-            numOfRows: 1500,
-            pageNo: 1,
-          },
-        });
-        const xmlText = response.data;
-
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-        const items = xmlDoc.getElementsByTagName("item"); //job item
-        const parsedJobs = [];
-        if (items) {
-          for (let i = 0; i < items.length; i++) {
-            const jobId =
-              items[i].getElementsByTagName("jobId")[0]?.textContent;
-            const deadline =
-              items[i].getElementsByTagName("deadline")[0]?.textContent;
-            const jobcls =
-              items[i].getElementsByTagName("jobcls")[0]?.textContent;
-            const oranNm =
-              items[i].getElementsByTagName("oranNm")[0]?.textContent;
-            const workPlcNm =
-              items[i].getElementsByTagName("workPlcNm")[0]?.textContent;
-            const recrtTitle =
-              items[i].getElementsByTagName("recrtTitle")[0]?.textContent;
-            parsedJobs.push({
-              jobId,
-              deadline,
-              jobcls,
-              oranNm,
-              workPlcNm,
-              recrtTitle,
-            });
-          }
-          setJobs(parsedJobs);
-          console.log(parsedJobs);
-        } else {
-          console.error("Data is missing or has incorrect structure");
-        }
-      } else {
-        const response = await SenuriService.get("/getJobInfo", {
-          params: {
-            id: jobId,
-          },
-        });
-        const xmlText = response.data;
-        console.log(xmlText);
-
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-        const items = xmlDoc.getElementsByTagName("item"); //job item
-        if (items) {
-          for (const item of items) {
-            const acptMthdCd =
-              item.getElementsByTagName("acptMthdCd")[0]?.textContent;
-            const age = item.getElementsByTagName("age")[0]?.textContent;
-            const ageLim = item.getElementsByTagName("ageLim")[0]?.textContent;
-            const clerk = item.getElementsByTagName("clerk")[0]?.textContent;
-            const clerkContt =
-              item.getElementsByTagName("clerkContt")[0]?.textContent;
-            const clltPrnnum =
-              item.getElementsByTagName("clltPrnnum")[0]?.textContent;
-            const detCnts =
-              item.getElementsByTagName("detCnts")[0]?.textContent;
-            const plDetAddr =
-              item.getElementsByTagName("plDetAddr")[0]?.textContent;
-            const plbizNm =
-              item.getElementsByTagName("plbizNm")[0]?.textContent;
-            const frAcptDd =
-              item.getElementsByTagName("frAcptDd")[0]?.textContent;
-            const toAcptDd =
-              item.getElementsByTagName("toAcptDd")[0]?.textContent;
-            const wantedTitle =
-              item.getElementsByTagName("wantedTitle")[0]?.textContent;
-            setModalSelectedJob({
-              acptMthdCd, //접수방법
-              age, //연령
-              ageLim, //연령제한
-              clerk, //담당자
-              clerkContt, //담당자연락처
-              clltPrnnum, //모집인원
-              detCnts, //상세내용
-              plDetAddr, //주소
-              plbizNm, //사업장명
-              frAcptDd, //시작접수일
-              toAcptDd, //종료접수일
-              wantedTitle, //채용제목
-            });
-          }
-        } else {
-          console.error("Data is missing or has incorrect structure");
-        }
+  const parseXml = (xmlText, elements) => {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+    const items = xmlDoc.getElementsByTagName("item");
+    const parsedData = [];
+    
+    for (let i = 0; i < items.length; i++) {
+      const item = {};
+      for (const element of elements) {
+        item[element] = items[i].getElementsByTagName(element)[0]?.textContent;
       }
-    } catch (error) {
-      console.error("Error while fetching data:", error);
+      parsedData.push(item);
     }
-  };
+    
+    return parsedData;
+  }
+  const fetchJobList = async () => {
+    try {
+      const response = await SenuriService.get("/getJobList", {
+        params: {
+          numOfRows: 1500,
+          pageNo: 1,
+        },
+      });
+      const xmlText = response.data;
+      const parsedData = parseXml(xmlText, XML_ELEMENTS_JOB_LIST);
+      setJobs(parsedData);
+      console.log(parsedData);
+    } catch (error) {
+      console.error("Error while JobList fetching data:", error);
+    }
+  }
+
+  const fetchJobInfo = async (jobId) => {
+    try {
+      const response = await SenuriService.get("/getJobInfo", {
+        params: {
+          id: jobId,
+        },
+      });
+      const xmlText = response.data;
+      const parsedData = parseXml(xmlText, XML_ELEMENTS_JOB_INFO);
+      setModalSelectedJob(parsedData[0]);
+      console.log(parsedData);
+
+    } catch (error) {
+      console.error("Error while JobInfo fetching data:", error);
+    }
+  }
 
   const getCounts = (jobs) => {
     let areaCounts = { 전체: 0 };
@@ -172,7 +123,7 @@ export const Main = () => {
     goToScreen("areaCounts");
   };
   const openModal = (job) => {
-    fetchData("modalData", job.jobId);
+    fetchJobInfo(job.jobId);
     setShowModal(true);
   };
 
@@ -245,4 +196,4 @@ export const Main = () => {
   );
 };
 
-export default Map;
+export default Main;
