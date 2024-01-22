@@ -26,7 +26,7 @@ const RedirectHandler = () => {
             userName: response.data.name,
             email: response.data.email,
           });
-          navigate("/loginSuccess");
+          navigate("/");
         })
         .catch((error) => {
           console.error("에러 발생:", error);

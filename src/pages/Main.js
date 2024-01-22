@@ -29,16 +29,7 @@ export const Main = () => {
 
   useEffect(() => {
     getCounts(jobs);
-    // goToScreen("areaCounts");
   }, [jobs]);
-
-  /*
-  useEffect(() => {
-    if (Object.keys(counts).length > 0) {
-      setScreen("areaCounts");
-    }
-  }, [counts]);
-  */
 
   const parseXml = (xmlText, elements) => {
     const parser = new DOMParser();

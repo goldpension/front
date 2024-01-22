@@ -3,7 +3,6 @@ import ApplyCheckMent from "../../components/ApplyCheck/ACheckMent";
 import JobTable from "../../components/ApplyCheck/JobTable";
 import { Axios } from "../../api/axios";
 
-// import JobTable2 from "../components/ApplyCheck/JobTable2";
 
 const ApplyCheckMem = ({ companies }) => {
   const jobData = [

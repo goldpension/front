@@ -60,9 +60,6 @@ const App = () => {
                   path="/accounts/kakao/callback/*"
                   element={<RedirectHandler />}
                 />
-                {/* <Route path="/loginSuccess" element={<First />} /> */}
-                <Route path="/loginSuccess" element={<Zero />} />
-                {/* <Route path="/first" element={<First />} /> */}
                 <Route path="/" element={<Zero />} />
                 <Route path="/first" element={<First />} />
                 <Route path="/companyPartner/*" element={<CompanyPartner />} />
