@@ -1,9 +1,37 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
 import styles from '../../css/Main.module.css';
-const AreaCounts = ({counts, onClickCount}) => {
-  if (Object.keys(counts).length === 0) {
-    return <div>Loading...</div>;
-}
+
+const AreaCounts = ({jobs, onClickCount}) => {
+  const [counts, setCounts] = useState({});
+
+  useEffect(() => {
+    getCounts(jobs);
+  }, [jobs])
+
+  const getCounts = (jobs) => {
+    let areaCounts = { 전체: 0 };
+    jobs.forEach((job) => {
+      if (job.deadline === "접수중") {
+        areaCounts["전체"] += 1;
+        if (job.workPlcNm) {
+          const area = job.workPlcNm.slice(0, 2);
+          if (!areaCounts[area]) {
+            areaCounts[area] = 1;
+          } else {
+            areaCounts[area] += 1;
+          }
+        } else {
+          if (!areaCounts["기타"]) {
+            areaCounts["기타"] = 1;
+          } else {
+            areaCounts["기타"] += 1;
+          }
+        }
+      }
+    });
+    setCounts(areaCounts);
+  };
+  
   return (
     Object.keys(counts).length === 0 ? (
       <div>Loading...</div>

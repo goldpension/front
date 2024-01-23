@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { SenuriService } from "../api/axios";
 import Map from "../components/Map";
 import AreaCounts from "../components/Main/AreaCounts";
@@ -8,10 +8,11 @@ import Modal from "../components/modal/Modal";
 import styles from "../css/Main.module.css";
 import Image from "../img/어르신.png";
 import Loading from "../img/loading.gif";
+import {useQuery} from "@tanstack/react-query";
 
 export const Main = () => {
-  const [jobs, setJobs] = useState([]);
-  const [counts, setCounts] = useState({});
+  // const [jobs, setJobs] = useState([]);
+
   const [screen, setScreen] = useState("areaCounts");
   const [listArea, setListArea] = useState("all");
   const [showModal, setShowModal] = useState(false);
@@ -22,14 +23,6 @@ export const Main = () => {
   const goToScreen = (screenName) => {
     setScreen(screenName);
   };
-
-  useEffect(() => {
-    fetchJobList();
-  }, []);
-
-  useEffect(() => {
-    getCounts(jobs);
-  }, [jobs]);
 
   const parseXml = (xmlText, elements) => {
     const parser = new DOMParser();
@@ -57,12 +50,18 @@ export const Main = () => {
       });
       const xmlText = response.data;
       const parsedData = parseXml(xmlText, XML_ELEMENTS_JOB_LIST);
-      setJobs(parsedData);
-      console.log(parsedData);
+      // setJobs(parsedData);
+      return parsedData;
     } catch (error) {
       console.error("Error while JobList fetching data:", error);
     }
   }
+  const { data:jobs, isLoading, error } = useQuery({
+    queryKey: ['jobs'],
+    queryFn: fetchJobList,
+    staleTime: 1000 * 60 * 5,
+    gcTime: Infinity,
+  });
 
   const fetchJobInfo = async (jobId) => {
     try {
@@ -80,30 +79,6 @@ export const Main = () => {
       console.error("Error while JobInfo fetching data:", error);
     }
   }
-
-  const getCounts = (jobs) => {
-    let areaCounts = { 전체: 0 };
-    jobs.forEach((job) => {
-      if (job.deadline === "접수중") {
-        areaCounts["전체"] += 1;
-        if (job.workPlcNm) {
-          const area = job.workPlcNm.slice(0, 2);
-          if (!areaCounts[area]) {
-            areaCounts[area] = 1;
-          } else {
-            areaCounts[area] += 1;
-          }
-        } else {
-          if (!areaCounts["기타"]) {
-            areaCounts["기타"] = 1;
-          } else {
-            areaCounts["기타"] += 1;
-          }
-        }
-      }
-    });
-    setCounts(areaCounts);
-  };
 
   const onClickCount = (area) => {
     setListArea(area);
@@ -124,7 +99,7 @@ export const Main = () => {
 
   function renderScreen(screen) {
     const screens = {
-      'areaCounts': () => <AreaCounts counts={counts} onClickCount={onClickCount} />,
+      'areaCounts': () => <AreaCounts jobs={jobs} onClickCount={onClickCount} />,
       'first': () => <First onClickGoCounts={onClickGoCounts} />,
       'list': () => <List area={listArea} jobs={jobs} openModal={openModal} />
     };
@@ -133,11 +108,34 @@ export const Main = () => {
     return ScreenComponent ? ScreenComponent() : <div>Invalid screen</div>;
   }
   
-
   const goBackHandler = () => {
     setListArea("all");
     goToScreen("areaCounts");
   };
+
+  if (isLoading) return (
+    <div className={styles.main}>
+      <div className={styles.loadingComponent}>
+        <div>
+          <img src={Image}/>
+          <div className={styles.ambassador}>황금연금 홍보대사 - 한사랑 산악회</div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-around",
+            height: "200px",
+          }}
+        >
+          <div style={{textAlign: 'center'}}>데이터를 불러오고 있습니다.</div>
+          <img src={Loading} width={"100px"} />
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <Modal show={showModal} close={closeModal} job={modalSelectedJob} />
@@ -146,42 +144,17 @@ export const Main = () => {
           전체지역
         </div>
       ) : null}
-      {Object.keys(jobs).length > 0 ? (
-        <div>
-          <div className={styles.main}>
-            <div className={styles.mapContainer}>
-              <Map
-                jobs={jobs}
-                selectedArea={listArea}
-                onClickCount={onClickCount}
-                openModal={openModal}
-              />
-            </div>
-            <div className={styles.renderScreen}>{renderScreen(screen)}</div>
-          </div>
+      <div className={styles.main}>
+        <div className={styles.mapContainer}>
+          <Map
+            jobs={jobs}
+            selectedArea={listArea}
+            onClickCount={onClickCount}
+            openModal={openModal}
+          />
         </div>
-      ) : (
-        <div className={styles.main}>
-          <div className={styles.loadingComponent}>
-            <div>
-              <img src={Image}/>
-              <div className={styles.ambassador}>황금연금 홍보대사 - 한사랑 산악회</div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "space-around",
-                height: "200px",
-              }}
-            >
-              <div style={{textAlign: 'center'}}>데이터를 불러오고 있습니다.</div>
-              <img src={Loading} width={"100px"} />
-            </div>
-          </div>
-        </div>
-      )}
+        <div className={styles.renderScreen}>{renderScreen(screen)}</div>
+      </div>
     </>
   );
 };

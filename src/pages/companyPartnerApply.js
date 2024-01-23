@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../css/companyPartnerApply.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Axios } from "../api/axios";
 import { useRecoilState } from "recoil";
 import seniorState from "../recoil/seniorState";

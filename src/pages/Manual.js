@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../css/Manual.module.css";
 import Img1 from "../img/useMethod1.png";
 import Img2 from "../img/useMethod2.png";

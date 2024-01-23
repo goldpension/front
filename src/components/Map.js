@@ -173,6 +173,7 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
       const kakao = window.kakao;
       let newMarkers = [];
       if (selectedArea === "all" || selectedArea === undefined) { //전체 지역 
+        clusterer.clear();
         map.setLevel(13);
         map.setCenter(new kakao.maps.LatLng(36.38, 127.51));
 

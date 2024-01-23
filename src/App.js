@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { RecoilRoot } from "recoil";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
 import NotFound from "./pages/NotFound";
@@ -23,64 +25,69 @@ const LoginSuccess = lazy(() => import("./components/Login/LoginSuccess"));
 const Account = lazy(() => import("./components/Info/Account"));
 const Zero = lazy(() => import("./pages/Zero"));
 
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
-    <RecoilRoot>
-      <div>
-        <div
-          className="App"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: '100vh'
-          }}
-        >
-          <BrowserRouter>
-            <Navbar />
-            <div
-              style={{
-                height: '100vh',
-                paddingTop: '50px',
-                position: "relative",
-                backgroundColor: "#eeeeee",
-              }}
-            >
-              <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                  <Route path="/findJobs/" element={<Main />} />
-                  <Route path="/manual/*" element={<Manual />} />
-                  <Route
-                    path="/CompanyPromotion/"
-                    element={<CompanyPromotion />}
-                  />
-                  <Route path="/login/*" element={<Login />} />
-                  <Route path="/myinfo" element={<MyInfo />} />
-                  <Route
-                    path="/accounts/kakao/callback/*"
-                    element={<RedirectHandler />}
-                  />
-                  <Route path="/" element={<Zero />} />
-                  <Route path="/first" element={<First />} />
-                  <Route path="/companyPartner/*" element={<CompanyPartner />} />
-                  <Route
-                    path="/companyPartner/apply"
-                    element={<CompanyPartnerApply />}
-                  />
-                  <Route
-                    path="/companyPartner/apply/done"
-                    element={<CompanyPartnerApplyDone />}
-                  />
-                  <Route path="/apply" element={<ApplyCheck />} />
-                  <Route path="/join/*" element={<Join />} />
-                  <Route path="/join/join_tel" element={<Join_tel />} />
-                  <Route path="/*" element={<NotFound />}></Route>
-                </Routes>
-              </Suspense>
-            </div>
-          </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <div>
+          <div
+            className="App"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: '100vh'
+            }}
+          >
+            <BrowserRouter>
+              <Navbar />
+              <div
+                style={{
+                  height: '100vh',
+                  paddingTop: '50px',
+                  position: "relative",
+                  backgroundColor: "#eeeeee",
+                }}
+              >
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Routes>
+                    <Route path="/findJobs/" element={<Main />} />
+                    <Route path="/manual/*" element={<Manual />} />
+                    <Route
+                      path="/CompanyPromotion/"
+                      element={<CompanyPromotion />}
+                    />
+                    <Route path="/login/*" element={<Login />} />
+                    <Route path="/myinfo" element={<MyInfo />} />
+                    <Route
+                      path="/accounts/kakao/callback/*"
+                      element={<RedirectHandler />}
+                    />
+                    <Route path="/" element={<Zero />} />
+                    <Route path="/first" element={<First />} />
+                    <Route path="/companyPartner/*" element={<CompanyPartner />} />
+                    <Route
+                      path="/companyPartner/apply"
+                      element={<CompanyPartnerApply />}
+                    />
+                    <Route
+                      path="/companyPartner/apply/done"
+                      element={<CompanyPartnerApplyDone />}
+                    />
+                    <Route path="/apply" element={<ApplyCheck />} />
+                    <Route path="/join/*" element={<Join />} />
+                    <Route path="/join/join_tel" element={<Join_tel />} />
+                    <Route path="/*" element={<NotFound />}></Route>
+                  </Routes>
+                </Suspense>
+              </div>
+            </BrowserRouter>
+          </div>
         </div>
-      </div>
-    </RecoilRoot>
+      </RecoilRoot>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 };
 
