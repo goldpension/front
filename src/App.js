@@ -1,28 +1,27 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { RecoilRoot } from "recoil";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
-import First from "./pages/First";
-import { Main } from "./pages/Main";
-
-import Manual from "./pages/Manual";
-import CompanyPromotion from "./pages/CompanyPromotion";
-import CompanyPartner from "./pages/companyPartner";
-import CompanyPartnerApply from "./pages/companyPartnerApply";
-import CompanyPartnerApplyDone from "./pages/CompanyPartnerApplyDone";
 import NotFound from "./pages/NotFound";
-import Login from "./pages/Login";
 
-import Join from "./pages/Join_p/Join";
-import Join_tel from "./pages/Join_p/Join_tel";
-import MyInfo from "./pages/MyInfo";
-import MyInfo1 from "./pages/MyInfo1";
-import MyInfo2 from "./pages/MyInfo2";
-import ApplyCheck from "./pages/ApplyCheck/ApplyCheck";
-import RedirectHandler from "./components/Login/RedirectHandler";
-import LoginSuccess from "./components/Login/LoginSuccess";
-import Account from "./components/Info/Account";
-import Zero from "./pages/Zero";
+const First = lazy(() => import("./pages/First"));
+const Main = lazy(() => import("./pages/Main"));
+const Manual = lazy(() => import("./pages/Manual"));
+const CompanyPromotion = lazy(() => import("./pages/CompanyPromotion"));
+const CompanyPartner = lazy(() => import("./pages/companyPartner"));
+const CompanyPartnerApply = lazy(() => import("./pages/companyPartnerApply"));
+const CompanyPartnerApplyDone = lazy(() => import("./pages/CompanyPartnerApplyDone"));
+const Login = lazy(() => import("./pages/Login"));
+const Join = lazy(() => import("./pages/Join_p/Join"));
+const Join_tel = lazy(() => import("./pages/Join_p/Join_tel"));
+const MyInfo = lazy(() => import("./pages/MyInfo"));
+const MyInfo1 = lazy(() => import("./pages/MyInfo1"));
+const MyInfo2 = lazy(() => import("./pages/MyInfo2"));
+const ApplyCheck = lazy(() => import("./pages/ApplyCheck/ApplyCheck"));
+const RedirectHandler = lazy(() => import("./components/Login/RedirectHandler"));
+const LoginSuccess = lazy(() => import("./components/Login/LoginSuccess"));
+const Account = lazy(() => import("./components/Info/Account"));
+const Zero = lazy(() => import("./pages/Zero"));
 
 const App = () => {
   return (
@@ -46,36 +45,37 @@ const App = () => {
                 backgroundColor: "#eeeeee",
               }}
             >
-              <Routes>
-                <Route path="/findJobs/" element={<Main />} />
-                <Route path="/manual/*" element={<Manual />} />
-                <Route
-                  path="/CompanyPromotion/"
-                  element={<CompanyPromotion />}
-                />
-                <Route path="/login/*" element={<Login />} />
-                <Route path="/myinfo" element={<MyInfo />} />
-
-                <Route
-                  path="/accounts/kakao/callback/*"
-                  element={<RedirectHandler />}
-                />
-                <Route path="/" element={<Zero />} />
-                <Route path="/first" element={<First />} />
-                <Route path="/companyPartner/*" element={<CompanyPartner />} />
-                <Route
-                  path="/companyPartner/apply"
-                  element={<CompanyPartnerApply />}
-                />
-                <Route
-                  path="/companyPartner/apply/done"
-                  element={<CompanyPartnerApplyDone />}
-                />
-                <Route path="/apply" element={<ApplyCheck />} />
-                <Route path="/join/*" element={<Join />} />
-                <Route path="/join/join_tel" element={<Join_tel />} />
-                <Route path="/*" element={<NotFound />}></Route>
-              </Routes>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                  <Route path="/findJobs/" element={<Main />} />
+                  <Route path="/manual/*" element={<Manual />} />
+                  <Route
+                    path="/CompanyPromotion/"
+                    element={<CompanyPromotion />}
+                  />
+                  <Route path="/login/*" element={<Login />} />
+                  <Route path="/myinfo" element={<MyInfo />} />
+                  <Route
+                    path="/accounts/kakao/callback/*"
+                    element={<RedirectHandler />}
+                  />
+                  <Route path="/" element={<Zero />} />
+                  <Route path="/first" element={<First />} />
+                  <Route path="/companyPartner/*" element={<CompanyPartner />} />
+                  <Route
+                    path="/companyPartner/apply"
+                    element={<CompanyPartnerApply />}
+                  />
+                  <Route
+                    path="/companyPartner/apply/done"
+                    element={<CompanyPartnerApplyDone />}
+                  />
+                  <Route path="/apply" element={<ApplyCheck />} />
+                  <Route path="/join/*" element={<Join />} />
+                  <Route path="/join/join_tel" element={<Join_tel />} />
+                  <Route path="/*" element={<NotFound />}></Route>
+                </Routes>
+              </Suspense>
             </div>
           </BrowserRouter>
         </div>

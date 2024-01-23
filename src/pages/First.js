@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import debounce from 'lodash/debounce';
 import { ContentStep1, ContentStep2 } from "../components/First/FirstContents";
 import styles from "../css/First.module.css";
 import cards from "../css/card.module.css";
@@ -6,8 +7,6 @@ import { Link } from "react-router-dom";
 import koreaMap from "../img/지도.png";
 import { useRecoilState } from "recoil";
 import seniorState from "../recoil/seniorState";
-import { useMediaQuery } from 'react-responsive'
-import JobBox from "../components/JobBox";
 
 const First = ({ onClickGoCounts }) => {
   const [loggedInUser, setLoggedInUser] = useRecoilState(seniorState);
@@ -15,13 +14,21 @@ const First = ({ onClickGoCounts }) => {
   const titles = ["일반 일자리", "검증된 일자리"];
   const contents = [<ContentStep1 />, <ContentStep2 />];
   const link = ["/findJobs", "/companyPromotion", "/companyPartner/apply"];
-  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' })
-  const isTablet = useMediaQuery({ query: '(max-width: 1024px)' })
-  const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
+  const [width, setWidth] = useState(window.innerWidth);
 
   const handleClickTitle = (index) => {
     setActiveIndex(index);
   };
+
+  const updateWidth = debounce(() => {
+    setWidth(window.innerWidth);
+  }, 500);
+
+  useEffect(() => {
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, [])
+
 
   return (
     <div className={styles.main}>
@@ -29,7 +36,7 @@ const First = ({ onClickGoCounts }) => {
         <img src={koreaMap} alt="한반도이미지"/>
       </div>
       <div className={styles.rightSide}>
-        {isMobile &&
+        {width < 1024 &&
         <>
           <div className={styles.firstMainComment}>
             <p>은퇴 후의 첫 걸음을 응원합니다!</p>
@@ -102,7 +109,7 @@ const First = ({ onClickGoCounts }) => {
           </div>
         </>
         }
-        {isDesktop && 
+        {width >= 1024 && 
         <>
         <div className={styles.firstMainComment}>
           황금연금이 항상 곁에 있을게요.

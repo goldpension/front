@@ -24,7 +24,7 @@ function Navbar() {
         </div>
         <div className={styles.navItem}>
           <Link to="/" state={"first"}>
-            <img src={logoImg} alt="goldenPension Logo" />
+            <img src={logoImg} width='90' alt="goldenPension Logo" />
           </Link>
         </div>
         <div className={styles.navItemlogin}>
