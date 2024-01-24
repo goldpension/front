@@ -11,8 +11,6 @@ import Loading from "../img/loading.gif";
 import {useQuery} from "@tanstack/react-query";
 
 export const Main = () => {
-  // const [jobs, setJobs] = useState([]);
-
   const [screen, setScreen] = useState("areaCounts");
   const [listArea, setListArea] = useState("all");
   const [showModal, setShowModal] = useState(false);
@@ -61,6 +59,8 @@ export const Main = () => {
     queryFn: fetchJobList,
     staleTime: 1000 * 60 * 5,
     gcTime: Infinity,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 
   const fetchJobInfo = async (jobId) => {
