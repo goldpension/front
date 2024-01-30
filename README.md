@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# 황금연금 Gold Pension
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+<img width="300" alt="image" src="./src/img/rec_logo.png">
+</div>
 
-## Available Scripts
+황금연금은 시니어를 위한 안전하고 보장된 일자리를 제공하는 웹서비스입니다.
 
-In the project directory, you can run:
+이 깃허브 주소는 황금연금의 **프론트엔드** 부분을 내포하고 있습니다.
 
-### `npm start`
+## 배포 주소
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> https://front-phi-one.vercel.app
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 멤버 소개
 
-### `npm test`
+<img width="500px" src="https://github.com/goldpension/front/assets/70899438/4cce47c1-3de6-44ab-b640-18c8d583b477" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 프로젝트 소개
 
-### `npm run build`
+> **시니어 구인구직 웹서비스** <br/> **개발기간: 2023.07 ~ 2023.08**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+황금연금은 시니어를 위한 안전하고 보장된 일자리를 제공하는 웹서비스입니다. 기존에 존재하는 구인구직 플랫폼은 시니어들이 사용하기에 불편한 점이 많이 존재합니다. 따라서 노인 친화적인 UX/UI를 도입하고, 기능의 복잡성을 단순화하여 시니어를 위한 채용공고 웹서비스를 제작하였습니다. 한국노인인력개발원에서 제공하는 일자리를 비롯하여 서비스 자체적으로 기업과 파트너를 맺어 더욱 신뢰할 수 있는 일자리를 제공합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Golden Pension is a web service that provides secure and guaranteed employment opportunities for seniors.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Existing job platform services often have many inconveniences for seniors to use. Therefore, we have adopted senior-friendly UX/UI and simplified the complexity of functions to create a job posting web service for seniors. We provide trustworthy job opportunities not only from the Korean Senior Workforce Development Institute but also through partnerships with companies within our own service.
 
-### `npm run eject`
+## 설치 방법
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Requirements
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For building and running the application you need:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [Node.js 16.17.0](https://nodejs.org/ca/blog/release/v16.17.0/)
+- [Npm 9.6.4](https://www.npmjs.com/package/npm/v/9.6.4)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Installation
 
-## Learn More
+```bash
+$ git clone https://github.com/goldpension/front.git
+$ cd front
+$ npm install
+$ npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 기술 스택
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Environment
 
-### Code Splitting
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white)
+![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Config
 
-### Analyzing the Bundle Size
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Development
 
-### Making a Progressive Web App
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=black)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Query](https://img.shields.io/badge/Reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white)
+![Recoil](https://img.shields.io/badge/Recoil-3578E5?style=for-the-badge&logo=Recoil&logoColor=white)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Communication
 
-### Advanced Configuration
+![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
+![GoogleMeet](https://img.shields.io/badge/GoogleMeet-00897B?style=for-the-badge&logo=Google%20Meet&logoColor=white)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 주요 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+|                                                     첫 페이지                                                      |                                               일반 일자리 - 지역선택                                               |
+| :----------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: |
+| <img width="329" src="https://github.com/goldpension/front/assets/70899438/b50b659d-6bdc-4000-a6cf-e25647d3caf5"/> | <img width="329" src="https://github.com/goldpension/front/assets/70899438/8c7df4ff-2f3b-4af6-857e-18fd1c8a5e69"/> |
+|                                               일반 일자리 - 지역상세                                               |                                                   검증된 일자리                                                    |
+| <img width="329" src="https://github.com/goldpension/front/assets/70899438/4866c9df-ecc9-452d-8ee9-fa4007e1adef"/> | <img width="329" src="https://github.com/goldpension/front/assets/70899438/e00cf2e8-bc98-4106-8019-6fd12f5abbc3"/> |
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 주요 기능
+
+### ⭐️ 일반 일자리 찾기
+
+- 한국노인인력개발원에서 제공하는 일자리 제공
+- 카카오맵 api를 이용하여 지도에서 위치와 함께 볼 수 있음
+
+### ⭐️ 검증된 일자리 찾기
+
+- 황금연금 파트너사의 일자리 제공
+
+### ⭐️ 파트너사 지원하기
+
+- 기업 회원은 파트너사를 신청하여 채용공고를 올릴 수 있음
+
+### ⭐️ 지원한 일자리 확인하기
+
+- 비회원은 전화번호와 이름을 이용하여 확인 가능
+
+---
+
+## 아키텍쳐
+
+### 디렉토리 구조
+
+```bash
+front
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+└── src
+    ├── api
+    ├── components
+    ├── css
+    ├── img
+    ├── json
+    ├── pages
+    ├── recoil
+    ├── App.js
+    └── index.js
+```

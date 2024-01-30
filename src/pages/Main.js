@@ -117,7 +117,7 @@ export const Main = () => {
     <div className={styles.main}>
       <div className={styles.loadingComponent}>
         <div>
-          <img src={Image}/>
+          <img src={Image} alt="황금연금 홍보대사 한사랑 산악회"/>
           <div className={styles.ambassador}>황금연금 홍보대사 - 한사랑 산악회</div>
         </div>
         <div
@@ -130,7 +130,7 @@ export const Main = () => {
           }}
         >
           <div style={{textAlign: 'center'}}>데이터를 불러오고 있습니다.</div>
-          <img src={Loading} width={"100px"} />
+          <img src={Loading} width={"100px"} alt="로딩 애니메이션"/>
         </div>
       </div>
     </div>

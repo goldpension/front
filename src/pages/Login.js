@@ -1,5 +1,5 @@
 import React from "react";
-import LoginMent1 from "../components/Login/LMent1";
+import LoginMent1 from "../components/Login/LoginMent1";
 import LInput from "../components/Login/LInput";
 import LKakao from "../components/Login/LKakao";
 import LNaver from "../components/Login/LNaver";

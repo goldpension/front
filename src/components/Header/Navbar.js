@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import seniorState from "../../recoil/seniorState";
 import Menu from "./Menu";
-import UserMenu from "./UserMenu";
 import styles from "../../css/Nav.module.css";
 import logoImg from "../../img/logo.png";
 
@@ -24,13 +23,14 @@ function Navbar() {
         </div>
         <div className={styles.navItem}>
           <Link to="/" state={"first"}>
-            <img src={logoImg} width='90' alt="goldenPension Logo" />
+            <img src={logoImg} width='90' alt="황금연금 로고" />
           </Link>
         </div>
         <div className={styles.navItemlogin}>
           {loggedInUser.isLoggedIn ? (
             <div className={styles.logoutBtnContainer}>
-              <Link to="/myinfo">{loggedInUser.userName}</Link>님{" "}
+              <Link to="/myinfo">내정보</Link>{" "}
+              <span>{loggedInUser.userName}</span>님{" "}
               <Link to="/">
                 <div className={styles.logoutBtn} onClick={logout}>
                   로그아웃
