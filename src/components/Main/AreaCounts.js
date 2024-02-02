@@ -5,6 +5,7 @@ const AreaCounts = ({jobs, onClickCount}) => {
   const [counts, setCounts] = useState({});
 
   useEffect(() => {
+    document.title = '일반 일자리 찾기 | 지역 선택 - 황금연금';
     getCounts(jobs);
   }, [jobs])
 

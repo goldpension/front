@@ -54,7 +54,7 @@ export const Main = () => {
       console.error("Error while JobList fetching data:", error);
     }
   }
-  const { data:jobs, isLoading, error } = useQuery({
+  const { data:jobs, isLoading } = useQuery({
     queryKey: ['jobs'],
     queryFn: fetchJobList,
     staleTime: 1000 * 60 * 5,

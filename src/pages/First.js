@@ -25,6 +25,7 @@ const First = ({ onClickGoCounts }) => {
   }, 500);
 
   useEffect(() => {
+    document.title = '일자리 찾기 - 황금연금';
     window.addEventListener('resize', updateWidth);
     return () => window.removeEventListener('resize', updateWidth);
   }, [])

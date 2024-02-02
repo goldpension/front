@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/Manual.module.css";
 import Img1 from "../img/useMethod1.png";
 import Img2 from "../img/useMethod2.png";
 import Img3 from "../img/useMethod3.png";
 import DownArrow from "../img/down-arrow.png";
-const Manual = (props) => {
+const Manual = () => {
   const [activeImage, setActiveImage] = useState(Img1);
 
+  useEffect(()=> {
+    document.title= '사용 방법 - 황금연금';
+  }, [])
   const handleClick = () => {
     if (activeImage === Img1) {
       setActiveImage(Img2);

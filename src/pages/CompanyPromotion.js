@@ -62,6 +62,7 @@ const CompanyPromotion = (props) => {
 ]);
 
   useEffect(() => {
+    document.title = '검증된 일자리 찾기 - 황금연금';
     fetchData();
   }, []);
 

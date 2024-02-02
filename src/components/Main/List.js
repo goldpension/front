@@ -56,6 +56,7 @@ const List = ({ area, jobs, openModal }) => {
   };
 
   useEffect(() => {
+    document.title = `일반 일자리 목록 | ${area} - 황금연금`;
     window.addEventListener('resize', updateWidth);
     return () => window.removeEventListener('resize', updateWidth);
   }, []);

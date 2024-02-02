@@ -1,8 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from '../css/Zero.module.css'
 import { Link } from "react-router-dom";
 
 const Zero = () => {
+
+  useEffect(() => {
+    document.title = '황금연금 | 시니어 취업, 채용 플랫폼 No.1';
+  }, [])
+
   return (
     <div>
       <div>

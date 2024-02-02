@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../../css/List.module.css'
 
 const Job = ({job, openModal}) => {
+
   return (
     <div className={styles.job} onClick={() => openModal(job)}>
       <div className={styles.deadlineContainer}>

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../css/card.module.css";
 
 const JobBox = ({ companies, openModal }) => {
+
   const card = [
     {
       cardJstatus: "구인중",

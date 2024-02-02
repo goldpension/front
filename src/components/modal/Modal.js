@@ -9,6 +9,7 @@ const Modal = ({ show, close, job, type }) => {
   if (!show) {
     return null;
   }
+
   const onClickSubmit = () => {
     setApplyCompleted(true);
   };

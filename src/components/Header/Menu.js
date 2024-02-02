@@ -36,7 +36,7 @@ function Menu({ isLoggedIn }) {
           </Link>
           <Link to="/manual/useMethod">
             <li>
-              사용방법 <br /> & <br /> 공지사항
+              사용방법
             </li>
           </Link>
           {isLoggedIn ? null : (

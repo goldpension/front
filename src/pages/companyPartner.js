@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/companyPartner.module.css";
 import { Link } from "react-router-dom";
 
-const CompanyPartner = (props) => {
+const CompanyPartner = () => {
   const [screen, setScreen] = useState('main');
+
+  useEffect(() => {
+    document.title = '황금연금 파트너 지원하기 - 황금연금';
+  }, [])
+
   const changeType = (type) => {
     setScreen(type);
   }
