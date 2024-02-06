@@ -97,7 +97,7 @@ const CompanyPromotion = (props) => {
     },
   ];
   return (
-    <>
+    <main>
       <Modal
         show={showModal}
         close={closeModal}
@@ -111,16 +111,18 @@ const CompanyPromotion = (props) => {
           </h1>
         </div>
         {expandedJobbox ? (
-          <>
+          <section>
             <div className={styles.cp_content}>
               <JobBox companies={companies} openModal={openModal} />
             </div>
-            <div className={styles.cp_btn} onClick={onClickBackButton}>
-              <p>뒤로가기</p>
+            <div className={styles.cp_btnContainer}>
+              <div className={styles.cp_btn} onClick={onClickBackButton}>
+              뒤로가기
+              </div>
             </div>
-          </>
+          </section>
         ) : (
-          <>
+          <section>
             <div className={styles.cp_content}>
               <div className={styles.cp_contentText}>
                 <p>혹시 이상한 일자리가 올라오지 않을까 걱정되시나요?</p>
@@ -135,13 +137,15 @@ const CompanyPromotion = (props) => {
                 {/* <JobBox companies={companies} openModal={openModal} /> */}
               </div>
             </div>
-            <div className={styles.cp_btn} onClick={onClickNextButton}>
-              <p>더보러가기</p>
+            <div className={styles.cp_btnContainer}>
+              <div className={styles.cp_btn} onClick={onClickNextButton}>
+                더보러가기
+              </div>
             </div>
-          </>
+          </section>
         )}
       </div>
-    </>
+    </main>
   );
 };
 

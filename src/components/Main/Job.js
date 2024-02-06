@@ -3,8 +3,14 @@ import styles from '../../css/List.module.css'
 
 const Job = ({job, openModal}) => {
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      openModal(job);
+    }
+  }
+
   return (
-    <div className={styles.job} onClick={() => openModal(job)}>
+    <li className={styles.job} onClick={() => openModal(job)} onKeyDown={handleKeyDown} tabIndex={0}>
       <div className={styles.deadlineContainer}>
         <div className={styles.deadline}>{job.deadline}</div>
       </div>
@@ -15,7 +21,7 @@ const Job = ({job, openModal}) => {
         {job.oranNm.length > 20 ? `${job.oranNm.slice(0, 20)}...` : job.oranNm}
       </div>
       <div className={styles.workPlcNm}>{job.workPlcNm}</div>
-    </div>
+    </li>
   )
 }
 

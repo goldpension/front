@@ -21,14 +21,14 @@ const Manual = () => {
   };
 
   return (
-    <div className={styles.relati}>
+    <main className={styles.relati}>
       <div className={styles.image}>
         <img src={activeImage} alt="Method"/> {/* 이미지 변경 시 0.5초 동안 애니메이션 적용 */}
       </div>
       <button className={styles.change_button} onClick={handleClick}>
         <img src={DownArrow} alt='next_button' />
       </button>
-    </div>
+    </main>
   );
 };
 

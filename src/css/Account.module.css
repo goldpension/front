@@ -43,8 +43,8 @@
   font-size: large;
   flex-basis: 300px;
   width: 300px;
-  /* padding-left: 40px;
-  padding-right: 40px; */
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .a {

@@ -17,8 +17,7 @@ const Login = lazy(() => import("./pages/Login"));
 const Join = lazy(() => import("./pages/Join_p/Join"));
 const Join_tel = lazy(() => import("./pages/Join_p/Join_tel"));
 const MyInfo = lazy(() => import("./pages/MyInfo"));
-const MyInfo1 = lazy(() => import("./pages/MyInfo1"));
-const MyInfo2 = lazy(() => import("./pages/MyInfo2"));
+const ChangeAccount = lazy(() => import("./pages/ChangeAccount"));
 const ApplyCheck = lazy(() => import("./pages/ApplyCheck/ApplyCheck"));
 const RedirectHandler = lazy(() => import("./components/Login/RedirectHandler"));
 const LoginSuccess = lazy(() => import("./components/Login/LoginSuccess"));
@@ -60,6 +59,7 @@ const App = () => {
                     />
                     <Route path="/login/*" element={<Login />} />
                     <Route path="/myinfo" element={<MyInfo />} />
+                    <Route path="/myinfo/changeAccount" element={<ChangeAccount />} />
                     <Route
                       path="/accounts/kakao/callback/*"
                       element={<RedirectHandler />}

@@ -5,11 +5,11 @@ import styles from "../css/First.module.css";
 import cards from "../css/card.module.css";
 import { Link } from "react-router-dom";
 import koreaMap from "../img/지도.png";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import seniorState from "../recoil/seniorState";
 
-const First = ({ onClickGoCounts }) => {
-  const [loggedInUser, setLoggedInUser] = useRecoilState(seniorState);
+const First = () => {
+  const loggedInUser = useRecoilValue(seniorState);
   const [activeIndex, setActiveIndex] = useState(0);
   const titles = ["일반 일자리", "검증된 일자리"];
   const contents = [<ContentStep1 />, <ContentStep2 />];
@@ -32,7 +32,7 @@ const First = ({ onClickGoCounts }) => {
 
 
   return (
-    <div className={styles.main}>
+    <main className={styles.main}>
       <div className={styles.leftSide}>
         <img src={koreaMap} alt="한반도이미지"/>
       </div>
@@ -170,7 +170,7 @@ const First = ({ onClickGoCounts }) => {
         
         </>}
       </div>
-    </div>
+    </main>
   );
 };
 

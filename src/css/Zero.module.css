@@ -3,7 +3,10 @@
     display: block;
   }
 }
-
+a {
+  text-decoration: none;
+  color: black;
+}
 span {
   display: inline;
 }
@@ -14,11 +17,14 @@ span {
 }
 
 .bsenior {
+  display: inline-block;
+  text-align: center;
   border: none;
   border-radius: 10px;
   background-color: #e89c31;
   width: 150px;
   height: 50px;
+  line-height: 50px;
   font-weight: bold;
   font-size: large;
   cursor: pointer;
@@ -29,11 +35,14 @@ span {
 }
 
 .bcompany {
+  display: inline-block;
   border: none;
   border-radius: 10px;
   background-color: #07236b;
   width: 150px;
   height: 50px;
+  line-height: 50px;
+  text-align: center;
   color: #ffffff;
   font-weight: bold;
   font-size: large;

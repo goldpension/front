@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { SenuriService } from "../api/axios";
 import Map from "../components/Map";
 import AreaCounts from "../components/Main/AreaCounts";
-import First from "./First";
 import List from "../components/Main/List";
 import Modal from "../components/modal/Modal";
 import styles from "../css/Main.module.css";
@@ -17,7 +16,6 @@ export const Main = () => {
   const [modalSelectedJob, setModalSelectedJob] = useState({});
   const XML_ELEMENTS_JOB_LIST = ["jobId", "deadline", "jobcls", "oranNm", "workPlcNm", "recrtTitle"];
   const XML_ELEMENTS_JOB_INFO = ["acptMthdCd", "age", "ageLim", "clerk", "clerkContt", "clltPrnnum", "detCnts", "plDetAddr", "plbizNm", "frAcptDd", "toAcptDd", "wantedTitle"];
-
   const goToScreen = (screenName) => {
     setScreen(screenName);
   };
@@ -85,9 +83,6 @@ export const Main = () => {
     goToScreen("list");
   };
 
-  const onClickGoCounts = () => {
-    goToScreen("areaCounts");
-  };
   const openModal = (job) => {
     fetchJobInfo(job.jobId);
     setShowModal(true);
@@ -100,7 +95,6 @@ export const Main = () => {
   function renderScreen(screen) {
     const screens = {
       'areaCounts': () => <AreaCounts jobs={jobs} onClickCount={onClickCount} />,
-      'first': () => <First onClickGoCounts={onClickGoCounts} />,
       'list': () => <List area={listArea} jobs={jobs} openModal={openModal} />
     };
   
@@ -114,8 +108,8 @@ export const Main = () => {
   };
 
   if (isLoading) return (
-    <div className={styles.main}>
-      <div className={styles.loadingComponent}>
+    <main className={styles.main}>
+      <section className={styles.loadingComponent}>
         <div>
           <img src={Image} alt="황금연금 홍보대사 한사랑 산악회"/>
           <div className={styles.ambassador}>황금연금 홍보대사 - 한사랑 산악회</div>
@@ -132,29 +126,29 @@ export const Main = () => {
           <div style={{textAlign: 'center'}}>데이터를 불러오고 있습니다.</div>
           <img src={Loading} width={"100px"} alt="로딩 애니메이션"/>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 
   return (
     <>
-      <Modal show={showModal} close={closeModal} job={modalSelectedJob} />
+      <Modal show={showModal} close={closeModal} job={modalSelectedJob}/>
       {screen === "list" ? (
-        <div className={styles.goBack} onClick={goBackHandler}>
+        <button className={styles.goBack} onClick={goBackHandler} tabIndex={0}>
           전체지역
-        </div>
+        </button>
       ) : null}
-      <div className={styles.main}>
-        <div className={styles.mapContainer}>
+      <main className={styles.main}>
+        <section className={styles.mapContainer}>
           <Map
             jobs={jobs}
             selectedArea={listArea}
             onClickCount={onClickCount}
             openModal={openModal}
           />
-        </div>
-        <div className={styles.renderScreen}>{renderScreen(screen)}</div>
-      </div>
+        </section>
+        <section className={styles.renderScreen}>{renderScreen(screen)}</section>
+      </main>
     </>
   );
 };

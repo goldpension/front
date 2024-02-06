@@ -51,14 +51,24 @@
   justify-content: center;
   text-align: center;
 }
-.cp_inforcontenttext {
+.cp_infoContentText {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 18px;
 }
-.cp_inforcontentinput {
-  margin: 10px;
+.cp_infoContentText > label {
+  display: flex;
+  margin-right: 10px;
 }
-.cp_inforcontenttext span {
+.cp_infoContentInput {
+  width: 300px;
+  border-radius: 5px;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+}
+.cp_infoContentText span {
   color: red;
 }
 .cp_radio {

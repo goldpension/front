@@ -16,7 +16,7 @@ function Navbar() {
     });
   };
   return (
-    <>
+    <header>
       <div className={styles.navContainer}>
         <div className={styles.navItem}>
           <Menu isLoggedIn={loggedInUser.isLoggedIn} />
@@ -44,7 +44,7 @@ function Navbar() {
           )}
         </div>
       </div>
-    </>
+    </header>
   );
 }
 

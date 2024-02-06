@@ -9,7 +9,7 @@ const MyInfo = () => {
   const [loggedInUser, setLoggedInUser] = useRecoilState(seniorState);
   const [editing, setEditing] = useState(false); // 글 작성 모드 여부
   const [introText, setIntroText] = useState(loggedInUser.intro || ""); // 소개글을 저장할 상태
-  const [uploadedAds, setUploadedAds] = useState([]); // 공고 목록을 저장할 상태
+  const [uploadedAds, setUploadedAds] = useState([{title: '기획 모집'}, {title: '백엔드 모집'}, {title: 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'}]); // 공고 목록을 저장할 상태
 
   useEffect(() => {
     fetchData();
@@ -44,7 +44,7 @@ const MyInfo = () => {
   };
 
   return (
-    <div>
+    <main>
       <InfoMent />
       {editing ? (
         <form className={styles.accountComponent} onSubmit={handleSubmit}>
@@ -65,7 +65,6 @@ const MyInfo = () => {
       ) : (
         <div className={styles.accountComponent}>
           <table
-            className={styles.table}
             style={{
               textAlign: "center",
               paddingTop: "20px",
@@ -89,41 +88,28 @@ const MyInfo = () => {
             </tr>
             <tr>
               <td className={styles.text1}>올린 공고</td>
-              <td
-                className={styles.text2}
-                colSpan={2}
-                style={{
-                  backgroundColor: "#D9D9D9",
-                  borderRadius: "10px",
-                }}
-              >
+              <td className={styles.text2} colSpan={2}>
                 {/* 공고를 테이블에 표시합니다. */}
-                <table
-                  className={styles.text2}
-                  style={{
-                    paddingLeft: "10px",
-                  }}
-                >
-                  <tr>
-                    <td>1</td>
-                    <td colSpan={3}>프론트 개발자 모집</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td colSpan={3}>백엔드 개발자 모집</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td colSpan={3}>프롬프트 개발자 모집</td>
-                  </tr>
+                <table className={styles.text2}>
+                  <tbody>
+                    {uploadedAds.map((ad, index) => (
+                      <tr key={index} style={{width: '100%', overflow: "hidden"}}>
+                        <td>{index}</td>
+                        <td colSpan={3}>{ad.title.length > 10 ? ad.title.slice(0,10) + '...' : ad.title}</td>
+                        {/* 다른 공고 세부 정보에 대한 추가 열을 만들 수 있습니다. */}
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
               </td>
             </tr>
           </table>
         </div>
       )}
-    </div>
+    </main>
   );
 };
 
 export default MyInfo;
+
+//파트너사 지원 연동 성공하면 이 컴포넌트로 사용하기

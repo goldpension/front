@@ -8,12 +8,13 @@
   z-index: 99;
   background-color: #ffffff;
   padding: 0.7rem;
+  border: none;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-weight: bold;
 }
-.goBack:hover {
+.goBack:hover, .goBack:focus {
   opacity: 0.6;
 }
 .main {
@@ -57,7 +58,7 @@
   align-items: center;
   height: 55px;
 }
-.areaCount:hover {
+.areaCount:hover, .areaCount:focus {
   color: red;
   font-size: 1.5rem;
 }

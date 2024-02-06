@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const companyPartner = (props) => {
   return (
-    <>
+    <main>
       <div className={styles.container}>
         <div className={styles.content1}>
           <p>
@@ -26,7 +26,7 @@ const companyPartner = (props) => {
           </Link>
         </button>
       </div>
-    </>
+    </main>
   );
 };
 

@@ -13,7 +13,7 @@ const CompanyPartner = () => {
     setScreen(type);
   }
   return (
-    <>
+    <main>
       <div className={styles.cp_container}>
         {screen === 'main' ? (
           <>
@@ -62,7 +62,7 @@ const CompanyPartner = () => {
           </>
         )}
       </div>
-    </>
+    </main>
   );
 };
 

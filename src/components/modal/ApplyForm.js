@@ -35,12 +35,14 @@ function ApplyForm({ job, checkDeadline, onClickSubmit }) {
   return (
     <form className={styles.applyForm} onSubmit={handleSubmit}>
       <div className={styles.formItem}>
-        <label>이름</label>
+        <label for='name'>이름</label>
         <input
           type="text"
           placeholder="이름을 써주세요"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          id="name"
+          alt="이름을 입력해주세요"
         />
       </div>
       <div className={styles.formItem}>

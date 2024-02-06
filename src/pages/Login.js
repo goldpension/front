@@ -11,7 +11,7 @@ const Login = () => {
     document.title = '로그인 - 황금연금';
   }, [])
   return (
-    <div>
+    <main>
       <div>
         <LoginMent1 />
       </div>
@@ -21,7 +21,7 @@ const Login = () => {
           <LKakao />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -82,13 +82,17 @@
   font-size: 0.85rem;
 }
 
-.job:hover {
+.job:hover, .job:focus {
   color: gray;
 }
 
 .job:hover .deadline {
   background-color: rgba(69, 7, 107, 1);
   color: gray;
+}
+.job:focus .deadline {
+  background-color: rgba(69, 7, 107, 1);
+  
 }
 
 .deadline {

@@ -1,12 +1,12 @@
 import React from "react";
-import styles from "../css/MyInfo2.module.css";
+import styles from "../css/ChangeAccount.module.css";
 import InfoMent2 from "../components/Info/IMent2";
 import ButtonNaver from "../components/Join_c/ButtonNaver";
 import ButtonKakao from "../components/Join_c/ButtonKakao";
 
-const MyInfo2 = () => {
+const ChangeAccount = () => {
   return (
-    <div>
+    <main>
       <InfoMent2 />
       <div className={styles.center}>
         <div>
@@ -16,8 +16,8 @@ const MyInfo2 = () => {
           <ButtonKakao />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
-export default MyInfo2;
+export default ChangeAccount;

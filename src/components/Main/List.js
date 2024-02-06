@@ -100,7 +100,7 @@ const List = ({ area, jobs, openModal }) => {
   };
 
   return (
-    <div className={styles.listComponent}>
+    <article className={styles.listComponent}>
       <div className={styles.searchContainer}>
         <p className={styles.listMainComment}>
           지금 <span className={styles.selectedArea}>{area ? area : '기타'}</span>에 등록된 일자리 수{' '}
@@ -130,22 +130,11 @@ const List = ({ area, jobs, openModal }) => {
         <div style={{ flex: '1', textAlign: 'center' }} className={styles.oranNmTitle}>기업</div>
         <div style={{ flex: '1', textAlign: 'center' }}>근무지역</div>
       </div>
-      <div className={styles.listContainer}>
+      <ul className={styles.listContainer}>
         {currentJobs.map((job, i) => (
-          <div className={styles.job} key={i} onClick={() => openModal(job)}>
-            <div className={styles.deadlineContainer}>
-              <div className={styles.deadline}>{job.deadline}</div>
-            </div>
-            <div className={styles.recrtTitle}>
-              {job.recrtTitle.length > 30 ? `${job.recrtTitle.slice(0, 29)}...` : job.recrtTitle}
-            </div>
-            <div className={styles.oranNm}>
-              {job.oranNm.length > 20 ? `${job.oranNm.slice(0, 20)}...` : job.oranNm}
-            </div>
-            <div className={styles.workPlcNm}>{job.workPlcNm ? job.workPlcNm : '기타'}</div>
-          </div>
+          <Job job={job} openModal={openModal}/>
         ))}
-      </div>
+      </ul>
       <div className={styles.pagination}>
         {currentGroup >1 && (
           <button className={styles.paginationButton} onClick={prevGroup}>
@@ -159,7 +148,7 @@ const List = ({ area, jobs, openModal }) => {
           </button>
         )}
       </div>
-    </div>
+    </article>
   );
 };
 

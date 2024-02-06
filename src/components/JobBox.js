@@ -15,10 +15,10 @@ const JobBox = ({ companies, openModal }) => {
   ];
 
   return (
-    <div className={styles.JobBoxComponent}>
+    <article className={styles.JobBoxComponent}>
       <div className={styles.cp_content}>
         {companies.map((company) => (
-          <div className={styles.cp_card} onClick={() => openModal(company)}>
+          <article className={styles.cp_card} onClick={() => openModal(company)}>
             <div className={styles.cp_cardJstatus}>
               <p>{card[0].cardJstatus}</p>
             </div>
@@ -37,10 +37,10 @@ const JobBox = ({ companies, openModal }) => {
             <div className={styles.cp_cardTime}>
               <p>{company.work_hour}</p>
             </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </article>
   );
 };
 

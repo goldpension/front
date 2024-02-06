@@ -257,7 +257,7 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
   }, [markers, polygons]);
   
   return (
-    <div
+    <article
       id="map"
       style={{
         width: "100%",
@@ -266,7 +266,7 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
       }}
       className={styles.map}
     >
-    </div>
+    </article>
   );
 }
 
