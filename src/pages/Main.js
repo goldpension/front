@@ -92,16 +92,6 @@ export const Main = () => {
     setShowModal(false);
   };
 
-  function renderScreen(screen) {
-    const screens = {
-      'areaCounts': () => <AreaCounts jobs={jobs} onClickCount={onClickCount} />,
-      'list': () => <List area={listArea} jobs={jobs} openModal={openModal} />
-    };
-  
-    const ScreenComponent = screens[screen];
-    return ScreenComponent ? ScreenComponent() : <div>Invalid screen</div>;
-  }
-  
   const goBackHandler = () => {
     setListArea("all");
     goToScreen("areaCounts");
@@ -147,7 +137,11 @@ export const Main = () => {
             openModal={openModal}
           />
         </section>
-        <section className={styles.renderScreen}>{renderScreen(screen)}</section>
+        <section className={styles.renderScreen}>
+          {screen === 'areaCounts' ? <AreaCounts jobs={jobs} onClickCount={onClickCount} /> 
+          : screen === 'list' ? <List area={listArea} jobs={jobs} openModal={openModal} />
+          : <div>Invalid screen</div>}
+        </section>
       </main>
     </>
   );

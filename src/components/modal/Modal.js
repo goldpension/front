@@ -5,6 +5,7 @@ import { ModalContent } from "./ModalContent";
 import ApplyForm from "./ApplyForm";
 
 const Modal = ({ show, close, job, type }) => {
+  console.log('모달 오픈~')
   const [applyCompleted, setApplyCompleted] = useState(false);
   const modalRef = useRef();
 
