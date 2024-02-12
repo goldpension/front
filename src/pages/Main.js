@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SenuriService } from "../api/axios";
 import Map from "../components/Map";
 import AreaCounts from "../components/Main/AreaCounts";
@@ -16,6 +16,21 @@ export const Main = () => {
   const [modalSelectedJob, setModalSelectedJob] = useState({});
   const XML_ELEMENTS_JOB_LIST = ["jobId", "deadline", "jobcls", "oranNm", "workPlcNm", "recrtTitle"];
   const XML_ELEMENTS_JOB_INFO = ["acptMthdCd", "age", "ageLim", "clerk", "clerkContt", "clltPrnnum", "detCnts", "plDetAddr", "plbizNm", "frAcptDd", "toAcptDd", "wantedTitle"];
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        goBackHandler();      
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const goToScreen = (screenName) => {
     setScreen(screenName);
   };
