@@ -10,10 +10,27 @@ const Modal = ({ show, close, job, type }) => {
   const modalRef = useRef();
 
   useEffect(() => {
+    const handleKeydown = (event) => {
+      // 'Esc' 키를 눌렀을 때 모달을 닫음
+      if (event.key === 'Escape') {
+        close();
+      }
+    };
+
+    // 모달이 열릴 때 'keydown' 이벤트 리스너를 추가
     if (show) {
         modalRef.current.focus();
+        window.addEventListener('keydown', handleKeydown);
+    } else {
+      // 모달이 닫힐 때 'keydown' 이벤트 리스너를 제거
+      window.removeEventListener('keydown', handleKeydown);
     }
-  }, [show]);
+
+    // 컴포넌트가 unmount될 때 'keydown' 이벤트 리스너를 제거
+    return () => {
+      window.removeEventListener('keydown', handleKeydown);
+    };
+  }, [show, close]);
 
   if (!show) {
     return null;
@@ -36,29 +53,6 @@ const Modal = ({ show, close, job, type }) => {
   };
   const handleClickContent = (e) => {
     e.stopPropagation();
-  };
-  const renderApplyMethod = (method) => {
-    if (type === "guarantee") {
-      return (
-        <ApplyForm
-          job={job}
-          checkDeadline={checkDeadline}
-          onClickSubmit={onClickSubmit}
-        />
-      );
-    }
-    switch (method) {
-      case "CM0801":
-        return <ApplyVisit method={"온라인"} />;
-      case "CM0802":
-        return <ApplyVisit method={"이메일"} />;
-      case "CM0803":
-        return <ApplyVisit method={"팩스"} />;
-      case "CM0804":
-        return <ApplyVisit method={"방문"} address={job.plDetAddr} />;
-      default:
-        return null;
-    }
   };
 
   return (
@@ -83,7 +77,21 @@ const Modal = ({ show, close, job, type }) => {
         ) : (
           <main className={styles.modalContent}>
             <ModalContent job={job} type={type} checkDeadline={checkDeadline} />
-            {renderApplyMethod(job.acptMthdCd)}
+            {type === "guarantee" ? (
+              <ApplyForm
+                job={job}
+                checkDeadline={checkDeadline}
+                onClickSubmit={onClickSubmit}
+              />
+            ) : job.acptMthdCd === "CM0801" ? (
+              <ApplyVisit method={"온라인"} />
+            ) : job.acptMthdCd === "CM0802" ? (
+              <ApplyVisit method={"이메일"} />
+            ) : job.acptMthdCd === "CM0803" ? (
+              <ApplyVisit method={"팩스"} />
+            ) : job.acptMthdCd === "CM0804" ? (
+              <ApplyVisit method={"방문"} address={job.plDetAddr} />
+            ) : null}
           </main>
         )}
       </div>
