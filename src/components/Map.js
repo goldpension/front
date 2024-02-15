@@ -168,6 +168,8 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
   
   useEffect(() => {
     if (!map || !clusterer) return;
+    let isCancelled = false;
+    let newMarkers = [];
 
     const makeMap = async (selectedArea) => {
       const kakao = window.kakao;
@@ -235,26 +237,32 @@ function Map({jobs, selectedArea, onClickCount, openModal}) {
           }
         }
       }
-      clusterer.clear();
-      clusterer.addMarkers(newMarkers);
+      if (!isCancelled) {
+        clusterer.clear();
+        clusterer.addMarkers(newMarkers);
+      }
     };
 
     makeMap(selectedArea);
+    return () => {
+      isCancelled = true;
+      for (const marker of newMarkers) {
+        if (marker.onRemove) marker.onRemove();
+      }
+      clusterer.clear();
+    };
   }, [selectedArea, clusterer, displayArea, jobs, map]);
 
   useEffect(() => {
     return () => {
-      // Cleanup markers
-      for (const marker of markers) {
-        if (marker.onRemove) marker.onRemove();
-      }
+      
 
       // Cleanup polygons
       for (const polygon of polygons) {
         polygon.setMap(null);
       }
     };
-  }, [markers, polygons]);
+  }, [polygons]);
   
   return (
     <article
